@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+/* Tokeni iz docs/dizajn.md §3 */
+@theme {
+  --color-ivory: #fbf7f0;
+  --color-cream: #f4eadc;
+  --color-sand: #e8d6bc;
+  --color-sand-dark: #d9c29c;
+  --color-sand-mid: #dcc7a6;
+  --color-gold: #b4884a;
+  --color-gold-line: #c9a46a;
+  --color-gold-deep: #8a6328;
+  --color-gold-light: #d9b77e;
+  --color-gold-hover: #5e4318;
+  --color-cocoa: #5a4636;
+  --color-espresso: #2e2119;
+  --color-espresso-line: #4a3a2e;
+  --color-bronze-line: #8a6a3e;
+  --color-on-dark: #cdbba3;
+  --color-white-warm: #fffdf9;
+  --color-placeholder: #7a6656;
+  --color-ring-inner: #eadbc2;
+  --color-error: #9a3b2e;
+
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-serif: var(--font-cinzel), Georgia, serif;
+  --font-script: var(--font-dancing), cursive;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-gold-deep);
+  }
+
+  a:hover {
+    color: var(--color-gold-hover);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-placeholder);
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .wrap {
+      padding-inline: 40px;
+    }
+  }
+
+  .section-y {
+    padding-block: clamp(72px, 8vw, 120px);
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  .h1 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(33px, 4.4vw, 62px);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  .h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.2;
+  }
+
+  .h2-sm {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--color-cocoa);
+  }
+
+  /* Gumbi — pilule */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .btn-lg {
+    min-height: 56px;
+    padding: 0 32px;
+    font-size: 13px;
+  }
+
+  .btn-primary {
+    background: var(--color-gold-deep);
+    color: var(--color-ivory);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gold-hover);
+    color: var(--color-ivory);
+  }
+
+  .btn-secondary {
+    border-color: var(--color-gold);
+    color: var(--color-espresso);
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  .btn-dark {
+    background: var(--color-gold-light);
+    color: var(--color-espresso);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  .btn-dark-outline {
+    border-color: var(--color-bronze-line);
+    color: var(--color-cream);
+  }
+
+  .btn-dark-outline:hover {
+    border-color: var(--color-gold-light);
+    color: var(--color-ivory);
+  }
+
+  /* Luk */
+  .arch {
+    border-radius: 999px 999px 0 0;
+  }
+
+  /* Krug ikone tretmana s dvostrukim unutarnjim prstenom */
+  .icon-ring {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-gold-line);
+    background: var(--color-white-warm);
+    box-shadow:
+      inset 0 0 0 4px var(--color-white-warm),
+      inset 0 0 0 5px var(--color-ring-inner);
+    color: var(--color-gold-deep);
+  }
+
+  .icon-ring-dark {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-bronze-line);
+    color: var(--color-gold-light);
+  }
+
+  /* Polja forme */
+  .field {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-sand-dark);
+    border-radius: 12px;
+    background: var(--color-ivory);
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--color-espresso);
+  }
+
+  .field:focus {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 1px;
+    border-color: var(--color-gold);
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  .field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-espresso);
+  }
+
+  .field-error {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-error);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

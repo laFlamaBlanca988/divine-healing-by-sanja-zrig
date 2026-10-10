@@ -2,7 +2,7 @@
 
 Web stranica za Divine Healing — Massage & Wellness Studio, Ilica 322, Zagreb.
 
-Stranica se radi u **Next.js**. Dizajn je gotov; kod još nije napravljen.
+Stranica je napravljena u **Next.js** (App Router, TypeScript, Tailwind CSS) prema specifikaciji u `docs/dizajn.md`.
 
 ## Što je u repozitoriju
 
@@ -17,3 +17,30 @@ Stranica se radi u **Next.js**. Dizajn je gotov; kod još nije napravljen.
 | `assets/originali/` | Originalne fotografije koje je poslao naručitelj. |
 
 Dizajn na canvasu: https://claude.ai/artifact/LKaCithXbxSkBRApn3jvrg (privatan).
+
+## Pokretanje
+
+```bash
+npm install
+cp .env.example .env.local   # po potrebi upisati vrijednosti
+npm run dev                  # http://localhost:3000
+npm run lint
+npm run build && npm start
+```
+
+| Putanja | Sadržaj |
+|---|---|
+| `src/app/` | stranice `/`, `/tretmani`, `/pravila-privatnosti`, Server Action za upit (`actions.ts`), sitemap, robots, ikone |
+| `src/components/` | zaglavlje, podnožje, mobilna traka, forma za upit, ikone |
+| `src/content/` | podaci o studiju; tretmani se čitaju izravno iz `docs/tretmani.json` |
+| `src/lib/upit.ts` | pravila forme (zajednička za preglednik i server) |
+
+### Forma za upit
+Upit se šalje Server Actionom preko [Resenda](https://resend.com) na `UPIT_EMAIL_TO`.
+Bez `RESEND_API_KEY` se u developmentu upit samo ispiše u log servera; u produkciji bez ključa
+forma prikazuje poruku o tehničkoj grešci. Varijable su opisane u `.env.example`.
+
+### Otvoreno
+- **Pravila privatnosti** — na stranici je privremeni nacrt (jasno označen); konačni tekst treba od naručitelja.
+- **Domena** — postaviti `NEXT_PUBLIC_SITE_URL` (canonical, sitemap, Open Graph).
+- **Resend** — račun, verificirana domena i adresa pošiljatelja (`UPIT_EMAIL_FROM`).
