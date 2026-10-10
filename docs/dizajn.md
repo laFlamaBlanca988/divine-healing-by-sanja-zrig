@@ -14,10 +14,15 @@ datotekama na koje se dokument poziva.
   - `Mobile.dc.html` — početna na 390 px (mobilni raspored, sticky traka)
   - `Stil.dc.html` — vizualni identitet (boje, fontovi, gumbi, ikone, oblici slika)
 - **Cjenik i opisi:** `docs/tretmani.json` — jedini izvor istine za tretmane i cijene.
+- **Ikone:** `docs/ikone.json` — SVG markup svih ikona (ključevi = polje `ikona` u JSON-u).
 - **Izvorni tekstovi sa Zoyye:** `docs/zoyya-izvorni-tekstovi.md`.
 - **Slike:** `public/images/` (obrađene za web), originali u `assets/originali/`.
 
 Jezik stranice: **hrvatski** (`<html lang="hr">`).
+
+> **Pravilo prednosti:** gdje se ovaj dokument ili `tretmani.json` razlikuju od artboarda u canvasu,
+> vrijedi dokument/JSON. Artboardi određuju izgled i raspored; sadržaj (nazivi, cijene, tekstovi,
+> redoslijed) uzima se iz dokumenta i JSON-a.
 
 ---
 
@@ -46,8 +51,9 @@ Redoslijed sekcija:
 
 1. **Zaglavlje** — logo (znak + „DIVINE HEALING” u Cinzelu + „by Sanja Zrig” u Dancing Scriptu),
    navigacija *Masaže · FOHOW BEM 3.0 · Cjenik · O meni · Kontakt*, gumb **Rezerviraj termin** (Zoyya).
-   Na mobitelu: logo + okrugli gumb izbornika (hamburger). Izbornik u dizajnu nije nacrtan —
-   napraviti padajući/bočni izbornik s istim linkovima i gumbom za rezervaciju.
+   Ispod prijelomne točke `lg` (vidi „Mobitel”): logo + okrugli gumb izbornika (hamburger). Izbornik u
+   dizajnu nije nacrtan — napraviti padajući panel preko cijele širine (pozadina ivory) s istim linkovima,
+   gumbom za rezervaciju i telefonom; gumb izbornika tada prikazuje ikonu `zatvori`, a `Esc` ga zatvara.
 2. **Hero** — eyebrow „Massage & Wellness Studio · Zagreb”, H1 „Prostor u kojem ćete se osjećati
    *i biti bolje*” (drugi dio u tamnom zlatu), kratki opis, gumbi **Rezerviraj termin** (Zoyya) i
    **Pošalji upit** (skok na formu), telefon + Instagram. Desno: fotografija `studio-sanja.jpg` u
@@ -57,10 +63,11 @@ Redoslijed sekcija:
 3. **Info traka** (krem pozadina) — tri stupca: Adresa · Radno vrijeme · Kontakt, svaki s ikonom u krugu.
 4. **Najtraženiji tretmani** (`#tretmani`) — naslov „Masaže i tretmani”, gumb „Cijeli cjenik”,
    mreža 3 × 2 kartica (slika 4:3, trajanje, cijena, naziv, kratki opis, link „Rezerviraj”).
-   Kartice = tretmani s `"istaknuto": true` u `tretmani.json`. Ispod rečenica s ostalim tretmanima
-   i linkom na cjenik.
-5. **FOHOW BEM 3.0** (`#fohow`, tamna sekcija) — slika `fohow-bem-uredaj.jpg` (4:5), naslov
-   „Ovo nije klasična masaža — ovo je bio-meridijanska aktivacija”, opis, „Možete osjetiti:” +
+   Kartice = tretmani s `"istaknuto": true`, poredani po `istaknutoRedoslijed`, tekst iz `kratkiOpis`.
+   Ispod rečenica „Također: …” — generira se od ne-istaknutih tretmana iz kategorija koje nisu FOHOW
+   (uključuje i Abdominalnu masažu), s linkom „Pogledajte cijeli cjenik”.
+5. **FOHOW BEM 3.0** (`#fohow`, tamna sekcija) — slika `fohow-bem-uredaj.jpg` (4:5), naslov =
+   `slogan` FOHOW kategorije, opis, „Možete osjetiti:” +
    tri pilule (valove kroz tijelo · duboko oslobađanje · trenutnu lakoću), popis FOHOW tretmana
    s trajanjem i cijenom (stavke „na upit” imaju link „Na upit” na formu), gumbi
    **Rezerviraj BEM 3.0 masažu** (Zoyya) i **Opisi tretmana** (`/tretmani#fohow`).
@@ -93,13 +100,33 @@ Redoslijed sekcija:
 ### `/pravila-privatnosti`
 Potrebna zbog forme (GDPR). Tekst treba pripremiti — u dizajnu postoji samo link.
 
-### Mobitel (`docs/canvas/Mobile.dc.html`)
-Isti sadržaj kao početna, složen u jedan stupac. Posebnosti:
-- Kartice najtraženijih tretmana su **vodoravni klizač** (`overflow-x: auto`, `scroll-snap`), kartica 272 px.
-- **Sticky traka na dnu ekrana**: okrugli gumb za poziv, okrugli gumb za upit (e-mail ikona),
-  široki gumb „Rezerviraj termin”. U dizajnu je nacrtana na dnu prvog ekrana — u kodu `position: fixed`
-  na dnu, samo na mobitelu.
-- Galerija 2 × 2.
+### Mobitel i prijelomne točke (`docs/canvas/Mobile.dc.html`)
+**Sadržaj je na svim širinama isti kao na desktopu** (`Main.dc.html` + `tretmani.json`): isti tekstovi,
+nazivi, svih 6 istaknutih kartica, ista forma, isto podnožje (s linkom Pravila privatnosti).
+Mobilni artboard ima mjestimično skraćene tekstove i izostavljene elemente — to **nije** namjera;
+on određuje samo raspored:
+- **< 1024 px (`lg`)**: hamburger izbornik umjesto navigacije; **sticky traka na dnu ekrana**
+  (`position: fixed`) — okrugli gumb za poziv, okrugli gumb za upit (ikona `email`, vodi na `/#upit`),
+  široki gumb „Rezerviraj termin”. Traka je na svim stranicama (i `/tretmani`); sadržaj stranice dobiva
+  donji padding da je traka ne prekrije.
+- **< 768 px (`md`)**: sve u jednom stupcu; kartice najtraženijih tretmana su **vodoravni klizač**
+  (`overflow-x: auto`, `scroll-snap-type: x mandatory`, kartica 272 px); galerija 2 × 2 (+ Instagram
+  pilula ispod); hero slika u luku ispod teksta; bočni padding 24 px.
+- Redovi cjenika na `/tretmani` se prelamaju (ikona + naziv/opis gore, cijena i gumb ispod, poravnato
+  desno) — kao u desktop artboardu, koji već koristi `flex-wrap`.
+
+### Poveznice
+| Element | Cilj |
+|---|---|
+| Rezerviraj / Rezerviraj termin | https://zoyya.com/hr/divine-healing (novi tab nije potreban) |
+| Pošalji upit (općenito) | `/#upit` |
+| Pošalji upit / Na upit uz određeni tretman | `/?tretman={id}#upit` — forma unaprijed odabere taj tretman |
+| Nav „Kontakt” | `/#kontakt` |
+| Nav „Masaže” / „FOHOW BEM 3.0” | `/#tretmani` / `/#fohow` (s `/tretmani`: `/tretmani#masaze` / `/tretmani#fohow`) |
+| Podnožje — kategorije | `/tretmani#masaze`, `#antistres`, `#tijelo`, `#fohow` |
+| Pravila privatnosti (forma i podnožje) | `/pravila-privatnosti` |
+| „Zoyya” u podnožju („Rezervacije omogućila Zoyya”) | link na Zoyya stranicu studija |
+| Upute do studija | https://maps.google.com/?q=Ilica+322,+Zagreb |
 
 ---
 
@@ -116,6 +143,7 @@ velika slova. Bez gradijenata i bez emojija.
 | cream | `#F4EADC` | izmjenične sekcije, info traka, pozadina „na upit” gumba |
 | sand | `#E8D6BC` | linije, rubovi kartica |
 | sand-dark | `#D9C29C` | rub polja forme, rub kartica na kremi |
+| sand-mid | `#DCC7A6` | linije između redova cjenika na krem pozadini |
 | gold | `#B4884A` | ikone, dekor, obrub sekundarnih gumba (samo veliki tekst/dekor) |
 | gold-line | `#C9A46A` | tanke zlatne linije, obrubi lukova i krugova ikona |
 | gold-deep | `#8A6328` | primarni gumbi, eyebrow tekst, linkovi (kontrast 5:1 na ivory) |
@@ -134,8 +162,8 @@ Hover za linkove: `#5E4318`. Fokus polja: `outline: 2px solid #B4884A; outline-o
 
 | Font | Težine | Uporaba |
 |---|---|---|
-| **Cinzel** | 400, 500, 600 | naslovi (H1 clamp(38px, 4.4vw, 62px), H2 clamp(30px, 3.2vw, 44px)), cijene, citati, logotip |
-| **Montserrat** | 300, 400, 500, 600 | tekst (16–17 px, line-height 1.75), oznake i nazivi tretmana VELIKIM SLOVIMA (12–15 px, `letter-spacing` 0.12–0.3em, težina 600) |
+| **Cinzel** | 400, 500, 600 | naslovi (H1 clamp(38px, 4.4vw, 62px); H2 sekcija clamp(30px, 3.2vw, 44px); manji H2 — kategorije cjenika, galerija, forma — clamp(28px, 3vw, 40px)), cijene (20–26 px), citati, logotip |
+| **Montserrat** | 300, 400, 500, 600 | tekst (16–17 px, line-height 1.75), oznake i nazivi tretmana VELIKIM SLOVIMA (12–15 px, `letter-spacing` 0.1–0.3em, težina 600; u tamnoj FOHOW listi na početnoj 500) |
 | **Dancing Script** | 500, 600 | samo potpis: „by Sanja Zrig”, „Pozdrav, ja sam Sanja”, „Sanja Zrig” |
 
 Eyebrow (nadnaslov): 12 px, 600, `letter-spacing: 0.3em`, uppercase, boja gold-deep (na tamnom gold-light).
@@ -149,7 +177,10 @@ Eyebrow (nadnaslov): 12 px, 600, `letter-spacing: 0.3em`, uppercase, boja gold-d
   600, uppercase, `letter-spacing: 0.16em`.
   - primarni: pozadina gold-deep, tekst ivory
   - sekundarni: proziran, obrub gold `#B4884A`, tekst espresso
-  - na tamnom: pozadina gold-light, tekst espresso; ili obrub `#8A6A3E`, tekst `#F4EADC`
+  - na tamnom: pozadina gold-light, tekst espresso; ili obrub `#8A6A3E`, tekst `#F4EADC`;
+    ili (gumbi „Rezerviraj” u redovima cjenika) obrub i tekst gold-light
+  - mali gumb u redu cjenika: min. visina 44 px, min. širina 128 px, tekst 11 px
+  - „Pošalji upit” u redu cjenika: pozadina cream + obrub sand-dark (na tamnom: pozadina gold-light, tekst espresso)
 - Ikone tretmana: krug 52–60 px, `border: 1px solid #C9A46A`, dvostruki unutarnji prsten
   (`box-shadow: inset 0 0 0 4px #FFFDF9, inset 0 0 0 5px #EADBC2`), ikona 24–28 px, linija 1.3,
   boja gold-deep. Na tamnoj pozadini: obrub `#8A6A3E`, ikona gold-light, bez prstena.
@@ -157,8 +188,9 @@ Eyebrow (nadnaslov): 12 px, 600, `letter-spacing: 0.3em`, uppercase, boja gold-d
   vertikalni padding sekcija `clamp(72px, 8vw, 120px)`.
 
 ### Ikone
-Sve su inline SVG (24×24, `stroke="currentColor"`, bez ispune) — točan kod je u `docs/canvas/Stil.dc.html`
-i u artboardima. Ključevi u `tretmani.json` (`ikona`) odgovaraju ovim ikonama:
+Sve su inline SVG (24×24, `stroke="currentColor"`, bez ispune) — **točan markup je u `docs/ikone.json`**
+(nazivi ispod ikona u `Stil.dc.html` nisu ključevi i mjestimično su netočni — ne koristiti ih).
+Ključevi u `tretmani.json` (`ikona`):
 
 | ključ | prikaz | ključ | prikaz |
 |---|---|---|---|
@@ -171,7 +203,8 @@ i u artboardima. Ključevi u `tretmani.json` (`ikona`) odgovaraju ovim ikonama:
 | `rukavica` | rukavica | `valovi` | ultrazvučni valovi |
 | `uredaj` | uređaj (BEM) | `bocice` | dvije bočice |
 
-Ostale: telefon, Instagram, e-mail, lokacija, sat, kalendar, strelica, kvačica, avion (pošalji), izbornik.
+UI ikone (`ikone.json` → `ui`): telefon, instagram, email, lokacija, sat, kalendar, strelica, chevron-desno,
+chevron-dolje, kvacica, posalji, izbornik, zatvori.
 
 ---
 
@@ -227,47 +260,76 @@ pojedini tretman).
 ## 5. Forma za upit
 
 Svrha: klijent ostavlja upit za termin; upit stiže e-mailom Sanji. Druga opcija uz Zoyyu —
-za pitanja, tretmane „na upit” i one koji ne žele aplikaciju.
+za pitanja, tretmane „na upit” i one koji ne žele aplikaciju. Jedna komponenta za sve širine.
 
-### Polja
+### Polja (ovim redom)
 | Polje | Tip | Obavezno | Napomena |
 |---|---|---|---|
-| Ime i prezime | text, `autocomplete="name"` | da | |
-| Broj telefona | tel, `autocomplete="tel"` | da | placeholder `+385 9x xxx xxxx` |
-| E-mail | email | ne | „(neobavezno)” |
-| Željeni datum | date | ne | ne dopustiti prošle datume; nedjelja zatvoreno |
-| Tretman | select s `optgroup` po kategorijama | ne | opcije iz `tretmani.json`, s trajanjem i cijenom; zadnja opcija „Nisam sigurna/siguran — trebam savjet” |
-| Željeno vrijeme | jedan izbor (pilule) | ne | Jutro 10–13 h · Popodne 13–17 h · Večer 17–21 h · **Svejedno** (zadano) |
-| Kako da vas kontaktiram? | jedan izbor (pilule) | ne | **Poziv** (zadano) · SMS / WhatsApp / Viber · E-mail |
-| Poruka | textarea, 4 reda | ne | placeholder „Npr. imam bolove u vratu i ramenima, dolazim prvi put…” |
+| Ime i prezime | text, `autocomplete="name"` | da | placeholder „Vaše ime” |
+| Broj telefona | tel, `autocomplete="tel"` | da | placeholder `+385 9x xxx xxxx`; dopušteni znakovi `+`, brojke, razmaci, `/`, `-`; min. 8 znamenki |
+| E-mail | email | samo ako je način kontakta „E-mail” | uz oznaku „(neobavezno)”; kad se odabere „E-mail”, oznaka postaje „*” |
+| Željeni datum | date | ne | `min` = danas (vremenska zona Europe/Zagreb); nedjelja nije dopuštena (vidi pravila) |
+| Tretman | select s `optgroup` | ne | vidi „Izbornik tretmana”; unaprijed odabran iz `?tretman={id}` |
+| Željeno vrijeme | radio pilule | ne | Jutro 10–13 h · Popodne 13–17 h · Večer 17–21 h · **Svejedno** (zadano) |
+| Kako da vas kontaktiram? | radio pilule | ne | **Poziv** (zadano) · SMS / WhatsApp / Viber · E-mail |
+| Poruka | textarea, 4 reda | ne | placeholder „Npr. imam bolove u vratu i ramenima, dolazim prvi put…”, max. 1000 znakova |
 | Privola | checkbox | da | „Slažem se da se moji podaci koriste isključivo za odgovor na ovaj upit.” + link Pravila privatnosti |
+| (honeypot) | skriveno text polje | — | npr. `name="web"`, sakriveno od ljudi i čitača ekrana |
 
-Pilule su vizualno gumbi; u kodu ih napraviti kao **radio grupe** (`fieldset` + `legend`,
-skriveni `input type="radio"`) da rade s tipkovnicom i čitačima ekrana. Odabrana pilula:
-pozadina espresso, tekst ivory; ostale: ivory pozadina, obrub `#D9C29C`.
+Pilule su vizualno gumbi; u kodu ih napraviti kao **radio grupe** (`fieldset` + `legend`, vizualno
+skriveni `input type="radio"`) da rade s tipkovnicom i čitačima ekrana. Odabrana pilula: pozadina
+espresso, tekst ivory; ostale: ivory pozadina, obrub `#D9C29C`.
 
-Ispod gumba **Pošalji upit**: „Termin je potvrđen kada vas Sanja kontaktira. Za trenutnu online
-rezervaciju koristite Zoyya.”
+### Pravila za datum i vrijeme (radno vrijeme)
+- **Nedjelja:** ako se odabere nedjelja, ispod polja poruka „Nedjeljom je studio zatvoren — odaberite
+  drugi dan.” i slanje nije moguće dok se datum ne promijeni.
+- **Subota (13–19 h):** pilula „Jutro” je onemogućena (precrtana/prigušena, `disabled`), „Večer” se
+  prikazuje kao „Večer 17–19 h”. Ako je „Jutro” bilo odabrano, vrati na „Svejedno”.
+- „Danas” se računa u vremenskoj zoni Europe/Zagreb.
 
-Nakon slanja forma se zamjenjuje porukom: kvačica u krugu, „Hvala na upitu!”, „Upit je poslan.
-Sanja će vas kontaktirati na broj koji ste ostavili kako bi potvrdila termin.”, gumb
-„Pošalji novi upit”. Greška: jasna poruka s telefonom kao rezervom.
+### Izbornik tretmana
+- `optgroup` = `naziv` kategorije (bez ®), redom iz JSON-a.
+- Stavka = `{naziv} — {trajanjeMin} min · {cijenaEur} €`; tretman s više opcija = po jedna stavka za
+  svaku opciju, redom iz JSON-a (Masaža leđa 30 pa 60 min). `naUpit` → `{naziv} — cijena na upit`.
+- Vrijednost (`value`) = `{id}` ili `{id}:{trajanjeMin}` kad ima više opcija.
+- Prva stavka „Odaberite tretman” (prazna vrijednost), zadnja „Nisam sigurna/siguran — trebam savjet”
+  (`value="savjet"`).
+- (Izbornik u artboardima ima ručno skraćene nazive — vrijedi ovo pravilo.)
+
+### Tekstovi
+- Ispod gumba **Pošalji upit**: „Termin je potvrđen kada vas Sanja kontaktira. Za trenutnu online
+  rezervaciju koristite Zoyyu.” („Zoyyu” je link na Zoyya stranicu.)
+- Tijekom slanja: gumb onemogućen, tekst „Šaljem…”.
+- **Uspjeh** — forma se zamjenjuje porukom: kvačica u krugu, „Hvala na upitu!”, „Upit je poslan.
+  Sanja će vam se javiti što prije kako bi potvrdila termin.”, gumb „Pošalji novi upit”.
+- **Greške uz polja** (ispod polja, povezane s `aria-describedby`, boja `#9A3B2E`, rub polja iste boje):
+  - ime: „Upišite ime i prezime.”
+  - telefon prazan: „Upišite broj telefona.” · neispravan: „Provjerite broj telefona.”
+  - e-mail neispravan: „Provjerite e-mail adresu.” · prazan uz način „E-mail”: „Upišite e-mail ako želite odgovor e-mailom.”
+  - datum u prošlosti: „Odaberite današnji ili neki budući datum.” · nedjelja: vidi gore
+  - privola: „Za slanje upita potrebna je vaša privola.”
+- **Greška pri slanju** (iznad gumba, `role="alert"`): „Upit nije poslan zbog tehničke greške.
+  Pokušajte ponovno ili nazovite +385 98 165 4696.” (broj je `tel:` link).
 
 ### Slanje (preporuka)
-- Next.js **Server Action** (ili Route Handler) → validacija (npr. `zod`) → slanje e-maila
-  preko servisa za transakcijske e-mailove (npr. **Resend**) na `sanjazrig@gmail.com`,
+- Next.js **Server Action** (ili Route Handler) → validacija na serveru (npr. `zod`, ista pravila kao
+  gore) → e-mail preko servisa za transakcijske e-mailove (npr. **Resend**) na `sanjazrig@gmail.com`,
   `reply-to` = e-mail klijenta ako ga je upisao.
 - Varijable okruženja: `RESEND_API_KEY`, `UPIT_EMAIL_TO=sanjazrig@gmail.com`, `UPIT_EMAIL_FROM`
   (adresa na verificiranoj domeni).
-- Zaštita od spama: skriveno „honeypot” polje + jednostavno ograničenje broja slanja.
-- Naslov e-maila npr. „Novi upit: {tretman} — {ime}”; tijelo sa svim poljima i vremenom slanja.
-- Bez spremanja podataka u bazu (manje obaveza po GDPR-u).
+- Naslov e-maila: „Novi upit: {naziv tretmana ili ‚bez odabira’} — {ime}”. Tijelo: sva polja (tretman
+  puni naziv s trajanjem/cijenom, datum u formatu „subota, 17. 10. 2026.”, vrijeme, način kontakta,
+  poruka) i vrijeme slanja (Europe/Zagreb).
+- Zaštita od spama, bez baze: honeypot polje + odbaciti slanja brža od 3 s od učitavanja forme
+  (skriveni timestamp). Ako spam ipak stiže, dodati Cloudflare Turnstile. Ograničenje po IP-u nije
+  potrebno u prvoj verziji.
+- Podaci se ne spremaju u bazu (manje obaveza po GDPR-u).
 
 ---
 
 ## 6. Tekstovi
 
-**O meni** (Sanjin tekst sa Zoyye, minimalno uređen):
+**O meni** (Sanjin tekst sa Zoyye, minimalno uređen; ispravljeno „želju za suradnju” → „želju za suradnjom”):
 > Pozdrav, ja sam Sanja
 >
 > „Za mene je masaža više od posla – to je poziv koji nosim u srcu.”
@@ -278,7 +340,7 @@ Sanja će vas kontaktirati na broj koji ste ostavili kako bi potvrdila termin.�
 > i punim poštovanjem. Povjerenje koje mi pružate iznimno cijenim – i zato ga nastojim uzvratiti
 > jednako iskreno i s poštovanjem.
 >
-> Ako osjetite želju za suradnju sa mnom, rezervirajte svoj termin. Dobro mi došli!
+> Ako osjetite želju za suradnjom sa mnom, rezervirajte svoj termin. Dobro mi došli!
 
 Ostali tekstovi (hero, uvodi sekcija, opisi) su u artboardima u `docs/canvas/` i u `tretmani.json`.
 
@@ -286,26 +348,29 @@ Ostali tekstovi (hero, uvodi sekcija, opisi) su u artboardima u `docs/canvas/` i
 
 ## 7. Slike (`public/images/`)
 
-| Datoteka | Gdje | Alt tekst |
+Alt tekstovi i `object-position` iz ove tablice vrijede za sva mjesta (artboardi ponegdje imaju
+drugačije formulacije — vrijedi tablica).
+
+| Datoteka | Gdje (`object-position`) | Alt tekst |
 |---|---|---|
 | `logo-znak.png` | zaglavlje, podnožje, favicon (izvesti) | prazan (dekor uz tekstualni logotip) |
-| `studio-sanja.jpg` | hero (luk, `object-position: 50% 72%`) | Sanja u studiju Divine Healing uz klijenticu na stolu za masažu |
-| `tajlandska-istezanje-sjedeci.jpg` | kartica tajlandske masaže; alternativni hero | Tradicionalna tajlandska masaža — istezanje ramena u sjedećem položaju |
-| `terapeutska-masaza-ledja.jpg` | kartica terapeutske; slika kategorije Masaže | Sanja izvodi terapeutsku masažu leđa |
+| `studio-sanja.jpg` | hero, luk (`50% 72%`) | Sanja u studiju Divine Healing uz klijenticu na stolu za masažu |
+| `tajlandska-istezanje-sjedeci.jpg` | kartica tajlandske masaže (`50% 35%`); alternativni hero | Sanja izvodi tradicionalnu tajlandsku masažu — istezanje u sjedećem položaju |
+| `terapeutska-masaza-ledja.jpg` | kartica terapeutske (`50% 45%`); slika kategorije Masaže (`50% 40%`) | Sanja izvodi terapeutsku masažu leđa |
 | `relax-masaza.jpg` | kartica relax masaže | Relax masaža preko ručnika |
-| `antistres-lice-glava.jpg` | kartica antistres; slika kategorije Antistres | Sanja izvodi antistres masažu lica i glave |
-| `sportska-masaza.jpg` | kartica sportske masaže | Sportska masaža leđa |
+| `antistres-lice-glava.jpg` | kartica antistres i slika kategorije Antistres (`50% 30%`) | Sanja izvodi antistres masažu lica i glave |
+| `sportska-masaza.jpg` | kartica sportske masaže (`50% 40%`) | Sportska masaža leđa |
 | `maderoterapija-valjci.jpg` | kartica anticelulitnog; slika kategorije Hidžama i tijelo | Drveni valjci i pomagala za maderoterapiju |
-| `fohow-bem-uredaj.jpg` | FOHOW sekcija i kategorija | FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu |
-| `sanja-tajlandska-osmijeh.jpg` | O meni (luk) | Sanja Zrig tijekom tajlandske masaže, nasmijana |
-| `sanja-masaza-glave.jpg` | O meni (krug) | Sanja masira glavu i vrat klijentice |
+| `fohow-bem-uredaj.jpg` | FOHOW sekcija (`50% 50%`), slika FOHOW kategorije (`50% 60%`) | FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu |
+| `sanja-tajlandska-osmijeh.jpg` | O meni, luk (`50% 30%`) | Sanja Zrig tijekom tajlandske masaže, nasmijana |
+| `sanja-masaza-glave.jpg` | O meni, krug (`50% 18%`) | Sanja masira glavu i vrat klijentice |
 | `tajlandska-istezanje-ramena.jpg` | galerija | Tajlandska masaža — istezanje ramena |
 | `abdominalna-masaza.jpg` | galerija | Abdominalna masaža |
 | `tajlandska-istezanje-ruke.jpg` | galerija | Tajlandska masaža — istezanje ruku i leđa |
 | `masaza-vrata.jpg` | galerija | Masaža vrata i ramena |
 | `zlatna-svila.jpg` | traka u naslovnom dijelu `/tretmani` | prazan (dekor) |
 
-Koristiti `next/image` (dimenzije su u datotekama; najveće su 1000–1080 px širine).
+Koristiti `next/image`. Fotografije su do 1080 px širine; `zlatna-svila.jpg` je dekorativna traka 2400 × 533 px.
 Originali svih 21 poslanih fotografija su u `assets/originali/` (vidi tamošnji README).
 
 ---
@@ -337,5 +402,7 @@ Originali svih 21 poslanih fotografija su u `assets/originali/` (vidi tamošnji 
   logom na čaši (02), tamna masaža rukavicama (04), mutnija (12) i duplikat (13 = 11).
 - **Stavke s plakata** (FOHOW limfna drenaža, FOHOW Minerals Face Skin Set, Maderoterapija,
   Limfna drenaža, Abdominalna masaža) — ostaju kao „na upit”.
+- **Pravopis:** u Sanjinom tekstu ispravljeno „želju za suradnju” → „želju za suradnjom”; Zoyya se
+  sklanja (Zoyye, Zoyyi, Zoyyu).
 - **Treba od naručitelja:** tekst pravila privatnosti; domena; račun za servis e-maila (Resend ili
   sl.) i potvrda adrese s koje se šalje.

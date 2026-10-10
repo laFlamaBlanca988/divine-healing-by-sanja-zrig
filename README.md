@@ -10,6 +10,7 @@ Stranica se radi u **Next.js**. Dizajn je gotov; kod još nije napravljen.
 |---|---|
 | `docs/dizajn.md` | **Specifikacija** — struktura stranica, boje, fontovi, forma za upit, slike, tehničke preporuke. Početi odavde. |
 | `docs/tretmani.json` | Svi tretmani s trajanjem, cijenom i opisom (izvor istine za cjenik). |
+| `docs/ikone.json` | SVG markup svih ikona iz dizajna. |
 | `docs/zoyya-izvorni-tekstovi.md` | Izvorni tekstovi sa Zoyye (referenca). |
 | `docs/canvas/` | Referentne kopije artboarda iz dizajna (`.dc.html`): početna, cjenik, mobitel, stil. |
 | `public/images/` | Fotografije i logo pripremljeni za web. |

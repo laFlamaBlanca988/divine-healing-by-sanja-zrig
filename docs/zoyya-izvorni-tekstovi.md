@@ -109,7 +109,7 @@ Relax masaža je idealna kada ti nije cilj „razraditi“ mišiće, nego uspori
 Antistres masaža lica, glave i ramena.
 Opuštajući tretman usmjeren na smanjenje napetosti u području glave, lica i ramena. Pomaže umiriti um, opustiti mišiće i pružiti osjećaj dubokog mira i rasterećenja.
 
-### Antistres ttrtman Leđa, Lice, Vrat, Glava — 1 h · 50,00 EUR
+### Antistres ttrtman Leđa , Lice , Vrat , Glava — 1 h · 50,00 EUR
 Antistres tretman – leđa, vrat, glava i lice.
 Opuštajući tretman osmišljen za oslobađanje od svakodnevnog stresa, napetosti i umora. Kombinacijom nježnih i umirujućih masažnih tehnika opuštaju se mišići leđa i vrata, dok masaža glave i lica doprinosi osjećaju dubokog mira i ugode.
 Tretman pomaže smanjiti osjećaj mišićne napetosti, umiriti um i pružiti trenutak potpunog opuštanja tijela i duha.

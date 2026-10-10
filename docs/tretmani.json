@@ -1,5 +1,5 @@
 {
-  "_napomena": "Cjenik za web stranicu. izvor: 'zoyya' = preuzeto sa zoyya.com/hr/divine-healing (listopad 2026), 'plakat' = samo na plakatu za izlog, nema ga na Zoyyi -> prikazuje se kao 'Na upit' s gumbom 'Pošalji upit'. Opisi su skraćena web-verzija; izvorni Zoyya tekstovi su u docs/zoyya-izvorni-tekstovi.md. Cijene su u eurima.",
+  "_napomena": "Cjenik za web stranicu — jedini izvor istine za tretmane i cijene. Cijene u eurima. Polja: id (slug, koristi se i kao vrijednost u formi i u ?tretman= parametru), naziv (prikazuje se), zoyyaNaziv (SAMO referenca na naziv na Zoyyi, s njihovim tipfelerima — nikad se ne prikazuje), opis (cjenik), kratkiOpis (kartice na početnoj), oznaka (mala pilula uz naziv), opcije (lista {trajanjeMin, cijenaEur}; više opcija = više stavki u formi), naUpit (prikaz 'Na upit' + gumb 'Pošalji upit'), izvor ('zoyya' ili 'plakat' = samo na plakatu za izlog, potvrđeno da ostaje), ikona (ključ u docs/ikone.json), istaknuto + istaknutoRedoslijed (kartice 'Najtraženiji tretmani' na početnoj, tim redom), slika (fotografija tretmana za karticu; alt i object-position u docs/dizajn.md §7). Kategorija: naziv, grupa (kategorija na Zoyyi), slogan (samo FOHOW, Cinzel citat), uvod, slika, tamnaSekcija. Izvorni Zoyya tekstovi: docs/zoyya-izvorni-tekstovi.md.",
   "kategorije": [
     {
       "id": "masaze",
@@ -14,12 +14,18 @@
           "zoyyaNaziv": "Terapeutska masaža",
           "opis": "Oslobađa tijelo od napetosti, stresa i bolova. Pomaže kod ukočenosti mišića, bolova u leđima, vratu i ramenima te poboljšava cirkulaciju.",
           "kratkiOpis": "Pomaže kod ukočenosti mišića i bolova u leđima, vratu i ramenima. Prilagođena vašim potrebama.",
-          "opcije": [{ "trajanjeMin": 90, "cijenaEur": 60 }],
+          "opcije": [
+            {
+              "trajanjeMin": 90,
+              "cijenaEur": 60
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "ruke",
           "istaknuto": true,
-          "slika": "/images/terapeutska-masaza-ledja.jpg"
+          "slika": "/images/terapeutska-masaza-ledja.jpg",
+          "istaknutoRedoslijed": 1
         },
         {
           "id": "tradicionalna-tajlandska-masaza",
@@ -27,19 +33,30 @@
           "zoyyaNaziv": "Tradicionalna tajlandska masaža",
           "opis": "Spoj drevne tehnike, istezanja i pritiska koji vraća ravnotežu tijelu i umu. Pomaže kod ukočenosti, umora i stresa te poboljšava fleksibilnost.",
           "kratkiOpis": "Drevna tehnika istezanja i pritiska koja vraća ravnotežu tijelu i umu te poboljšava fleksibilnost.",
-          "opcije": [{ "trajanjeMin": 90, "cijenaEur": 80 }],
+          "opcije": [
+            {
+              "trajanjeMin": 90,
+              "cijenaEur": 80
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "thai",
           "istaknuto": true,
-          "slika": "/images/tajlandska-istezanje-sjedeci.jpg"
+          "slika": "/images/tajlandska-istezanje-sjedeci.jpg",
+          "istaknutoRedoslijed": 2
         },
         {
           "id": "masaza-cijelog-tijela",
           "naziv": "Masaža cijelog tijela",
           "zoyyaNaziv": "Masaža cijelo tijelo",
           "opis": "Klasična masaža za opuštanje i regeneraciju nakon napornog dana — poboljšava cirkulaciju, opušta mišiće i vraća energiju.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 50 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 50
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "klasicna",
@@ -51,12 +68,18 @@
           "zoyyaNaziv": "Sportska masaža",
           "opis": "Intenzivnija, ciljana masaža za aktivne osobe i sportaše — priprema mišića, smanjenje napetosti i oporavak nakon treninga.",
           "kratkiOpis": "Intenzivnija masaža za aktivne osobe i sportaše — priprema mišića i oporavak nakon fizičkog napora.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 55 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 55
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "bucica",
           "istaknuto": true,
-          "slika": "/images/sportska-masaza.jpg"
+          "slika": "/images/sportska-masaza.jpg",
+          "istaknutoRedoslijed": 5
         },
         {
           "id": "relax-masaza",
@@ -64,12 +87,18 @@
           "zoyyaNaziv": "Relax Masaža",
           "opis": "Nježnija, sporija masaža ritmičnim pokretima i pritiskom prilagođenim vašim željama — za duboko opuštanje tijela i uma.",
           "kratkiOpis": "Nježnija, sporija masaža ritmičnim pokretima — kada želite usporiti, opustiti se i napuniti baterije.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 45 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 45
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "lotos",
           "istaknuto": true,
-          "slika": "/images/relax-masaza.jpg"
+          "slika": "/images/relax-masaza.jpg",
+          "istaknutoRedoslijed": 3
         },
         {
           "id": "masaza-ledja",
@@ -77,8 +106,14 @@
           "zoyyaNaziv": "Masaža leđa (30 min) / Masaža leđa (60 min)",
           "opis": "Pomaže kod napetosti mišića i bolova u vratu i ramenima. Nakon tretmana osjećat ćete se opuštenije, odmornije i punije energije.",
           "opcije": [
-            { "trajanjeMin": 30, "cijenaEur": 25 },
-            { "trajanjeMin": 60, "cijenaEur": 40 }
+            {
+              "trajanjeMin": 30,
+              "cijenaEur": 25
+            },
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 40
+            }
           ],
           "naUpit": false,
           "izvor": "zoyya",
@@ -93,8 +128,7 @@
           "naUpit": true,
           "izvor": "plakat",
           "ikona": "trbuh",
-          "istaknuto": false,
-          "slika": "/images/abdominalna-masaza.jpg"
+          "istaknuto": false
         }
       ]
     },
@@ -110,7 +144,12 @@
           "naziv": "Antistres — leđa, vrat, glava i lice",
           "zoyyaNaziv": "Antistres ttrtman Leđa , Lice , Vrat , Glava",
           "opis": "Nježne i umirujuće tehnike opuštaju mišiće leđa i vrata, a masaža glave i lica donosi osjećaj dubokog mira i ugode.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 50 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 50
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "lice",
@@ -122,12 +161,18 @@
           "zoyyaNaziv": "Antisters tretman Lice Glava Ramena",
           "opis": "Kratki opuštajući tretman koji smanjuje napetost u području glave, lica i ramena i umiruje um.",
           "kratkiOpis": "Smanjuje napetost u području glave, lica i ramena te pruža osjećaj dubokog mira i rasterećenja.",
-          "opcije": [{ "trajanjeMin": 30, "cijenaEur": 25 }],
+          "opcije": [
+            {
+              "trajanjeMin": 30,
+              "cijenaEur": 25
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "lotos",
           "istaknuto": true,
-          "slika": "/images/antistres-lice-glava.jpg"
+          "slika": "/images/antistres-lice-glava.jpg",
+          "istaknutoRedoslijed": 4
         }
       ]
     },
@@ -143,7 +188,12 @@
           "naziv": "Hidžama (suha / vlažna)",
           "zoyyaNaziv": "Hidžama",
           "opis": "Tradicionalna metoda s čašicama i vakuumom koja potiče cirkulaciju i vraća osjećaj lakoće. Kod vlažne hidžame rade se sitni, milimetarski rezovi na koži koji zacjeljuju za 5 do 7 dana.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 50 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 50
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "casica",
@@ -156,12 +206,18 @@
           "opis": "Cupping čašice, BEM 3.0 uređaj i maderoterapijski valjci za bolji učinak i brže rezultate. Za najbolje rezultate preporučuje se paket tretmana.",
           "kratkiOpis": "Cupping čašice, BEM 3.0 uređaj i maderoterapijski valjci. Za paket tretmana — popust.",
           "oznaka": "Paket uz popust",
-          "opcije": [{ "trajanjeMin": 45, "cijenaEur": 30 }],
+          "opcije": [
+            {
+              "trajanjeMin": 45,
+              "cijenaEur": 30
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
           "ikona": "casice",
           "istaknuto": true,
-          "slika": "/images/maderoterapija-valjci.jpg"
+          "slika": "/images/maderoterapija-valjci.jpg",
+          "istaknutoRedoslijed": 6
         },
         {
           "id": "maderoterapija",
@@ -189,7 +245,7 @@
       "id": "fohow",
       "naziv": "FOHOW® BEM 3.0 masaže",
       "grupa": "FOHOW BEM 3.0 masaže",
-      "uvod": "Ovo nije klasična masaža — ovo je bio-meridijanska aktivacija. Tijekom tretmana možete osjetiti valove kroz tijelo, duboko oslobađanje i trenutnu lakoću.",
+      "uvod": "Tijekom tretmana možete osjetiti valove kroz tijelo, duboko oslobađanje i trenutnu lakoću.",
       "slika": "/images/fohow-bem-uredaj.jpg",
       "tamnaSekcija": true,
       "tretmani": [
@@ -198,50 +254,80 @@
           "naziv": "BioMeridijanska masaža srebrnim rukavicama",
           "zoyyaNaziv": "BioMeridijanska masža srebrnim rukavicama",
           "opis": "FOHOW BEM 3.0 uređaj i srebrne rukavice stimuliraju meridijanske puteve i šalju blage bio-električne signale kroz fasciju i živce. Potiče cirkulaciju i limfu te oslobađa nakupljenu napetost.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 75 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 75
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
-          "ikona": "rukavica"
+          "ikona": "rukavica",
+          "istaknuto": false
         },
         {
           "id": "biomeridijanska-masaza-ledja-ili-noge",
           "naziv": "BioMeridijanska masaža — leđa ili noge",
           "zoyyaNaziv": "BioMeridijanska masaža (leđa ili noge)",
           "opis": "Bioenergetski masažer ili rukavice stimuliraju meridijane i biološki aktivne točke na leđima ili nogama — po principima akupresure i tradicionalne istočnjačke masaže.",
-          "opcije": [{ "trajanjeMin": 30, "cijenaEur": 40 }],
+          "opcije": [
+            {
+              "trajanjeMin": 30,
+              "cijenaEur": 40
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
-          "ikona": "kraljeznica"
+          "ikona": "kraljeznica",
+          "istaknuto": false
         },
         {
           "id": "ultrazvucna-masaza-ledja",
           "naziv": "Ultrazvučna masaža leđa",
           "zoyyaNaziv": "Ultrazvučna masaža leđa",
           "opis": "Dubinska FOHOW ultrazvučna terapija koja precizno djeluje na triger točke — mjesta nakupljene napetosti i ukočenosti. Opušta mišiće i potiče cirkulaciju.",
-          "opcije": [{ "trajanjeMin": 45, "cijenaEur": 40 }],
+          "opcije": [
+            {
+              "trajanjeMin": 45,
+              "cijenaEur": 40
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
-          "ikona": "valovi"
+          "ikona": "valovi",
+          "istaknuto": false
         },
         {
           "id": "ultrazvucna-masaza-face-lifting",
           "naziv": "Ultrazvučna masaža za face lifting",
           "zoyyaNaziv": "Ultrazvučna masaža za face lifting",
           "opis": "Neinvazivan tretman lica ultrazvučnim valovima koji potiče cirkulaciju i prirodnu obnovu kože — za svježiji i odmorniji izgled, bez boli i oporavka.",
-          "opcije": [{ "trajanjeMin": 30, "cijenaEur": 40 }],
+          "opcije": [
+            {
+              "trajanjeMin": 30,
+              "cijenaEur": 40
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
-          "ikona": "lice"
+          "ikona": "lice",
+          "istaknuto": false
         },
         {
           "id": "kozmeticka-bem-masaza",
           "naziv": "Kozmetička BEM masaža",
           "zoyyaNaziv": "Kozmetička BEM masaža",
           "opis": "Ultrazvučne mikrovibracije poboljšavaju cirkulaciju, tonus i hidrataciju kože te upijanje aktivnih sastojaka. Koristi se i kod celulita — za glađu i čvršću kožu bez invazivnih metoda.",
-          "opcije": [{ "trajanjeMin": 60, "cijenaEur": 40 }],
+          "opcije": [
+            {
+              "trajanjeMin": 60,
+              "cijenaEur": 40
+            }
+          ],
           "naUpit": false,
           "izvor": "zoyya",
-          "ikona": "uredaj"
+          "ikona": "uredaj",
+          "istaknuto": false
         },
         {
           "id": "fohow-limfna-drenaza",
@@ -250,7 +336,8 @@
           "opcije": [],
           "naUpit": true,
           "izvor": "plakat",
-          "ikona": "kap"
+          "ikona": "kap",
+          "istaknuto": false
         },
         {
           "id": "fohow-minerals-face-skin-set",
@@ -259,9 +346,11 @@
           "opcije": [],
           "naUpit": true,
           "izvor": "plakat",
-          "ikona": "bocice"
+          "ikona": "bocice",
+          "istaknuto": false
         }
-      ]
+      ],
+      "slogan": "Ovo nije klasična masaža — ovo je bio-meridijanska aktivacija."
     }
   ]
 }
