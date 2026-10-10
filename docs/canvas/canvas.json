@@ -1,0 +1,74 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 7450,
+      "is_interactive": true,
+      "title": "Početna — desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Mobile.dc.html": {
+      "h": 7680,
+      "is_interactive": true,
+      "title": "Početna — mobitel",
+      "w": 390,
+      "x": 3040,
+      "y": 0
+    },
+    "Stil.dc.html": {
+      "h": 1840,
+      "title": "Vizualni identitet",
+      "w": 1200,
+      "x": 3510,
+      "y": 0
+    },
+    "Tretmani.dc.html": {
+      "expand": "fill",
+      "h": 5100,
+      "is_interactive": true,
+      "title": "Tretmani i cjenik — desktop",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-10T21:15:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "napomene": {
+      "fill": "orange",
+      "maxH": 760,
+      "size": 24,
+      "text": "Napomene uz v4:\n\n• Cijene, trajanja i opisi preuzeti sa Zoyye — dvije kategorije: Masaže i FOHOW BEM 3.0 masaže.\n• FOHOW limfna drenaža i Minerals Face Skin Set — „na upit”, s gumbom „Pošalji upit”.\n• Abdominalna masaža, maderoterapija i limfna drenaža — „na upit”.\n• Opisi FOHOW i hidžame su skraćeni: izostavljene tvrdnje poput „10–15 masaža u jednom”, „probija blokade”, „detoksikacija”, „nema nuspojava”.\n• Fotografije hidžame (s krvlju) i cupping lica s tuđim logom nisu korištene.\n• Forma za upit u Next.js verziji šalje e-mail na sanjazrig@gmail.com.",
+      "w": 400,
+      "x": 4790,
+      "y": 0
+    },
+    "naslov": {
+      "kind": "title1",
+      "maxW": 4710,
+      "text": "Divine Healing by Sanja Zrig — web dizajn v4",
+      "w": 240,
+      "x": 0,
+      "y": -320
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Tretmani.dc.html",
+    "Mobile.dc.html",
+    "Stil.dc.html"
+  ],
+  "pages": [],
+  "title": "Divine Healing Website Design"
+}

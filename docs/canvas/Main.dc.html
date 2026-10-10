@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>Divine Healing — početna</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Dancing+Script:wght@500;600&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF7F0}
+*{box-sizing:border-box}
+a{color:#8A6328}a:hover{color:#5E4318}
+input::placeholder,textarea::placeholder{color:#7A6656}
+input:focus,select:focus,textarea:focus{outline:2px solid #B4884A;outline-offset:1px;border-color:#B4884A}
+</style>
+</helmet>
+<div style="font-family: Montserrat, system-ui, sans-serif; color: #2E2119; background: #FBF7F0; min-width: 0; overflow: hidden">
+
+<!-- ============ HEADER ============ -->
+<header style="background: #FBF7F0; border-bottom: 1px solid #E8D6BC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 16px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
+<a href="Main.dc.html" aria-label="Divine Healing by Sanja Zrig — početna" style="display: flex; align-items: center; gap: 14px; text-decoration: none">
+<img src="/images/logo-znak.png" alt="" style="width: 54px; height: 49px; object-fit: contain; display: block">
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font-family: Cinzel, serif; font-size: 22px; font-weight: 500; letter-spacing: 0.06em; color: {{accent}}">DIVINE HEALING</span>
+<span style="font-family: 'Dancing Script', cursive; font-size: 20px; font-weight: 500; color: {{accent}}; padding-left: 46px; margin-top: 1px">by Sanja Zrig</span>
+</span>
+</a>
+<nav aria-label="Glavna navigacija" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 30px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase">
+<a href="#tretmani" style="color: #2E2119; text-decoration: none; padding: 14px 0">Masaže</a>
+<a href="#fohow" style="color: #2E2119; text-decoration: none; padding: 14px 0">FOHOW BEM 3.0</a>
+<a href="Tretmani.dc.html" style="color: #2E2119; text-decoration: none; padding: 14px 0">Cjenik</a>
+<a href="#o-meni" style="color: #2E2119; text-decoration: none; padding: 14px 0">O meni</a>
+<a href="#upit" style="color: #2E2119; text-decoration: none; padding: 14px 0">Kontakt</a>
+</nav>
+<a href="https://zoyya.com/hr/divine-healing" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 26px; border-radius: 999px; background: {{accent}}; color: #FBF7F0; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M4 10h16M8.5 3v4M15.5 3v4"></path></svg>
+Rezerviraj termin
+</a>
+</div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section style="background: #FBF7F0">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) 40px clamp(72px, 8vw, 112px); display: flex; flex-wrap: wrap; align-items: center; gap: 64px 80px">
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: {{accent}}">
+<span style="width: 40px; height: 1px; background: #C9A46A"></span>
+Massage &amp; Wellness Studio · Zagreb
+</div>
+<h1 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.14; letter-spacing: 0.01em; color: #2E2119">Prostor u kojem ćete se osjećati <span style="color: #8A6328">i biti bolje</span></h1>
+<p style="margin: 0; max-width: 540px; font-size: 17px; line-height: 1.75; color: #5A4636">Terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0 bio-meridijanske masaže — s individualnim pristupom i punom posvećenošću svakom klijentu.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px">
+<a href="https://zoyya.com/hr/divine-healing" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 0 32px; border-radius: 999px; background: {{accent}}; color: #FBF7F0; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Rezerviraj termin
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+<a href="#upit" style="display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border-radius: 999px; border: 1px solid #B4884A; color: #2E2119; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Pošalji upit</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; padding-top: 24px; border-top: 1px solid #E8D6BC; font-size: 15px; color: #2E2119">
+<a href="tel:+385981654696" style="display: inline-flex; align-items: center; gap: 10px; color: #2E2119; text-decoration: none; min-height: 44px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A6328" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l1.8 4.5-2.3 1.4a11 11 0 0 0 6.6 6.6l1.4-2.3L20 16v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"></path></svg>
++385 98 165 4696</a>
+<a href="https://www.instagram.com/divine_healing_bysanja/" style="display: inline-flex; align-items: center; gap: 10px; color: #2E2119; text-decoration: none; min-height: 44px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A6328" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".8" fill="#8A6328" stroke="none"></circle></svg>
+@divine_healing_bysanja</a>
+</div>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center">
+<sc-if value="{{isArch}}" hint-placeholder-val="{{true}}">
+<div style="position: relative; width: min(100%, 470px); aspect-ratio: 470 / 620">
+<div style="position: absolute; top: -18px; right: -18px; bottom: 18px; left: 18px; border: 1px solid #C9A46A; border-radius: 999px 999px 0 0"></div>
+<img src="/images/studio-sanja.jpg" alt="Sanja u studiju Divine Healing uz klijenticu na stolu za masažu" style="position: relative; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%; border-radius: 999px 999px 0 0">
+<div style="position: absolute; left: -36px; bottom: 44px; display: flex; align-items: center; gap: 14px; padding: 12px 24px 12px 12px; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 999px; box-shadow: 0 18px 40px -18px rgba(46, 33, 25, 0.35)">
+<span style="width: 44px; height: 44px; border-radius: 50%; background: #F4EADC; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 600; color: #2E2119">Pon – Pet 10 – 21 h</span>
+<span style="font-size: 13px; color: #5A4636">Subota 13 – 19 h</span>
+</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{isRect}}" hint-placeholder-val="{{false}}">
+<div style="position: relative; width: 100%; max-width: 560px; aspect-ratio: 1">
+<img src="/images/tajlandska-istezanje-sjedeci.jpg" alt="Sanja izvodi tradicionalnu tajlandsku masažu, istezanje u sjedećem položaju" style="display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 28px">
+<div style="position: absolute; left: 24px; right: 24px; bottom: 24px; display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: #FFFDF9; border-radius: 18px">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 50%; background: #F4EADC; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 600; color: #2E2119">Pon – Pet 10 – 21 h · Sub 13 – 19 h</span>
+<span style="font-size: 13px; color: #5A4636">Ilica 322, Zagreb</span>
+</span>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<!-- ============ INFO TRAKA ============ -->
+<section style="background: #F4EADC; border-top: 1px solid #E8D6BC; border-bottom: 1px solid #E8D6BC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 44px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 32px 56px">
+<div style="display: flex; gap: 18px; align-items: flex-start">
+<span style="flex: none; width: 56px; height: 56px; border-radius: 50%; border: 1px solid #C9A46A; box-shadow: inset 0 0 0 4px #FFFDF9, inset 0 0 0 5px #EADBC2; background: #FFFDF9; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A6328">Adresa</span>
+<span style="font-size: 16px; font-weight: 500">Ilica 322, Zagreb</span>
+<span style="font-size: 14px; color: #5A4636">Kustošija</span>
+</div>
+</div>
+<div style="display: flex; gap: 18px; align-items: flex-start">
+<span style="flex: none; width: 56px; height: 56px; border-radius: 50%; border: 1px solid #C9A46A; box-shadow: inset 0 0 0 4px #FFFDF9, inset 0 0 0 5px #EADBC2; background: #FFFDF9; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A6328">Radno vrijeme</span>
+<span style="font-size: 16px; font-weight: 500">Pon – Pet: 10:00 – 21:00</span>
+<span style="font-size: 14px; color: #5A4636">Subota: 13:00 – 19:00 · Nedjelja: zatvoreno</span>
+</div>
+</div>
+<div style="display: flex; gap: 18px; align-items: flex-start">
+<span style="flex: none; width: 56px; height: 56px; border-radius: 50%; border: 1px solid #C9A46A; box-shadow: inset 0 0 0 4px #FFFDF9, inset 0 0 0 5px #EADBC2; background: #FFFDF9; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l1.8 4.5-2.3 1.4a11 11 0 0 0 6.6 6.6l1.4-2.3L20 16v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"></path></svg>
+</span>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A6328">Kontakt</span>
+<a href="tel:+385981654696" style="font-size: 16px; font-weight: 500; color: #2E2119; text-decoration: none">+385 98 165 4696</a>
+<a href="mailto:sanjazrig@gmail.com" style="font-size: 14px; color: #5A4636; text-decoration: none">sanjazrig@gmail.com</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ TRETMANI ============ -->
+<section id="tretmani" style="background: #FBF7F0">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-bottom: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 640px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: {{accent}}">Najtraženiji tretmani</div>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.2; color: #2E2119">Masaže i tretmani</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.75; color: #5A4636">Tretmani su terapeutskog tipa i prilagođavaju se vašem tijelu — od dubinskog rada na napetim mišićima do potpunog opuštanja.</p>
+</div>
+<a href="Tretmani.dc.html" style="display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1px solid #B4884A; color: #2E2119; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Cijeli cjenik
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 28px">
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/terapeutska-masaza-ledja.jpg" alt="Sanja izvodi terapeutsku masažu leđa" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 45%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>90 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">60 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Terapeutska masaža</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Pomaže kod ukočenosti mišića i bolova u leđima, vratu i ramenima. Prilagođena vašim potrebama.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj terapeutsku masažu" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/tajlandska-istezanje-sjedeci.jpg" alt="Tradicionalna tajlandska masaža — istezanje ramena u sjedećem položaju" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 35%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>90 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">80 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Tradicionalna tajlandska masaža</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Drevna tehnika istezanja i pritiska koja vraća ravnotežu tijelu i umu te poboljšava fleksibilnost.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj tradicionalnu tajlandsku masažu" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/relax-masaza.jpg" alt="Relax masaža preko ručnika" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 45%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>60 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">45 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Relax masaža</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Nježnija, sporija masaža ritmičnim pokretima — kada želite usporiti, opustiti se i napuniti baterije.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj relax masažu" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/antistres-lice-glava.jpg" alt="Sanja izvodi antistres masažu lica i glave" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 30%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>30 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">25 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Antistres — lice, glava i ramena</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Smanjuje napetost u području glave, lica i ramena te pruža osjećaj dubokog mira i rasterećenja.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj antistres tretman lica, glave i ramena" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/sportska-masaza.jpg" alt="Sportska masaža leđa" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 40%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>60 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">55 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Sportska masaža</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Intenzivnija masaža za aktivne osobe i sportaše — priprema mišića i oporavak nakon fizičkog napora.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj sportsku masažu" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 24px; overflow: hidden">
+<img src="/images/maderoterapija-valjci.jpg" alt="Drveni valjci i pomagala za maderoterapiju" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 50%">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px 24px 22px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6328"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>45 min</span>
+<span style="font-family: Cinzel, serif; font-size: 26px; font-weight: 500; color: #2E2119">30 €</span>
+</div>
+<h3 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.4">Anticelulitni tretman nogu</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A4636">Cupping čašice, BEM 3.0 uređaj i maderoterapijski valjci. Za paket tretmana — popust.</p>
+<a href="https://zoyya.com/hr/divine-healing" aria-label="Rezerviraj anticelulitni tretman nogu" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #8A6328; text-decoration: none">Rezerviraj <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</article>
+
+</div>
+
+<p style="margin: 36px 0 0; font-size: 15px; line-height: 1.7; color: #5A4636; text-align: center">Također: masaža cijelog tijela, masaža leđa (30 i 60 min), antistres tretman leđa, vrata, glave i lica, hidžama, maderoterapija i limfna drenaža. <a href="Tretmani.dc.html" style="color: #8A6328; font-weight: 600">Pogledajte cijeli cjenik</a></p>
+</div>
+</section>
+
+<!-- ============ FOHOW ============ -->
+
+
+<!-- ============ O MENI ============ -->
+<section id="fohow" style="background: #2E2119; color: #F4EADC">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px 80px">
+<div style="flex: 1 1 400px; max-width: 500px; min-width: 0; position: relative">
+<div style="position: absolute; top: 18px; left: -18px; right: 18px; bottom: -18px; border: 1px solid #8A6A3E; border-radius: 28px"></div>
+<img src="/images/fohow-bem-uredaj.jpg" alt="FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 28px">
+</div>
+<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #D9B77E">FOHOW® BEM 3.0 masaže</div>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.2; color: #FBF7F0">Ovo nije klasična masaža — ovo je bio-meridijanska aktivacija</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.75; color: #CDBBA3">FOHOW BEM 3.0 uređaj i srebrne rukavice stimuliraju meridijanske puteve i šalju blage bio-električne signale kroz fasciju i živce — tretman koji ide dublje od same masaže rukama.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="font-size: 13px; color: #CDBBA3; margin-right: 4px">Možete osjetiti:</span>
+<span style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A6A3E; font-size: 13px; color: #F4EADC">valove kroz tijelo</span>
+<span style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A6A3E; font-size: 13px; color: #F4EADC">duboko oslobađanje</span>
+<span style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A6A3E; font-size: 13px; color: #F4EADC">trenutnu lakoću</span>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #4A3A2E">
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">BioMeridijanska masaža srebrnim rukavicama</span><span style="flex: none; display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; color: #CDBBA3">60 min</span><span style="font-family: Cinzel, serif; font-size: 22px; color: #D9B77E; min-width: 48px; text-align: right">75 €</span></span></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">BioMeridijanska masaža — leđa ili noge</span><span style="flex: none; display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; color: #CDBBA3">30 min</span><span style="font-family: Cinzel, serif; font-size: 22px; color: #D9B77E; min-width: 48px; text-align: right">40 €</span></span></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">Ultrazvučna masaža leđa</span><span style="flex: none; display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; color: #CDBBA3">45 min</span><span style="font-family: Cinzel, serif; font-size: 22px; color: #D9B77E; min-width: 48px; text-align: right">40 €</span></span></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">Ultrazvučna masaža za face lifting</span><span style="flex: none; display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; color: #CDBBA3">30 min</span><span style="font-family: Cinzel, serif; font-size: 22px; color: #D9B77E; min-width: 48px; text-align: right">40 €</span></span></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">Kozmetička BEM masaža</span><span style="flex: none; display: flex; align-items: baseline; gap: 14px"><span style="font-size: 13px; color: #CDBBA3">60 min</span><span style="font-family: Cinzel, serif; font-size: 22px; color: #D9B77E; min-width: 48px; text-align: right">40 €</span></span></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">FOHOW limfna drenaža</span><a href="#upit" aria-label="Pošalji upit za FOHOW limfnu drenažu" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; font-family: Cinzel, serif; font-size: 17px; color: #D9B77E; text-underline-offset: 4px">Na upit</a></li>
+<li style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #4A3A2E"><span style="font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.45; color: #FBF7F0">FOHOW Minerals Face Skin Set</span><a href="#upit" aria-label="Pošalji upit za FOHOW Minerals Face Skin Set" style="flex: none; display: inline-flex; align-items: center; min-height: 44px; font-family: Cinzel, serif; font-size: 17px; color: #D9B77E; text-underline-offset: 4px">Na upit</a></li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href="https://zoyya.com/hr/divine-healing" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 54px; padding: 0 30px; border-radius: 999px; background: #D9B77E; color: #2E2119; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Rezerviraj BEM 3.0 masažu</a>
+<a href="Tretmani.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1px solid #8A6A3E; color: #F4EADC; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Opisi tretmana
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9B77E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</section><section id="o-meni" style="background: #FBF7F0">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 72px 96px">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center">
+<div style="position: relative; width: min(100%, 440px); aspect-ratio: 440 / 560">
+<div style="position: absolute; top: -18px; left: -18px; right: 18px; bottom: 18px; border: 1px solid #C9A46A; border-radius: 999px 999px 0 0"></div>
+<img src="/images/sanja-tajlandska-osmijeh.jpg" alt="Sanja Zrig tijekom tajlandske masaže, nasmijana" style="position: relative; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 999px 999px 0 0">
+<img src="/images/sanja-masaza-glave.jpg" alt="Sanja masira glavu i vrat klijentice" style="position: absolute; right: -32px; bottom: -32px; width: 44%; aspect-ratio: 1; object-fit: cover; object-position: 50% 18%; border-radius: 50%; border: 8px solid #FBF7F0">
+</div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: {{accent}}">O meni</div>
+<div style="font-family: 'Dancing Script', cursive; font-weight: 500; font-size: clamp(42px, 4.2vw, 58px); line-height: 1; color: #8A6328">Pozdrav, ja sam Sanja</div>
+<blockquote style="margin: 0; font-family: Cinzel, serif; font-size: clamp(21px, 2vw, 25px); line-height: 1.45; color: #2E2119">„Za mene je masaža više od posla – to je poziv koji nosim u srcu.”</blockquote>
+<p style="margin: 0; font-size: 16px; line-height: 1.8; color: #5A4636">Moji tretmani su terapeutskog tipa, a moj prvi instinkt uvijek je pomoći klijentu da se osjeća bolje.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.8; color: #5A4636">Svakom se klijentu posvećujem u potpunosti, u okviru svojih mogućnosti, s individualnim pristupom i punim poštovanjem. Povjerenje koje mi pružate iznimno cijenim – i zato ga nastojim uzvratiti jednako iskreno i s poštovanjem.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.8; color: #2E2119">Ako osjetite želju za suradnju sa mnom, rezervirajte svoj termin. Dobro mi došli!</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 4px">
+<span style="font-family: 'Dancing Script', cursive; font-size: 34px; color: #8A6328">Sanja Zrig</span>
+<a href="https://zoyya.com/hr/divine-healing" style="display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border-radius: 999px; background: {{accent}}; color: #FBF7F0; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Rezerviraj termin</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ GALERIJA ============ -->
+<section style="background: #F4EADC; border-top: 1px solid #E8D6BC">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 7vw, 96px) 40px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 40px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: {{accent}}">Iz studija</div>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.2; color: #2E2119">Trenuci opuštanja</h2>
+</div>
+<a href="https://www.instagram.com/divine_healing_bysanja/" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 999px; border: 1px solid #B4884A; color: #2E2119; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".8" fill="#8A6328" stroke="none"></circle></svg>
+Pratite na Instagramu</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px">
+<img src="/images/tajlandska-istezanje-ramena.jpg" alt="Tajlandska masaža — istezanje ramena" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px">
+<img src="/images/abdominalna-masaza.jpg" alt="Abdominalna masaža" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px">
+<img src="/images/tajlandska-istezanje-ruke.jpg" alt="Tajlandska masaža — istezanje ruku i leđa" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px">
+<img src="/images/masaza-vrata.jpg" alt="Masaža vrata i ramena" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px">
+<a href="https://www.instagram.com/divine_healing_bysanja/" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 4 / 5; border-radius: 20px; background: #2E2119; color: #D9B77E; text-decoration: none; text-align: center; padding: 20px">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"></circle></svg>
+<span style="font-size: 14px; font-weight: 600; color: #FBF7F0">@divine_healing_bysanja</span>
+<span style="font-size: 13px; color: #CDBBA3">Više fotografija na Instagramu</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- ============ UPIT + KONTAKT ============ -->
+<section id="upit" style="background: #FBF7F0">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+
+<div style="flex: 999 1 560px; min-width: 0; background: #FFFDF9; border: 1px solid #E8D6BC; border-radius: 32px; padding: clamp(28px, 4vw, 52px)">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: {{accent}}">Upit za termin</div>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: clamp(28px, 3vw, 40px); line-height: 1.2; color: #2E2119">Pošaljite upit</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #5A4636">Ostavite broj telefona i željeni termin — Sanja će vas kontaktirati i potvrditi termin.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="u-ime" style="font-size: 13px; font-weight: 600; color: #2E2119">Ime i prezime <span style="color: #8A6328">*</span></label>
+<input id="u-ime" name="ime" type="text" autocomplete="name" required="required" placeholder="Vaše ime" style="min-height: 52px; padding: 0 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; color: #2E2119">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="u-tel" style="font-size: 13px; font-weight: 600; color: #2E2119">Broj telefona <span style="color: #8A6328">*</span></label>
+<input id="u-tel" name="telefon" type="tel" autocomplete="tel" required="required" placeholder="+385 9x xxx xxxx" style="min-height: 52px; padding: 0 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; color: #2E2119">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="u-mail" style="font-size: 13px; font-weight: 600; color: #2E2119">E-mail <span style="font-weight: 400; color: #5A4636">(neobavezno)</span></label>
+<input id="u-mail" name="email" type="email" autocomplete="email" placeholder="ime@primjer.hr" style="min-height: 52px; padding: 0 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; color: #2E2119">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="u-datum" style="font-size: 13px; font-weight: 600; color: #2E2119">Željeni datum</label>
+<input id="u-datum" name="datum" type="date" style="min-height: 52px; padding: 0 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; color: #2E2119">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; grid-column: 1 / -1">
+<label for="u-tretman" style="font-size: 13px; font-weight: 600; color: #2E2119">Tretman</label>
+<div style="position: relative">
+<select id="u-tretman" name="tretman" style="width: 100%; min-height: 52px; padding: 0 48px 0 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; color: #2E2119; appearance: none; -webkit-appearance: none">
+<option value="">Odaberite tretman</option>
+<optgroup label="Masaže">
+<option>Terapeutska masaža — 90 min · 60 €</option>
+<option>Tradicionalna tajlandska masaža — 90 min · 80 €</option>
+<option>Masaža cijelog tijela — 60 min · 50 €</option>
+<option>Sportska masaža — 60 min · 55 €</option>
+<option>Relax masaža — 60 min · 45 €</option>
+<option>Masaža leđa — 60 min · 40 €</option>
+<option>Masaža leđa — 30 min · 25 €</option>
+<option>Abdominalna masaža — cijena na upit</option>
+</optgroup>
+<optgroup label="Antistres tretmani">
+<option>Antistres — leđa, vrat, glava i lice — 60 min · 50 €</option>
+<option>Antistres — lice, glava i ramena — 30 min · 25 €</option>
+</optgroup>
+<optgroup label="Tijelo">
+<option>Hidžama — 60 min · 50 €</option>
+<option>Anticelulitni tretman nogu — 45 min · 30 €</option>
+<option>Maderoterapija — cijena na upit</option>
+<option>Limfna drenaža — cijena na upit</option>
+</optgroup>
+<optgroup label="FOHOW BEM 3.0 masaže">
+<option>BioMeridijanska masaža srebrnim rukavicama — 60 min · 75 €</option>
+<option>BioMeridijanska masaža, leđa ili noge — 30 min · 40 €</option>
+<option>Ultrazvučna masaža leđa — 45 min · 40 €</option>
+<option>Ultrazvučna masaža za face lifting — 30 min · 40 €</option>
+<option>Kozmetička BEM masaža — 60 min · 40 €</option>
+<option>FOHOW limfna drenaža — cijena na upit</option>
+<option>FOHOW Minerals Face Skin Set — cijena na upit</option>
+</optgroup>
+<option>Nisam sigurna/siguran — trebam savjet</option>
+</select>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 18px; top: 17px; pointer-events: none"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+</div>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 10px; font-size: 13px; font-weight: 600; color: #2E2119">Željeno vrijeme</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 10px">
+<sc-for list="{{slots}}" as="s" hint-placeholder-count="4">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.pressed}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 58px; padding: 10px 16px; border-radius: 14px; border: 1px solid {{s.bd}}; background: {{s.bg}}; color: {{s.fg}}; font-family: inherit; cursor: pointer; text-align: left">
+<span style="font-size: 14px; font-weight: 600">{{s.label}}</span>
+<span style="font-size: 12px">{{s.sub}}</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 10px; font-size: 13px; font-weight: 600; color: #2E2119">Kako da vas kontaktiram?</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{contacts}}" as="c" hint-placeholder-count="3">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1px solid {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{c.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="u-poruka" style="font-size: 13px; font-weight: 600; color: #2E2119">Poruka</label>
+<textarea id="u-poruka" name="poruka" rows="4" placeholder="Npr. imam bolove u vratu i ramenima, dolazim prvi put…" style="padding: 14px 16px; border: 1px solid #D9C29C; border-radius: 12px; background: #FBF7F0; font-family: inherit; font-size: 16px; line-height: 1.6; color: #2E2119; resize: vertical"></textarea>
+</div>
+
+<label style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.6; color: #5A4636; cursor: pointer">
+<input type="checkbox" name="privola" required="required" style="flex: none; width: 20px; height: 20px; margin: 2px 0 0; accent-color: #8A6328">
+<span>Slažem se da se moji podaci koriste isključivo za odgovor na ovaj upit. <a href="#" style="color: #8A6328">Pravila privatnosti</a></span>
+</label>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+<button type="submit" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; padding: 0 36px; border: 0; border-radius: 999px; background: {{accent}}; color: #FBF7F0; font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"></path><path d="M21 3l-7 18-4-7-7-4 18-7z"></path></svg>
+Pošalji upit</button>
+<p style="margin: 0; flex: 1 1 260px; font-size: 13px; line-height: 1.6; color: #5A4636">Termin je potvrđen kada vas Sanja kontaktira. Za trenutnu online rezervaciju koristite <a href="https://zoyya.com/hr/divine-healing" style="color: #8A6328; font-weight: 600">Zoyya</a>.</p>
+</div>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div role="status" style="min-height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; text-align: center; padding: 24px">
+<span style="width: 72px; height: 72px; border-radius: 50%; border: 1px solid #C9A46A; box-shadow: inset 0 0 0 5px #FFFDF9, inset 0 0 0 6px #EADBC2; display: flex; align-items: center; justify-content: center; color: #8A6328">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+</span>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: 34px; color: #2E2119">Hvala na upitu!</h2>
+<p style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.7; color: #5A4636">Upit je poslan. Sanja će vas kontaktirati na broj koji ste ostavili kako bi potvrdila termin.</p>
+<button type="button" onClick="{{reset}}" style="min-height: 48px; padding: 0 26px; border-radius: 999px; border: 1px solid #B4884A; background: transparent; color: #2E2119; font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer">Pošalji novi upit</button>
+</div>
+</sc-if>
+</div>
+
+<aside id="kontakt" style="flex: 1 1 340px; min-width: 0; background: #2E2119; color: #CDBBA3; border-radius: 32px; padding: clamp(28px, 3.5vw, 44px); display: flex; flex-direction: column; gap: 26px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #D9B77E">Kontakt</div>
+<h2 style="margin: 0; font-family: Cinzel, serif; font-weight: 500; font-size: 30px; line-height: 1.2; color: #FBF7F0">Posjetite studio</h2>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #4A3A2E">
+<li style="display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #4A3A2E">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9B77E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; color: #FBF7F0">Ilica 322, 10000 Zagreb</span><span style="font-size: 14px">Kustošija</span><a href="https://maps.google.com/?q=Ilica+322,+Zagreb" style="font-size: 14px; color: #D9B77E; font-weight: 600; padding: 4px 0">Upute do studija</a></span>
+</li>
+<li style="display: flex; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid #4A3A2E">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9B77E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M5 4h3l1.8 4.5-2.3 1.4a11 11 0 0 0 6.6 6.6l1.4-2.3L20 16v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"></path></svg>
+<a href="tel:+385981654696" style="font-size: 16px; color: #FBF7F0; text-decoration: none">+385 98 165 4696</a>
+</li>
+<li style="display: flex; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid #4A3A2E">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9B77E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
+<a href="mailto:sanjazrig@gmail.com" style="font-size: 16px; color: #FBF7F0; text-decoration: none">sanjazrig@gmail.com</a>
+</li>
+<li style="display: flex; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid #4A3A2E">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9B77E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r=".8" fill="#D9B77E" stroke="none"></circle></svg>
+<a href="https://www.instagram.com/divine_healing_bysanja/" style="font-size: 16px; color: #FBF7F0; text-decoration: none">@divine_healing_bysanja</a>
+</li>
+</ul>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #D9B77E">Radno vrijeme</span>
+<div style="display: flex; justify-content: space-between; gap: 16px; font-size: 15px"><span>Ponedjeljak – Petak</span><span style="color: #FBF7F0">10:00 – 21:00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; font-size: 15px"><span>Subota</span><span style="color: #FBF7F0">13:00 – 19:00</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; font-size: 15px"><span>Nedjelja</span><span style="color: #FBF7F0">zatvoreno</span></div>
+</div>
+<a href="https://zoyya.com/hr/divine-healing" style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; border-radius: 999px; background: #D9B77E; color: #2E2119; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M4 10h16M8.5 3v4M15.5 3v4"></path></svg>
+Online rezervacija — Zoyya</a>
+</aside>
+
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background: #2E2119; color: #CDBBA3; border-top: 1px solid #4A3A2E">
+<div style="max-width: 1240px; margin: 0 auto; padding: 72px 40px 32px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 40px 48px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 14px">
+<img src="/images/logo-znak.png" alt="" style="width: 54px; height: 49px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font-family: Cinzel, serif; font-size: 20px; font-weight: 500; letter-spacing: 0.06em; color: #D9B77E">DIVINE HEALING</span>
+<span style="font-family: 'Dancing Script', cursive; font-size: 18px; color: #D9B77E; padding-left: 42px; margin-top: 1px">by Sanja Zrig</span>
+</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.7">Massage &amp; Wellness Studio<br>Ilica 322, 10000 Zagreb</p>
+</div>
+<nav aria-label="Tretmani" style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #D9B77E; margin-bottom: 8px">Tretmani</span>
+<a href="Tretmani.dc.html" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">Masaže</a>
+<a href="Tretmani.dc.html" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">Antistres tretmani</a>
+<a href="Tretmani.dc.html" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">Hidžama i tretmani tijela</a>
+<a href="#fohow" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">FOHOW BEM 3.0 masaže</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #D9B77E; margin-bottom: 8px">Kontakt</span>
+<a href="tel:+385981654696" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">+385 98 165 4696</a>
+<a href="mailto:sanjazrig@gmail.com" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">sanjazrig@gmail.com</a>
+<a href="https://www.instagram.com/divine_healing_bysanja/" style="color: #CDBBA3; text-decoration: none; font-size: 14px; padding: 6px 0">Instagram</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #D9B77E; margin-bottom: 8px">Radno vrijeme</span>
+<span style="font-size: 14px">Pon – Pet: 10:00 – 21:00</span>
+<span style="font-size: 14px">Subota: 13:00 – 19:00</span>
+<span style="font-size: 14px">Nedjelja: zatvoreno</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding-top: 24px; border-top: 1px solid #4A3A2E; font-size: 13px">
+<span>© 2026 Divine Healing by Sanja Zrig. Sva prava pridržana.</span>
+<span>Rezervacije omogućila Zoyya · Pravila privatnosti</span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#8A6328","options":["#8A6328","#7A5230","#6B4F2A","#2E2119"]},"heroStil":{"editor":"enum","default":"luk","options":["luk","pravokutnik"]},"$preview":{"width":1440,"height":7450}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sent: false, slot: 'svejedno', contact: 'poziv' };
+}
+renderVals() {
+const hero = this.props.heroStil ?? 'luk';
+const st = this.state || {};
+const slot = st.slot || 'svejedno';
+const contact = st.contact || 'poziv';
+const pill = (on) => on
+? { bg: '#2E2119', fg: '#FBF7F0', bd: '#2E2119', pressed: 'true' }
+: { bg: '#FBF7F0', fg: '#2E2119', bd: '#D9C29C', pressed: 'false' };
+const slots = [
+{ id: 'jutro', label: 'Jutro', sub: '10 – 13 h' },
+{ id: 'popodne', label: 'Popodne', sub: '13 – 17 h' },
+{ id: 'vecer', label: 'Večer', sub: '17 – 21 h' },
+{ id: 'svejedno', label: 'Svejedno', sub: 'bilo kada' }
+].map((x) => Object.assign({}, x, pill(x.id === slot), { pick: () => this.setState({ slot: x.id }) }));
+const contacts = [
+{ id: 'poziv', label: 'Poziv' },
+{ id: 'poruka', label: 'SMS / WhatsApp / Viber' },
+{ id: 'email', label: 'E-mail' }
+].map((x) => Object.assign({}, x, pill(x.id === contact), { pick: () => this.setState({ contact: x.id }) }));
+return {
+accent: this.props.accent ?? '#8A6328',
+isArch: hero === 'luk',
+isRect: hero === 'pravokutnik',
+sent: !!st.sent,
+notSent: !st.sent,
+slots: slots,
+contacts: contacts,
+submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+reset: () => this.setState({ sent: false })
+};
+}
+}
+</script>
+</body>
+</html>
