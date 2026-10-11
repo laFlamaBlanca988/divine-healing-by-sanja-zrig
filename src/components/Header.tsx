@@ -7,8 +7,11 @@ import { Logo } from "./Logo";
 import { studio } from "@/content/studio";
 
 type Props = {
-  /** Na /tretmani linkovi Masaže i FOHOW vode na sekcije cjenika, a „Cjenik” je aktivan. */
-  stranica?: "pocetna" | "tretmani" | "ostalo";
+  /**
+   * Na /tretmani („tretmani”) i stranicama tretmana („tretman”) linkovi Masaže i FOHOW vode na sekcije
+   * cjenika, a „Cjenik” je istaknut. aria-current="page" samo na samom cjeniku; na podstranicama "true".
+   */
+  stranica?: "pocetna" | "tretmani" | "tretman" | "ostalo";
 };
 
 export function Header({ stranica = "ostalo" }: Props) {
@@ -18,7 +21,8 @@ export function Header({ stranica = "ostalo" }: Props) {
   // Skrivene stranice ostaju u DOM-u (Activity), pa id panela mora biti jedinstven po instanci.
   const panelId = useId();
 
-  const naTretmanima = stranica === "tretmani";
+  const naTretmanima = stranica === "tretmani" || stranica === "tretman";
+  const trenutno = stranica === "tretmani" ? "page" : "true";
   const linkovi = [
     { href: naTretmanima ? "/tretmani#masaze" : "/#tretmani", label: "Masaže" },
     { href: naTretmanima ? "/tretmani#fohow" : "/#fohow", label: "FOHOW BEM 3.0" },
@@ -75,7 +79,7 @@ export function Header({ stranica = "ostalo" }: Props) {
             <Link
               key={l.label}
               href={l.href}
-              aria-current={l.aktivan ? "page" : undefined}
+              aria-current={l.aktivan ? trenutno : undefined}
               className={`py-3.5 no-underline ${
                 l.aktivan ? "border-b border-gold text-gold-deep" : "text-espresso hover:text-gold-deep"
               }`}
@@ -116,7 +120,7 @@ export function Header({ stranica = "ostalo" }: Props) {
               key={l.label}
               href={l.href}
               onClick={zatvori}
-              aria-current={l.aktivan ? "page" : undefined}
+              aria-current={l.aktivan ? trenutno : undefined}
               className={`flex min-h-[52px] items-center border-b border-sand text-[13px] font-semibold tracking-[0.16em] uppercase no-underline ${
                 l.aktivan ? "text-gold-deep" : "text-espresso"
               }`}

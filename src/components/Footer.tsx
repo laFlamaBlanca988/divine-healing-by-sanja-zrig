@@ -23,7 +23,7 @@ export function Footer() {
             <Link href="/tretmani#masaze" className={link}>Masaže</Link>
             <Link href="/tretmani#antistres" className={link}>Antistres tretmani</Link>
             <Link href="/tretmani#tijelo" className={link}>Hidžama i tretmani tijela</Link>
-            <Link href="/tretmani#fohow" className={link}>FOHOW BEM 3.0 masaže</Link>
+            <Link href="/tretmani/fohow-bem-masaze" className={link}>FOHOW BEM 3.0 masaže</Link>
           </nav>
           <div className="flex flex-col">
             <span className={naslov}>Kontakt</span>

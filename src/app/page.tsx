@@ -4,12 +4,21 @@ import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Ikona } from "@/components/Ikona";
+import { InfoTraka } from "@/components/InfoTraka";
 import { UpitForma } from "@/components/UpitForma";
+import { JsonLd } from "@/components/JsonLd";
+import { ogBase } from "@/content/seo";
+import { putanjaStranice, stranicaZaTretman } from "@/content/stranice";
 import { studio } from "@/content/studio";
+import { pocetnaLd } from "@/content/strukturirani-podaci";
 import { istaknutiTretmani, kategorija, takoderRecenica, upitHref, type Tretman } from "@/content/tretmani";
 
 export const metadata: Metadata = {
+  title: { absolute: "Masaža Zagreb (Kustošija) | Divine Healing by Sanja Zrig" },
+  description:
+    "Masaže u Ilici 322 (Kustošija, Zagreb): terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0. Online rezervacija.",
   alternates: { canonical: "/" },
+  openGraph: { ...ogBase, url: "/" },
 };
 
 /** Alt tekstovi i object-position iz docs/dizajn.md §7 (gdje ih tablica nema, iz artboarda). */
@@ -35,6 +44,7 @@ const galerija = [
 export default function Pocetna() {
   return (
     <>
+      <JsonLd data={pocetnaLd()} />
       <Header stranica="pocetna" />
       <main>
         <Hero />
@@ -64,7 +74,8 @@ function Hero() {
           </h1>
           <p className="m-0 max-w-[540px] text-[16px] leading-[1.7] text-cocoa md:text-[17px] md:leading-[1.75]">
             Terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0
-            bio-meridijanske masaže — s individualnim pristupom i punom posvećenošću svakom klijentu.
+            bio-meridijanske masaže u Ilici 322, u zagrebačkoj Kustošiji — s individualnim pristupom i
+            punom posvećenošću svakom klijentu.
           </p>
           <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
             <a href={studio.zoyya} className="btn btn-primary btn-lg gap-3">
@@ -120,50 +131,10 @@ function Hero() {
   );
 }
 
-function InfoStavka({ ikona, naslov, children }: { ikona: string; naslov: string; children: React.ReactNode }) {
-  return (
-    <div className="flex items-start gap-4 md:gap-[18px]">
-      <span className="icon-ring h-12 w-12 md:h-14 md:w-14">
-        <Ikona ime={ikona} size={24} strokeWidth={1.3} />
-      </span>
-      <div className="flex flex-col gap-1">
-        <span className="text-[12px] font-semibold tracking-[0.18em] text-gold-deep uppercase">{naslov}</span>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function InfoTraka() {
-  return (
-    <section className="border-y border-sand bg-cream">
-      <div className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-x-14 gap-y-5 py-8 md:gap-y-8 md:py-11">
-        <InfoStavka ikona="lokacija" naslov="Adresa">
-          <span className="text-[15px] font-medium md:text-[16px]">
-            {studio.adresa}, {studio.grad}
-          </span>
-          <span className="text-[14px] text-cocoa">{studio.kvart}</span>
-        </InfoStavka>
-        <InfoStavka ikona="sat" naslov="Radno vrijeme">
-          <span className="text-[15px] font-medium md:text-[16px]">Pon – Pet: 10:00 – 21:00</span>
-          <span className="text-[14px] text-cocoa">Subota: 13:00 – 19:00 · Nedjelja: zatvoreno</span>
-        </InfoStavka>
-        <InfoStavka ikona="telefon" naslov="Kontakt">
-          <a href={studio.telefonHref} className="inline-flex min-h-11 items-center self-start text-[15px] font-medium text-espresso no-underline md:text-[16px]">
-            {studio.telefon}
-          </a>
-          <a href={`mailto:${studio.email}`} className="-mt-1 inline-flex min-h-11 items-center self-start text-[14px] text-cocoa no-underline">
-            {studio.email}
-          </a>
-        </InfoStavka>
-      </div>
-    </section>
-  );
-}
-
 function KarticaTretmana({ t }: { t: Tretman }) {
   const slika = t.slika ? slikeTretmana[t.slika] : undefined;
   const opcija = t.opcije[0];
+  const stranica = stranicaZaTretman(t.id);
   return (
     <article className="flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-3xl border border-sand bg-white-warm md:w-auto">
       {t.slika && (
@@ -192,7 +163,18 @@ function KarticaTretmana({ t }: { t: Tretman }) {
             {opcija ? `${opcija.cijenaEur} €` : "Na upit"}
           </span>
         </div>
-        <h3 className="m-0 text-[14px] leading-[1.4] font-semibold tracking-[0.12em] uppercase md:text-[15px]">{t.naziv}</h3>
+        <h3 className="m-0 text-[14px] leading-[1.4] font-semibold tracking-[0.12em] uppercase md:text-[15px]">
+          {stranica ? (
+            <Link
+              href={stranica}
+              className="-my-3 inline-block min-h-11 py-3 text-espresso underline decoration-gold-line decoration-1 underline-offset-4 hover:text-gold-deep"
+            >
+              {t.naziv}
+            </Link>
+          ) : (
+            t.naziv
+          )}
+        </h3>
         <p className="m-0 text-[14px] leading-[1.6] text-cocoa md:text-[15px]">{t.kratkiOpis ?? t.opis}</p>
         <a
           href={studio.zoyya}
@@ -327,7 +309,7 @@ function Fohow() {
             <a href={studio.zoyya} className="btn btn-dark min-h-[54px] px-[30px]">
               Rezerviraj BEM 3.0 masažu
             </a>
-            <Link href="/tretmani#fohow" className="btn btn-dark-outline min-h-[54px] px-7">
+            <Link href={putanjaStranice("fohow-bem-masaze")} className="btn btn-dark-outline min-h-[54px] px-7">
               Opisi tretmana
               <span className="text-gold-light">
                 <Ikona ime="strelica" size={16} strokeWidth={1.6} />

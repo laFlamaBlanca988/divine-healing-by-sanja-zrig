@@ -14,4 +14,14 @@ export const studio = {
   karta: "https://maps.google.com/?q=Ilica+322,+Zagreb",
 } as const;
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+/**
+ * Javna adresa stranice (canonical, sitemap, Open Graph, strukturirani podaci).
+ * Redom: NEXT_PUBLIC_SITE_URL → produkcijska domena projekta na Vercelu → localhost (lokalni razvoj).
+ * Koristi se samo na serveru, pri buildu.
+ */
+const vercelProdukcija = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (vercelProdukcija ? `https://${vercelProdukcija}` : "") ||
+  "http://localhost:3000"
+).replace(/\/$/, "");

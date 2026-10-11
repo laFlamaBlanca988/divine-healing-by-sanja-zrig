@@ -30,6 +30,24 @@ export const kategorije: Kategorija[] = podaci.kategorije;
 
 export const sviTretmani = kategorije.flatMap((k) => k.tretmani);
 
+export function tretman(id: string): Tretman {
+  const t = sviTretmani.find((x) => x.id === id);
+  if (!t) throw new Error(`Nepoznat tretman: ${id}`);
+  return t;
+}
+
+/** „90 min · 60 €” (prva opcija) — za opise i naslove generirane iz cjenika. */
+export function trajanjeICijena(id: string): string {
+  const o = tretman(id).opcije[0];
+  if (!o) throw new Error(`Tretman ${id} nema cijenu`);
+  return `${o.trajanjeMin} min · ${o.cijenaEur} €`;
+}
+
+/** Najniža cijena među tretmanima (bez onih „na upit”). */
+export function najnizaCijena(ids: string[]): number {
+  return Math.min(...ids.flatMap((id) => tretman(id).opcije.map((o) => o.cijenaEur)));
+}
+
 export function kategorija(id: string): Kategorija {
   const k = kategorije.find((x) => x.id === id);
   if (!k) throw new Error(`Nepoznata kategorija: ${id}`);
