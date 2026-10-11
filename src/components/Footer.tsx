@@ -31,14 +31,15 @@ export function Footer() {
             <a href={`mailto:${studio.email}`} className={link}>{studio.email}</a>
             <a href={studio.instagram} className={link}>Instagram</a>
           </div>
-          <div className="flex flex-col gap-1.5 text-[14px]">
+          <div className="flex flex-col text-[14px]">
             <span className={naslov}>Radno vrijeme</span>
-            <span>Pon – Pet: 10:00 – 21:00</span>
-            <span>Subota: 13:00 – 19:00</span>
-            <span>Nedjelja: zatvoreno</span>
+            {/* Ista visina redaka kao linkovi u susjednim stupcima (44 px) */}
+            <span className="flex min-h-11 items-center">Pon – Pet: 10:00 – 21:00</span>
+            <span className="flex min-h-11 items-center">Subota: 13:00 – 19:00</span>
+            <span className="flex min-h-11 items-center">Nedjelja: zatvoreno</span>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-x-8 gap-y-3 border-t border-espresso-line pt-6 text-[13px]">
+        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-1 border-t border-espresso-line pt-6 text-[13px]">
           <span>© 2026 Divine Healing by Sanja Zrig. Sva prava pridržana.</span>
           <span>
             Rezervacije omogućila{" "}
