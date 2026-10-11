@@ -47,12 +47,12 @@ export default function Tretmani() {
           />
           <div className="relative col-start-1 row-start-1 mx-auto flex w-full max-w-[900px] flex-col items-center gap-5 px-6 pt-12 pb-[180px] text-center md:px-10 md:pt-16 md:pb-[190px]">
             <nav aria-label="Putanja" className="text-[13px] text-cocoa">
-              <Link href="/" className="no-underline">
+              <Link href="/" className="inline-flex min-h-11 items-center no-underline">
                 Početna
               </Link>{" "}
               <span aria-hidden="true">/</span> <span aria-current="page">Tretmani i cjenik</span>
             </nav>
-            <h1 className="m-0 font-serif text-[clamp(34px,4.4vw,60px)] leading-[1.15] font-medium">Tretmani i cjenik</h1>
+            <h1 className="h1">Tretmani i cjenik</h1>
             <div className="flex w-full max-w-[360px] items-center gap-3.5 text-gold">
               <span className="h-px flex-1 bg-gold-line" />
               <Ikona ime="lotos" vrsta="tretman" size={30} strokeWidth={1.2} />
@@ -81,7 +81,7 @@ export default function Tretmani() {
         ))}
 
         <section className="bg-ivory">
-          <div className="wrap py-14 md:py-[clamp(64px,7vw,104px)]">
+          <div className="wrap section-y">
             <div className="flex flex-wrap items-center justify-between gap-x-14 gap-y-8 rounded-[28px] border border-sand-dark bg-cream p-7 md:rounded-[32px] md:p-[clamp(32px,4vw,56px)]">
               <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-3.5">
                 <h2 className="m-0 font-serif text-[clamp(26px,2.6vw,34px)] leading-[1.25] font-medium">
@@ -119,21 +119,29 @@ function SekcijaKategorije({ k, broj, krem }: { k: Kategorija; broj: number; kre
 
   return (
     <section id={k.id} className={`scroll-mt-0 ${broj === 1 ? "bg-ivory" : pozadina}`}>
-      <div className="wrap flex flex-wrap items-start gap-x-[72px] gap-y-10 py-14 md:gap-y-12 md:py-[clamp(64px,7vw,104px)]">
+      <div className="wrap section-y flex flex-wrap items-start gap-x-[72px] gap-y-10 md:gap-y-12">
         <div className="flex w-full max-w-[400px] min-w-0 flex-[1_1_320px] flex-col gap-[18px]">
           <div className={`eyebrow ${tamno ? "text-gold-light" : ""}`}>{String(broj).padStart(2, "0")}</div>
           <h2 className={`h2-sm ${tamno ? "text-ivory" : ""}`}>{k.naziv}</h2>
           {k.slogan && <p className="m-0 font-serif text-[19px] leading-[1.45] text-gold-light">{k.slogan}</p>}
           <p className={`m-0 text-[16px] leading-[1.75] ${tamno ? "text-on-dark" : "text-cocoa"}`}>{k.uvod}</p>
-          <div className="arch relative mt-3 aspect-[4/3] w-full overflow-hidden">
-            <Image
-              src={k.slika}
-              alt={slika?.alt ?? ""}
-              fill
-              sizes="(min-width: 1024px) 400px, 100vw"
-              className="object-cover"
-              style={{ objectPosition: slika?.pozicija }}
+          {/* Luk s tankim obrubom pomaknutim iza slike (§3) */}
+          <div className="relative mt-6 aspect-[4/3] w-full md:mt-8">
+            <div
+              className={`arch absolute -top-3 -right-3 bottom-3 left-3 border md:-top-[18px] md:-right-[18px] md:bottom-[18px] md:left-[18px] ${
+                tamno ? "border-bronze-line" : "border-gold-line"
+              }`}
             />
+            <div className="arch relative h-full w-full overflow-hidden">
+              <Image
+                src={k.slika}
+                alt={slika?.alt ?? ""}
+                fill
+                sizes="(min-width: 1024px) 400px, 100vw"
+                className="object-cover"
+                style={{ objectPosition: slika?.pozicija }}
+              />
+            </div>
           </div>
         </div>
         <div className={`min-w-0 flex-[999_1_560px] border-t ${linija}`}>

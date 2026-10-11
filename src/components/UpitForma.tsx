@@ -1,14 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect, useRef, useState, useSyncExternalStore, useTransition, type FormEvent } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  useTransition,
+  type FormEvent,
+} from "react";
 import { posaljiUpit } from "@/app/actions";
 import { Ikona } from "./Ikona";
 import { studio } from "@/content/studio";
 import { SAVJET, SAVJET_LABEL, izbornikTretmana, vrijednostZaTretmanId } from "@/content/tretmani";
 import {
   KONTAKTI,
+  MIN_VRIJEME_ISPUNE_MS,
   PORUKA_MAX,
   PORUKE,
   VREMENA,
@@ -29,28 +40,64 @@ const bezPretplate = () => () => {};
 export function UpitForma() {
   const [poslano, setPoslano] = useState(false);
   const [kljuc, setKljuc] = useState(0);
+  const [fokusNaFormu, setFokusNaFormu] = useState(false);
+  const resetiraj = useRef(false);
+  // Reset se uključuje tek kad je poruka o uspjehu stvarno prikazana: ako je posjetitelj
+  // otišao sa stranice dok se upit slao, poruka ga čeka kad se vrati.
+  const ukljuciReset = useCallback(() => {
+    resetiraj.current = true;
+  }, []);
+
+  // Stranica ostaje montirana kad se ode s nje (Activity). Nakon uspješnog slanja forma se
+  // vraća u početno stanje kad se stranica sakrije, da se pri povratku (npr. /?tretman=…#upit)
+  // ne prikaže stara poruka o uspjehu.
+  useLayoutEffect(
+    () => () => {
+      if (!resetiraj.current) return;
+      resetiraj.current = false;
+      setPoslano(false);
+      setFokusNaFormu(false);
+      setKljuc((k) => k + 1);
+    },
+    [],
+  );
 
   if (poslano) {
     return (
       <Uspjeh
+        onPrikazano={ukljuciReset}
         onNovi={() => {
+          resetiraj.current = false;
+          setFokusNaFormu(true);
           setKljuc((k) => k + 1);
           setPoslano(false);
         }}
       />
     );
   }
-  return <Forma key={kljuc} onPoslano={() => setPoslano(true)} />;
+  return (
+    <Forma
+      key={kljuc}
+      fokusiraj={fokusNaFormu}
+      onPoslano={() => setPoslano(true)}
+    />
+  );
 }
 
-function Forma({ onPoslano }: { onPoslano: () => void }) {
+function Forma({ onPoslano, fokusiraj }: { onPoslano: () => void; fokusiraj: boolean }) {
   const formRef = useRef<HTMLFormElement>(null);
+  const naslovRef = useRef<HTMLHeadingElement>(null);
   const tretmanRef = useRef<HTMLSelectElement>(null);
-  const ucitano = useRef(0);
+  const ucitano = useRef<number | null>(null);
+  const fokusirano = useRef(false);
+  const zadnjiFokus = useRef(0);
   const [greske, setGreske] = useState<GreskeUpita>({});
+  const [fokusPolje, setFokusPolje] = useState<{ polje: PoljeUpita; n: number } | null>(null);
   const [pokusano, setPokusano] = useState(false);
   const [tehnicka, setTehnicka] = useState(false);
   const [saljem, startTransition] = useTransition();
+  const [cekam, setCekam] = useState(false);
+  const uTijeku = useRef(false);
 
   const [datum, setDatum] = useState("");
   const [vrijeme, setVrijeme] = useState<VrijemeId>("svejedno");
@@ -58,10 +105,38 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
 
   // „Danas” samo u pregledniku (Europe/Zagreb); na serveru se ne računa.
   const danas = useSyncExternalStore(bezPretplate, () => danasZagreb(), () => undefined);
+  // Gumb za slanje radi tek kad je forma hidrirana (prije toga bi preglednik poslao običan zahtjev).
+  const spreman = useSyncExternalStore(bezPretplate, () => true, () => false);
 
+  // Efekti se ponovno pokreću svaki put kad Activity ponovno prikaže stranicu,
+  // pa se vrijeme učitavanja i početni fokus postavljaju samo jednom po formi.
   useEffect(() => {
-    ucitano.current = Date.now();
-  }, []);
+    if (ucitano.current === null) ucitano.current = performance.now();
+    if (fokusiraj && !fokusirano.current) {
+      fokusirano.current = true;
+      naslovRef.current?.focus();
+    }
+  }, [fokusiraj]);
+
+  // Fokus na prvo neispravno polje tek nakon što su greške prikazane (aria-describedby postavljen).
+  useEffect(() => {
+    if (!fokusPolje || fokusPolje.n === zadnjiFokus.current) return;
+    zadnjiFokus.current = fokusPolje.n;
+    formRef.current?.querySelector<HTMLElement>(`[data-polje="${fokusPolje.polje}"]`)?.focus();
+  }, [fokusPolje]);
+
+  // Poruka o tehničkoj grešci ne ostaje kad se korisnik vrati na stranicu — ali samo ako ju je
+  // već vidio (layout efekti ne rade dok je stranica skrivena).
+  const tehnickaVidjena = useRef(false);
+  useLayoutEffect(() => {
+    tehnickaVidjena.current = tehnicka;
+  }, [tehnicka]);
+  useLayoutEffect(
+    () => () => {
+      if (tehnickaVidjena.current) setTehnicka(false);
+    },
+    [],
+  );
 
   const odaberiTretman = useCallback((v: string) => {
     if (tretmanRef.current) tretmanRef.current.value = v;
@@ -73,6 +148,12 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
 
   function provjeri(form: HTMLFormElement) {
     return validirajUpit(izFormData(new FormData(form)), danasZagreb());
+  }
+
+  function prikaziGreske(g: GreskeUpita) {
+    setGreske(g);
+    const prvo = REDOSLIJED_POLJA.find((p) => g[p]);
+    if (prvo) setFokusPolje((f) => ({ polje: prvo, n: (f?.n ?? 0) + 1 }));
   }
 
   function onChange(e: FormEvent<HTMLFormElement>) {
@@ -96,36 +177,54 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
     // Poruke za datum (nedjelja, prošlost) prikazuju se odmah, i prije prvog slanja.
     let poruka: string | undefined;
     if (novi && noviDan === null) poruka = PORUKE.datumNeispravan;
-    else if (novi && novi < danasZagreb()) poruka = PORUKE.datumProslost;
+    // Dok se godina tipka (0002-…, 0020-…), datum je privremeno „u prošlosti” — to se ne prijavljuje.
+    else if (novi && novi >= "1000" && novi < danasZagreb()) poruka = PORUKE.datumProslost;
     else if (noviDan === 0) poruka = PORUKE.datumNedjelja;
     setGreske((g) => ({ ...g, datum: poruka, vrijeme: undefined }));
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (uTijeku.current) return;
     const form = e.currentTarget;
     setPokusano(true);
     setTehnicka(false);
 
     const r = provjeri(form);
     if (!r.ok) {
-      setGreske(r.greske);
-      const prvo = REDOSLIJED_POLJA.find((p) => r.greske[p]);
-      if (prvo) form.querySelector<HTMLElement>(`[data-polje="${prvo}"]`)?.focus();
+      prikaziGreske(r.greske);
       return;
     }
     setGreske({});
 
     const fd = new FormData(form);
-    fd.set("t", String(ucitano.current));
+    const pocetak = ucitano.current ?? performance.now();
+    uTijeku.current = true;
+
+    // Server odbacuje slanja brža od 3 s od učitavanja forme (zaštita od spama), pa brzi
+    // korisnik (npr. automatsko popunjavanje) samo kratko pričeka. Čekanje je izvan
+    // tranzicije da ne blokira navigaciju na druge stranice.
+    const ostatak = MIN_VRIJEME_ISPUNE_MS + 200 - (performance.now() - pocetak);
+    if (ostatak > 0) {
+      setCekam(true);
+      await new Promise((r) => setTimeout(r, ostatak));
+      setCekam(false);
+    }
+    // Šalje se trajanje ispune, ne sat uređaja, da razlika satova ne utječe na provjeru.
+    fd.set("t", String(Math.round(performance.now() - pocetak)));
+
     startTransition(async () => {
       try {
         const odgovor = await posaljiUpit(fd);
-        if (odgovor.ok) onPoslano();
-        else if (odgovor.greske) setGreske(odgovor.greske);
-        else setTehnicka(true);
+        startTransition(() => {
+          if (odgovor.ok) onPoslano();
+          else if (odgovor.greske) prikaziGreske(odgovor.greske);
+          else setTehnicka(true);
+        });
       } catch {
-        setTehnicka(true);
+        startTransition(() => setTehnicka(true));
+      } finally {
+        uTijeku.current = false;
       }
     });
   }
@@ -138,16 +237,24 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
       </p>
     ) : null;
 
-
   return (
-    <form ref={formRef} noValidate onSubmit={onSubmit} onChange={onChange} className="relative flex flex-col gap-7">
+    <form
+      ref={formRef}
+      method="post"
+      noValidate
+      onSubmit={onSubmit}
+      onChange={onChange}
+      className="relative flex flex-col gap-7"
+    >
       <Suspense fallback={null}>
         <TretmanIzUrla onTretman={odaberiTretman} />
       </Suspense>
 
       <div className="flex flex-col gap-3">
         <div className="eyebrow">Upit za termin</div>
-        <h2 className="h2-sm text-espresso">Pošaljite upit</h2>
+        <h2 ref={naslovRef} tabIndex={-1} className="h2-sm text-espresso outline-none">
+          Pošaljite upit
+        </h2>
         <p className="m-0 text-[16px] leading-[1.7] text-cocoa">
           Ostavite broj telefona i željeni termin — Sanja će vas kontaktirati i potvrditi termin.
         </p>
@@ -236,7 +343,15 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
             aria-describedby={opis("datum")}
             className="field"
           />
-          {greska("datum")}
+          {/* Poruka uz datum pojavljuje se bez promjene fokusa, pa se najavljuje čitačima ekrana;
+              key={datum} osigurava najavu i kad novi datum ima istu poruku. */}
+          <div aria-live="polite" className="empty:-mt-2">
+            {greske.datum && (
+              <p key={datum} id="u-datum-greska" className="field-error m-0">
+                {greske.datum}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="col-span-full flex flex-col gap-2">
@@ -388,11 +503,12 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
       <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
         <button
           type="submit"
-          disabled={saljem || nedjelja}
-          className="btn btn-primary btn-lg w-full px-9 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          disabled={!spreman || saljem || cekam}
+          aria-disabled={nedjelja || undefined}
+          className="btn btn-primary btn-lg w-full px-9 disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-disabled:opacity-60 sm:w-auto"
         >
           <Ikona ime="posalji" size={18} />
-          {saljem ? "Šaljem…" : "Pošalji upit"}
+          {saljem || cekam ? "Šaljem…" : "Pošalji upit"}
         </button>
         <p className="m-0 flex-[1_1_260px] text-[13px] leading-[1.6] text-cocoa">
           Termin je potvrđen kada vas Sanja kontaktira. Za trenutnu online rezervaciju koristite{" "}
@@ -409,18 +525,33 @@ function Forma({ onPoslano }: { onPoslano: () => void }) {
 /** Unaprijed odabire tretman iz ?tretman={id}. */
 function TretmanIzUrla({ onTretman }: { onTretman: (value: string) => void }) {
   const params = useSearchParams();
+  const { bfcacheId } = useRouter();
   const id = params.get("tretman");
+  const zadnji = useRef<string | null>(null);
+  // Tretman iz URL-a primjenjuje se pri svakoj novoj navigaciji (i ponovnom kliku na isti link),
+  // ali ne pri povratku natrag/naprijed, kad vrijedi ono što je posjetitelj sam odabrao.
+  // bfcacheId se mijenja pri push/replace navigaciji, a ostaje isti pri povratku.
+  const kljuc = `${bfcacheId}:${id ?? ""}`;
   useEffect(() => {
+    if (kljuc === zadnji.current) return;
+    zadnji.current = kljuc;
     if (!id) return;
     const v = vrijednostZaTretmanId(id);
     if (v) onTretman(v);
-  }, [id, onTretman]);
+  }, [kljuc, id, onTretman]);
   return null;
 }
 
-function Uspjeh({ onNovi }: { onNovi: () => void }) {
+function Uspjeh({ onNovi, onPrikazano }: { onNovi: () => void; onPrikazano: () => void }) {
   const naslovRef = useRef<HTMLHeadingElement>(null);
+  const fokusirano = useRef(false);
+  // Layout efekti ne rade dok je stranica skrivena, pa ovo znači da je poruka stvarno viđena.
+  useLayoutEffect(() => {
+    onPrikazano();
+  }, [onPrikazano]);
   useEffect(() => {
+    if (fokusirano.current) return;
+    fokusirano.current = true;
     naslovRef.current?.focus();
   }, []);
   return (

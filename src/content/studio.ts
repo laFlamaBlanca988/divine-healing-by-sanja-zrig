@@ -14,4 +14,4 @@ export const studio = {
   karta: "https://maps.google.com/?q=Ilica+322,+Zagreb",
 } as const;
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");

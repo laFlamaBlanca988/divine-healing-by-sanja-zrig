@@ -60,7 +60,10 @@ export function takoderRecenica(): string {
       return naziv;
     });
   if (dijelovi.length < 2) return dijelovi.join("");
-  return `${dijelovi.slice(0, -1).join(", ")} i ${dijelovi.at(-1)}`;
+  // Ako neki naziv sam sadrži zarez (npr. „Antistres — leđa, vrat, glava i lice”), stavke se
+  // odvajaju točkom-zarezom da se vidi gdje koja završava.
+  const razdjelnik = dijelovi.some((d) => d.includes(",")) ? "; " : ", ";
+  return `${dijelovi.slice(0, -1).join(razdjelnik)} i ${dijelovi.at(-1)}`;
 }
 
 /** Stavke izbornika tretmana u formi (§5 „Izbornik tretmana”). */
