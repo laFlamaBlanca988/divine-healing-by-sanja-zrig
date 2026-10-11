@@ -129,7 +129,8 @@ export function izFormData(fd: FormData) {
     tretman: s("tretman"),
     vrijeme: s("vrijeme") || "svejedno",
     kontakt: s("kontakt") || "poziv",
-    poruka: s("poruka"),
+    // Multipart slanje pretvara LF u CRLF; prijelom retka se svugdje broji kao jedan znak.
+    poruka: s("poruka").replace(/\r\n?/g, "\n"),
     privola: s("privola") === "da",
   };
 }

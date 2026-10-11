@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { Ikona } from "./Ikona";
 import { Logo } from "./Logo";
 import { studio } from "@/content/studio";
@@ -14,6 +14,9 @@ type Props = {
 export function Header({ stranica = "ostalo" }: Props) {
   const [otvoren, setOtvoren] = useState(false);
   const gumbRef = useRef<HTMLButtonElement>(null);
+  const zaglavljeRef = useRef<HTMLElement>(null);
+  // Skrivene stranice ostaju u DOM-u (Activity), pa id panela mora biti jedinstven po instanci.
+  const panelId = useId();
 
   const naTretmanima = stranica === "tretmani";
   const linkovi = [
@@ -24,8 +27,12 @@ export function Header({ stranica = "ostalo" }: Props) {
     { href: "/#kontakt", label: "Kontakt" },
   ];
 
+  // Izbornik se zatvara kad Activity sakrije stranicu (navigacija na drugu rutu).
+  useLayoutEffect(() => () => setOtvoren(false), []);
+
   useEffect(() => {
     if (!otvoren) return;
+    const zatvori = () => setOtvoren(false);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOtvoren(false);
@@ -35,22 +42,35 @@ export function Header({ stranica = "ostalo" }: Props) {
     const onResize = () => {
       if (window.innerWidth >= 1024) setOtvoren(false);
     };
+    // Klik izvan zaglavlja (npr. donja traka) zatvara izbornik.
+    const onKlik = (e: MouseEvent) => {
+      if (zaglavljeRef.current && !zaglavljeRef.current.contains(e.target as Node)) setOtvoren(false);
+    };
     document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onKlik);
     window.addEventListener("resize", onResize);
+    window.addEventListener("popstate", zatvori);
+    window.addEventListener("hashchange", zatvori);
     return () => {
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onKlik);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("popstate", zatvori);
+      window.removeEventListener("hashchange", zatvori);
     };
   }, [otvoren]);
 
   const zatvori = () => setOtvoren(false);
 
   return (
-    <header className="relative z-40 border-b border-sand bg-ivory">
-      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-3 py-3 pr-4 pl-5 lg:gap-8 lg:px-10 lg:py-4">
-        <Logo mali />
+    <header ref={zaglavljeRef} className="relative z-40 border-b border-sand bg-ivory">
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-3 py-3 pr-4 pl-6 md:px-10 lg:gap-5 lg:py-4 xl:gap-8">
+        <Logo mali onNavigate={zatvori} />
 
-        <nav aria-label="Glavna navigacija" className="hidden items-center gap-[30px] text-[12px] font-semibold tracking-[0.16em] uppercase lg:flex">
+        <nav
+          aria-label="Glavna navigacija"
+          className="hidden items-center gap-4 text-[12px] font-semibold tracking-[0.12em] whitespace-nowrap uppercase lg:flex xl:gap-[30px] xl:tracking-[0.16em]"
+        >
           {linkovi.map((l) => (
             <Link
               key={l.label}
@@ -65,8 +85,10 @@ export function Header({ stranica = "ostalo" }: Props) {
           ))}
         </nav>
 
-        <a href={studio.zoyya} className="btn btn-primary hidden lg:inline-flex">
-          <Ikona ime="kalendar" size={18} />
+        <a href={studio.zoyya} className="btn btn-primary hidden flex-none px-5 whitespace-nowrap lg:inline-flex xl:px-[26px]">
+          <span className="hidden xl:inline-flex">
+            <Ikona ime="kalendar" size={18} />
+          </span>
           Rezerviraj termin
         </a>
 
@@ -75,16 +97,16 @@ export function Header({ stranica = "ostalo" }: Props) {
           type="button"
           onClick={() => setOtvoren((o) => !o)}
           aria-expanded={otvoren}
-          aria-controls="mobilni-izbornik"
+          aria-controls={panelId}
           aria-label={otvoren ? "Zatvori izbornik" : "Otvori izbornik"}
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-sand-dark bg-white-warm text-espresso lg:hidden"
+          className="flex h-12 w-12 flex-none cursor-pointer items-center justify-center rounded-full border border-sand-dark bg-white-warm text-espresso lg:hidden"
         >
           <Ikona ime={otvoren ? "zatvori" : "izbornik"} size={22} />
         </button>
       </div>
 
       <div
-        id="mobilni-izbornik"
+        id={panelId}
         hidden={!otvoren}
         className="absolute inset-x-0 top-full border-b border-sand bg-ivory shadow-[0_24px_40px_-24px_rgba(46,33,25,0.35)] lg:hidden"
       >

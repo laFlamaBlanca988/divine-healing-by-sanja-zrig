@@ -33,6 +33,13 @@
     scroll-padding-top: 24px;
   }
 
+  /* Donja traka ispod lg ne smije prekriti element u fokusu */
+  @media (max-width: 1023.98px) {
+    html {
+      scroll-padding-bottom: 96px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -54,9 +61,14 @@
     color: var(--color-gold-hover);
   }
 
+  /* gold-deep ima dovoljan kontrast (≥ 3:1) na ivory i cream; na tamnoj podlozi gold-light */
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-gold-deep);
     outline-offset: 2px;
+  }
+
+  .bg-espresso :focus-visible {
+    outline-color: var(--color-gold-light);
   }
 
   input::placeholder,
@@ -95,7 +107,7 @@
     margin: 0;
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(33px, 4.4vw, 62px);
+    font-size: clamp(38px, 4.4vw, 62px);
     line-height: 1.15;
     letter-spacing: 0.01em;
   }
@@ -104,7 +116,7 @@
     margin: 0;
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(28px, 3.2vw, 44px);
+    font-size: clamp(30px, 3.2vw, 44px);
     line-height: 1.2;
   }
 

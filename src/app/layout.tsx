@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cinzel, Dancing_Script, Montserrat } from "next/font/google";
 import { MobilnaTraka } from "@/components/MobilnaTraka";
 import { SITE_URL, studio } from "@/content/studio";
+import { sviTretmani } from "@/content/tretmani";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -44,6 +45,8 @@ export const viewport: Viewport = {
   themeColor: "#FBF7F0",
 };
 
+const cijene = sviTretmani.flatMap((t) => t.opcije.map((o) => o.cijenaEur));
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": ["DaySpa", "HealthAndBeautyBusiness"],
@@ -54,7 +57,7 @@ const jsonLd = {
   logo: `${SITE_URL}/images/logo-znak.png`,
   telephone: "+385981654696",
   email: studio.email,
-  priceRange: "25 € – 80 €",
+  priceRange: `${Math.min(...cijene)} € – ${Math.max(...cijene)} €`,
   currenciesAccepted: "EUR",
   address: {
     "@type": "PostalAddress",

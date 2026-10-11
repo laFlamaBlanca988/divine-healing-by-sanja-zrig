@@ -18,10 +18,11 @@ import {
 export type OdgovorUpita = { ok: true } | { ok: false; greske?: GreskeUpita; tehnicka?: boolean };
 
 export async function posaljiUpit(fd: FormData): Promise<OdgovorUpita> {
-  // Zaštita od spama: honeypot + prebrzo slanje. Botu glumimo uspjeh.
+  // Zaštita od spama: honeypot + slanje brže od 3 s od učitavanja forme. Botu glumimo uspjeh.
+  // „t” je trajanje ispune u ms koje izmjeri preglednik (ne sat uređaja, da razlika satova ne smeta).
   const honeypot = fd.get("web");
-  const ucitano = Number(fd.get("t"));
-  if ((typeof honeypot === "string" && honeypot !== "") || !ucitano || Date.now() - ucitano < MIN_VRIJEME_ISPUNE_MS) {
+  const trajanje = Number(fd.get("t"));
+  if ((typeof honeypot === "string" && honeypot !== "") || !(trajanje >= MIN_VRIJEME_ISPUNE_MS)) {
     console.warn("[upit] odbačeno kao spam");
     return { ok: true };
   }
@@ -45,8 +46,8 @@ export async function posaljiUpit(fd: FormData): Promise<OdgovorUpita> {
   try {
     const resend = new Resend(kljuc);
     const { error } = await resend.emails.send({
-      from: process.env.UPIT_EMAIL_FROM ?? "Divine Healing <onboarding@resend.dev>",
-      to: process.env.UPIT_EMAIL_TO ?? "sanjazrig@gmail.com",
+      from: process.env.UPIT_EMAIL_FROM || "Divine Healing <onboarding@resend.dev>",
+      to: process.env.UPIT_EMAIL_TO || "sanjazrig@gmail.com",
       replyTo: r.podaci.email || undefined,
       subject: email.subject,
       text: email.text,
@@ -97,7 +98,8 @@ function sastaviEmail(p: UpitPodaci) {
     ["Poslano", poslano],
   ];
 
-  const subject = `Novi upit: ${nazivTretmana} — ${p.ime}`;
+  // Razmaci i prijelomi redaka u naslovu svode se na jedan razmak.
+  const subject = `Novi upit: ${nazivTretmana} — ${p.ime}`.replace(/\s+/g, " ");
   const text = redovi.map(([k, v]) => `${k}: ${v}`).join("\n");
   const html =
     `<h2 style="font-family:Georgia,serif;font-weight:500;color:#2E2119">Novi upit za termin</h2>` +

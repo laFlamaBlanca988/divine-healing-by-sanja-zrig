@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 import { studio } from "@/content/studio";
 
 const naslov = "mb-2 text-[12px] font-semibold tracking-[0.2em] text-gold-light uppercase";
-const link = "py-1.5 text-[14px] text-on-dark no-underline hover:text-ivory";
+const link = "flex min-h-11 items-center text-[14px] text-on-dark no-underline hover:text-ivory";
 
 export function Footer() {
   return (
@@ -18,14 +18,14 @@ export function Footer() {
               {studio.adresa}, {studio.postanskiBroj} {studio.grad}
             </p>
           </div>
-          <nav aria-label="Tretmani" className="flex flex-col gap-1">
+          <nav aria-label="Tretmani" className="flex flex-col">
             <span className={naslov}>Tretmani</span>
             <Link href="/tretmani#masaze" className={link}>Masaže</Link>
             <Link href="/tretmani#antistres" className={link}>Antistres tretmani</Link>
             <Link href="/tretmani#tijelo" className={link}>Hidžama i tretmani tijela</Link>
             <Link href="/tretmani#fohow" className={link}>FOHOW BEM 3.0 masaže</Link>
           </nav>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <span className={naslov}>Kontakt</span>
             <a href={studio.telefonHref} className={link}>{studio.telefon}</a>
             <a href={`mailto:${studio.email}`} className={link}>{studio.email}</a>
@@ -42,9 +42,9 @@ export function Footer() {
           <span>© 2026 Divine Healing by Sanja Zrig. Sva prava pridržana.</span>
           <span>
             Rezervacije omogućila{" "}
-            <a href={studio.zoyya} className="text-on-dark underline-offset-4 hover:text-ivory">Zoyya</a>
+            <a href={studio.zoyya} className="inline-flex min-h-11 items-center text-on-dark underline-offset-4 hover:text-ivory">Zoyya</a>
             {" · "}
-            <Link href="/pravila-privatnosti" className="text-on-dark underline-offset-4 hover:text-ivory">
+            <Link href="/pravila-privatnosti" className="inline-flex min-h-11 items-center text-on-dark underline-offset-4 hover:text-ivory">
               Pravila privatnosti
             </Link>
           </span>

@@ -22,7 +22,7 @@ export default function PravilaPrivatnosti() {
       <main className="bg-ivory">
         <article className="mx-auto flex max-w-[780px] flex-col gap-5 px-6 py-14 text-[16px] leading-[1.75] text-cocoa md:px-10 md:py-[clamp(64px,7vw,104px)]">
           <nav aria-label="Putanja" className="text-[13px]">
-            <Link href="/" className="no-underline">
+            <Link href="/" className="inline-flex min-h-11 items-center no-underline">
               Početna
             </Link>{" "}
             <span aria-hidden="true">/</span> <span aria-current="page">Pravila privatnosti</span>
@@ -38,7 +38,7 @@ export default function PravilaPrivatnosti() {
           </div>
 
           <div className="eyebrow">Zaštita podataka</div>
-          <h1 className="m-0 font-serif text-[clamp(32px,4vw,52px)] leading-[1.15] font-medium text-espresso">
+          <h1 className="h1 text-espresso">
             Pravila privatnosti
           </h1>
           <p className="m-0">Posljednja izmjena: [datum — upisati prije objave]</p>

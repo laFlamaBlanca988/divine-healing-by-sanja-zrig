@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
@@ -7,14 +8,18 @@ import { UpitForma } from "@/components/UpitForma";
 import { studio } from "@/content/studio";
 import { istaknutiTretmani, kategorija, takoderRecenica, upitHref, type Tretman } from "@/content/tretmani";
 
-/** Alt tekstovi i object-position iz docs/dizajn.md §7. */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
+/** Alt tekstovi i object-position iz docs/dizajn.md §7 (gdje ih tablica nema, iz artboarda). */
 const slikeTretmana: Record<string, { alt: string; pozicija: string }> = {
   "/images/terapeutska-masaza-ledja.jpg": { alt: "Sanja izvodi terapeutsku masažu leđa", pozicija: "50% 45%" },
   "/images/tajlandska-istezanje-sjedeci.jpg": {
     alt: "Sanja izvodi tradicionalnu tajlandsku masažu — istezanje u sjedećem položaju",
     pozicija: "50% 35%",
   },
-  "/images/relax-masaza.jpg": { alt: "Relax masaža preko ručnika", pozicija: "50% 50%" },
+  "/images/relax-masaza.jpg": { alt: "Relax masaža preko ručnika", pozicija: "50% 45%" },
   "/images/antistres-lice-glava.jpg": { alt: "Sanja izvodi antistres masažu lica i glave", pozicija: "50% 30%" },
   "/images/sportska-masaza.jpg": { alt: "Sportska masaža leđa", pozicija: "50% 40%" },
   "/images/maderoterapija-valjci.jpg": { alt: "Drveni valjci i pomagala za maderoterapiju", pozicija: "50% 50%" },
@@ -50,7 +55,7 @@ function Hero() {
     <section className="bg-ivory">
       <div className="wrap flex flex-wrap items-center gap-x-20 gap-y-12 pt-8 pb-12 md:gap-y-16 md:pt-[clamp(48px,6vw,88px)] md:pb-[clamp(72px,8vw,112px)]">
         <div className="flex min-w-0 flex-[1_1_500px] flex-col gap-[22px] md:gap-7">
-          <div className="eyebrow flex items-center gap-3 text-[11px] tracking-[0.2em] md:gap-3.5 md:text-[12px] md:tracking-[0.3em]">
+          <div className="eyebrow flex items-center gap-3.5">
             <span className="hidden h-px w-7 bg-gold-line sm:block md:w-10" />
             Massage &amp; Wellness Studio · Zagreb
           </div>
@@ -122,7 +127,7 @@ function InfoStavka({ ikona, naslov, children }: { ikona: string; naslov: string
         <Ikona ime={ikona} size={24} strokeWidth={1.3} />
       </span>
       <div className="flex flex-col gap-1">
-        <span className="text-[11px] font-semibold tracking-[0.18em] text-gold-deep uppercase md:text-[12px]">{naslov}</span>
+        <span className="text-[12px] font-semibold tracking-[0.18em] text-gold-deep uppercase">{naslov}</span>
         {children}
       </div>
     </div>
@@ -144,10 +149,10 @@ function InfoTraka() {
           <span className="text-[14px] text-cocoa">Subota: 13:00 – 19:00 · Nedjelja: zatvoreno</span>
         </InfoStavka>
         <InfoStavka ikona="telefon" naslov="Kontakt">
-          <a href={studio.telefonHref} className="text-[15px] font-medium text-espresso no-underline md:text-[16px]">
+          <a href={studio.telefonHref} className="inline-flex min-h-11 items-center self-start text-[15px] font-medium text-espresso no-underline md:text-[16px]">
             {studio.telefon}
           </a>
-          <a href={`mailto:${studio.email}`} className="text-[14px] text-cocoa no-underline">
+          <a href={`mailto:${studio.email}`} className="-mt-1 inline-flex min-h-11 items-center self-start text-[14px] text-cocoa no-underline">
             {studio.email}
           </a>
         </InfoStavka>
@@ -160,7 +165,7 @@ function KarticaTretmana({ t }: { t: Tretman }) {
   const slika = t.slika ? slikeTretmana[t.slika] : undefined;
   const opcija = t.opcije[0];
   return (
-    <article className="flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-[22px] border border-sand bg-white-warm md:w-auto md:rounded-3xl">
+    <article className="flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-3xl border border-sand bg-white-warm md:w-auto">
       {t.slika && (
         <div className="relative aspect-[4/3] w-full">
           <Image
@@ -203,7 +208,7 @@ function KarticaTretmana({ t }: { t: Tretman }) {
 
 function Najtrazeniji() {
   return (
-    <section id="tretmani" className="bg-ivory py-14 md:py-[clamp(72px,8vw,120px)]">
+    <section id="tretmani" className="section-y bg-ivory">
       <div className="wrap">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-x-12 gap-y-6 md:mb-12">
           <div className="flex max-w-[640px] flex-col gap-3 md:gap-4">
@@ -254,7 +259,7 @@ function Fohow() {
   const naslov = (k.slogan ?? "").replace(/\.$/, "");
   return (
     <section id="fohow" className="bg-espresso text-cream">
-      <div className="wrap flex flex-wrap items-center gap-x-20 gap-y-8 py-14 md:gap-y-14 md:py-[clamp(72px,8vw,120px)]">
+      <div className="wrap section-y flex flex-wrap items-center gap-x-20 gap-y-8 md:gap-y-14">
         <div className="relative w-full max-w-[500px] min-w-0 flex-[1_1_400px]">
           <div className="absolute top-[18px] right-[18px] -bottom-[18px] -left-[18px] hidden rounded-[28px] border border-bronze-line md:block" />
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] md:aspect-[4/5] md:rounded-[28px]">
@@ -270,7 +275,7 @@ function Fohow() {
         </div>
         <div className="flex min-w-0 flex-[1_1_500px] flex-col gap-5 md:gap-6">
           <div className="eyebrow text-gold-light">{k.naziv}</div>
-          <h2 className="m-0 font-serif text-[26px] leading-[1.22] font-medium text-ivory md:text-[clamp(30px,3.2vw,42px)] md:leading-[1.2]">
+          <h2 className="h2 text-ivory">
             {naslov}
           </h2>
           <p className="m-0 text-[15px] leading-[1.7] text-on-dark md:text-[16px] md:leading-[1.75]">
@@ -300,7 +305,7 @@ function Fohow() {
                 {t.naUpit ? (
                   <Link
                     href={upitHref(t.id)}
-                    aria-label={`Pošalji upit — ${t.naziv}`}
+                    aria-label={`Na upit — ${t.naziv}`}
                     className="inline-flex min-h-11 flex-none items-center font-serif text-[16px] text-gold-light underline-offset-4 hover:text-ivory md:text-[17px]"
                   >
                     Na upit
@@ -338,7 +343,7 @@ function Fohow() {
 function OMeni() {
   return (
     <section id="o-meni" className="bg-ivory">
-      <div className="wrap flex flex-wrap items-center gap-x-24 gap-y-14 py-14 md:gap-y-[72px] md:py-[clamp(72px,8vw,120px)]">
+      <div className="wrap section-y flex flex-wrap items-center gap-x-24 gap-y-14 md:gap-y-[72px]">
         <div className="flex min-w-0 flex-[1_1_400px] justify-center">
           <div className="relative aspect-[440/560] w-[min(100%,440px)] max-md:mr-2">
             <div className="arch absolute -top-3 right-3 bottom-3 -left-3 border border-gold-line md:-top-[18px] md:right-[18px] md:bottom-[18px] md:-left-[18px]" />
@@ -350,7 +355,7 @@ function OMeni() {
               className="arch object-cover"
               style={{ objectPosition: "50% 30%" }}
             />
-            <div className="absolute -right-2 -bottom-6 aspect-square w-[38%] overflow-hidden rounded-full border-[6px] border-ivory md:-right-8 md:-bottom-8 md:w-[44%] md:border-8">
+            <div className="absolute -right-2 -bottom-6 aspect-square w-[38%] overflow-hidden rounded-full border-8 border-ivory md:-right-8 md:-bottom-8 md:w-[44%]">
               <Image
                 src="/images/sanja-masaza-glave.jpg"
                 alt="Sanja masira glavu i vrat klijentice"
@@ -364,9 +369,9 @@ function OMeni() {
         </div>
         <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] md:gap-[22px]">
           <div className="eyebrow">O meni</div>
-          <div className="font-script text-[40px] leading-[1.05] font-medium text-gold-deep md:text-[clamp(42px,4.2vw,58px)] md:leading-none">
+          <h2 className="m-0 font-script text-[40px] leading-[1.05] font-medium text-gold-deep md:text-[clamp(42px,4.2vw,58px)] md:leading-none">
             Pozdrav, ja sam Sanja
-          </div>
+          </h2>
           <blockquote className="m-0 font-serif text-[19px] leading-[1.45] text-espresso md:text-[clamp(21px,2vw,25px)]">
             „Za mene je masaža više od posla – to je poziv koji nosim u srcu.”
           </blockquote>
@@ -396,11 +401,11 @@ function OMeni() {
 function Galerija() {
   return (
     <section className="border-t border-sand bg-cream">
-      <div className="wrap flex flex-col gap-5 py-12 md:gap-9 md:py-[clamp(64px,7vw,96px)]">
+      <div className="wrap section-y flex flex-col gap-5 md:gap-9">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <div className="flex flex-col gap-3">
             <div className="eyebrow">Iz studija</div>
-            <h2 className="m-0 font-serif text-[clamp(28px,2.8vw,38px)] leading-[1.2] font-medium">Trenuci opuštanja</h2>
+            <h2 className="h2-sm">Trenuci opuštanja</h2>
           </div>
           <a href={studio.instagram} className="btn btn-secondary hidden tracking-[0.14em] md:inline-flex">
             <span className="text-gold-deep">
@@ -411,7 +416,7 @@ function Galerija() {
         </div>
         <div className="grid grid-cols-2 gap-2.5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] md:gap-4">
           {galerija.map((s) => (
-            <div key={s.src} className="relative aspect-[4/5] overflow-hidden rounded-2xl md:rounded-[20px]">
+            <div key={s.src} className="relative aspect-[4/5] overflow-hidden rounded-[20px]">
               <Image src={s.src} alt={s.alt} fill sizes="(min-width: 1024px) 240px, 50vw" className="object-cover" />
             </div>
           ))}
@@ -439,7 +444,7 @@ function Galerija() {
 function UpitIKontakt() {
   return (
     <section id="upit" className="scroll-mt-2 bg-ivory">
-      <div className="mx-auto flex max-w-[1240px] flex-wrap items-start gap-6 px-4 py-12 md:gap-10 md:px-10 md:py-[clamp(72px,8vw,120px)]">
+      <div className="section-y mx-auto flex max-w-[1240px] flex-wrap items-start gap-6 px-6 md:gap-10 md:px-10">
         <div className="min-w-0 flex-[999_1_560px] rounded-[28px] border border-sand bg-white-warm p-6 md:rounded-[32px] md:p-[clamp(28px,4vw,52px)]">
           <UpitForma />
         </div>
@@ -462,7 +467,7 @@ function UpitIKontakt() {
                   {studio.adresa}, {studio.postanskiBroj} {studio.grad}
                 </span>
                 <span className="text-[14px]">{studio.kvart}</span>
-                <a href={studio.karta} className="py-1 text-[14px] font-semibold text-gold-light hover:text-ivory">
+                <a href={studio.karta} className="inline-flex min-h-11 items-center self-start text-[14px] font-semibold text-gold-light hover:text-ivory">
                   Upute do studija
                 </a>
               </span>
@@ -498,7 +503,7 @@ function UpitIKontakt() {
               </div>
             ))}
           </div>
-          <a href={studio.zoyya} className="btn btn-dark min-h-[54px] px-4 text-[11px] tracking-[0.12em]">
+          <a href={studio.zoyya} className="btn btn-dark min-h-[54px] px-4 text-[11px] tracking-[0.12em] sm:text-[12px] sm:tracking-[0.16em]">
             <Ikona ime="kalendar" size={18} />
             Online rezervacija — Zoyya
           </a>
