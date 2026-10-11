@@ -9,7 +9,7 @@ export function TekstSPoveznicama({ tekst }: { tekst: string }) {
     const pocetak = m.index ?? 0;
     if (pocetak > zadnji) dijelovi.push(tekst.slice(zadnji, pocetak));
     dijelovi.push(
-      <Link key={pocetak} href={m[2]} className="font-semibold underline-offset-4">
+      <Link key={pocetak} href={m[2]} className="font-semibold underline decoration-gold-line decoration-1 underline-offset-4">
         {m[1]}
       </Link>,
     );

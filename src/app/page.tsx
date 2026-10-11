@@ -16,7 +16,7 @@ import { istaknutiTretmani, kategorija, takoderRecenica, upitHref, type Tretman 
 export const metadata: Metadata = {
   title: { absolute: "Masaža Zagreb (Kustošija) | Divine Healing by Sanja Zrig" },
   description:
-    "Masaže u studiju u Ilici 322 (Kustošija, Zagreb): terapeutska, tajlandska, sportska i relax masaža, antistres, hidžama i FOHOW BEM 3.0. Online rezervacija.",
+    "Masaže u Ilici 322 (Kustošija, Zagreb): terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0. Online rezervacija.",
   alternates: { canonical: "/" },
   openGraph: { ...ogBase, url: "/" },
 };
@@ -74,7 +74,7 @@ function Hero() {
           </h1>
           <p className="m-0 max-w-[540px] text-[16px] leading-[1.7] text-cocoa md:text-[17px] md:leading-[1.75]">
             Terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0
-            bio-meridijanske masaže u studiju u Ilici 322, u zagrebačkoj Kustošiji — s individualnim pristupom i
+            bio-meridijanske masaže u Ilici 322, u zagrebačkoj Kustošiji — s individualnim pristupom i
             punom posvećenošću svakom klijentu.
           </p>
           <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
@@ -165,7 +165,10 @@ function KarticaTretmana({ t }: { t: Tretman }) {
         </div>
         <h3 className="m-0 text-[14px] leading-[1.4] font-semibold tracking-[0.12em] uppercase md:text-[15px]">
           {stranica ? (
-            <Link href={stranica} className="-my-3 inline-block py-3 text-espresso underline-offset-4 hover:text-gold-deep hover:underline">
+            <Link
+              href={stranica}
+              className="-my-3 inline-block min-h-11 py-3 text-espresso underline decoration-gold-line decoration-1 underline-offset-4 hover:text-gold-deep"
+            >
               {t.naziv}
             </Link>
           ) : (

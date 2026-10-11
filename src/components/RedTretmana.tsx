@@ -34,7 +34,9 @@ export function RedTretmana({
             {stranica ? (
               <Link
                 href={stranica}
-                className={`-my-3 inline-block py-3 underline-offset-4 hover:underline ${
+                className={`-my-3 inline-block py-3 underline decoration-1 underline-offset-4 ${
+                  tamno ? "decoration-bronze-line" : "decoration-gold-line"
+                } ${
                   tamno ? "text-ivory hover:text-gold-light" : "text-espresso hover:text-gold-deep"
                 }`}
               >

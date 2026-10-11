@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Divine Healing",
   },
   description:
-    "Masaže u studiju u Ilici 322 (Kustošija, Zagreb): terapeutska, tajlandska, sportska i relax masaža, antistres, hidžama i FOHOW BEM 3.0. Online rezervacija.",
+    "Masaže u Ilici 322 (Kustošija, Zagreb): terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0. Online rezervacija.",
   openGraph: ogBase,
 };
 

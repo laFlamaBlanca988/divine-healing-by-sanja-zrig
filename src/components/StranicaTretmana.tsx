@@ -20,7 +20,8 @@ import { tretman, upitHref } from "@/content/tretmani";
 export function metadataStranice(slug: string): Metadata {
   const s = stranica(slug);
   const putanja = putanjaStranice(slug);
-  const slika = s.slike[0];
+  // Slika za dijeljenje ostaje zajednička (1200×630 iz ogBase): fotografije tretmana su uspravne
+  // i u pregledu na društvenim mrežama bile bi izrezane na usku traku.
   return {
     title: s.title,
     description: s.description,
@@ -30,7 +31,6 @@ export function metadataStranice(slug: string): Metadata {
       url: putanja,
       title: s.h1,
       description: s.description,
-      images: [{ url: slika.src, width: slika.sirina, height: slika.visina, alt: slika.alt }],
     },
   };
 }
@@ -55,9 +55,9 @@ export function StranicaTretmana({ slug }: { slug: string }) {
   return (
     <>
       <JsonLd data={breadcrumbLd(mrvice)} />
-      <Header stranica="tretmani" />
+      <Header stranica="tretman" />
       <main>
-        <NaslovnaTraka mrvice={mrvice} naslov={s.h1}>
+        <NaslovnaTraka mrvice={mrvice} naslov={s.h1} uskiNaslov>
           {s.slogan && (
             <p className="m-0 max-w-[620px] font-serif text-[19px] leading-[1.45] text-gold-deep md:text-[21px]">
               {s.slogan}
@@ -101,7 +101,11 @@ export function StranicaTretmana({ slug }: { slug: string }) {
         {/* Opis (+ galerija u desnom stupcu na širokim ekranima) */}
         <section className="border-t border-sand bg-ivory">
           <div className="wrap section-y">
-            <div className="grid gap-14 lg:grid-cols-[minmax(0,760px)_minmax(0,1fr)] lg:gap-20">
+            <div
+              className={`grid gap-14 ${
+                s.galerija ? "lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:gap-14 xl:gap-20" : ""
+              }`}
+            >
               <div className="flex max-w-[760px] flex-col gap-12">
                 {s.sekcije.map((sek) => (
                   <div key={sek.naslov} className="flex flex-col gap-4">
@@ -117,7 +121,7 @@ export function StranicaTretmana({ slug }: { slug: string }) {
                       </p>
                     ))}
                     {sek.stavke && (
-                      <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+                      <ul role="list" className="m-0 flex list-none flex-col gap-2.5 p-0">
                         {sek.stavke.map((st) => (
                           <li key={st} className="flex items-start gap-3 text-[16px] leading-[1.6] text-espresso">
                             <span className="mt-[9px] h-1.5 w-1.5 flex-none rounded-full bg-gold" aria-hidden="true" />
@@ -152,7 +156,11 @@ export function StranicaTretmana({ slug }: { slug: string }) {
               <h2 className="m-0 text-[12px] font-semibold tracking-[0.3em] text-gold-deep uppercase">Srodni tretmani</h2>
               <div className="flex flex-wrap gap-2.5">
                 {srodne.map((x) => (
-                  <Link key={x.slug} href={putanjaStranice(x.slug)} className="btn btn-secondary min-h-11 px-5">
+                  <Link
+                    key={x.slug}
+                    href={putanjaStranice(x.slug)}
+                    className="btn btn-secondary min-h-11 px-5 py-2.5 text-center"
+                  >
                     {x.naziv}
                   </Link>
                 ))}

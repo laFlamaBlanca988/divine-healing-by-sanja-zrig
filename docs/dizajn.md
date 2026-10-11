@@ -70,7 +70,7 @@ Redoslijed sekcija:
    `slogan` FOHOW kategorije, opis, „Možete osjetiti:” +
    tri pilule (valove kroz tijelo · duboko oslobađanje · trenutnu lakoću), popis FOHOW tretmana
    s trajanjem i cijenom (stavke „na upit” imaju link „Na upit” na formu), gumbi
-   **Rezerviraj BEM 3.0 masažu** (Zoyya) i **Opisi tretmana** (`/tretmani#fohow`).
+   **Rezerviraj BEM 3.0 masažu** (Zoyya) i **Opisi tretmana** (`/tretmani/fohow-bem-masaze`).
 6. **O meni** (`#o-meni`) — `sanja-tajlandska-osmijeh.jpg` u luku + okrugla manja slika
    `sanja-masaza-glave.jpg` preko donjeg desnog kuta; „Pozdrav, ja sam Sanja” (Dancing Script),
    citat „Za mene je masaža više od posla – to je poziv koji nosim u srcu.” (Cinzel), Sanjin tekst
@@ -96,6 +96,17 @@ Redoslijed sekcija:
    Anticelulitni tretman ima oznaku „Paket uz popust”.
 4. Okvir „Niste sigurni koji tretman odabrati?” — telefon + Pošalji upit.
 5. Podnožje.
+
+### `/tretmani/<slug>` — stranice tretmana (dodano zbog SEO-a)
+Pet stranica grupiranih po namjeri pretraživanja: `terapeutska-masaza`, `tajlandska-masaza`, `sportska-masaza`,
+`relax-i-antistres-masaza`, `fohow-bem-masaze`. Tekstovi su u `src/content/stranice.ts` (iz `tretmani.json` i Sanjinih
+tekstova sa Zoyye, bez tvrdnji iz §9) i prije objave ih odobrava Sanja. Isti vizualni jezik kao `/tretmani`:
+1. Naslovni dio kao na `/tretmani` (putanja *Početna / Tretmani i cjenik / {naziv}*, H1, lotos, uvod, gumbi
+   **Rezerviraj termin** i **Pošalji upit** s unaprijed odabranim tretmanom).
+2. „Trajanje i cijena”: slika u luku lijevo, redovi cjenika desno (FOHOW na tamnoj pozadini).
+3. Opis u odlomcima (H2), uz galeriju fotografija u desnom stupcu gdje postoji.
+4. „Srodni tretmani” (pilule) i „Cijeli cjenik”, info traka (adresa, radno vrijeme, kontakt, upute), okvir „Niste sigurni…”.
+SEO upute i ono što treba napraviti izvan koda: `docs/seo-upute.md`.
 
 ### `/pravila-privatnosti`
 Potrebna zbog forme (GDPR). Tekst treba pripremiti — u dizajnu postoji samo link.
@@ -123,7 +134,8 @@ on određuje samo raspored:
 | Pošalji upit / Na upit uz određeni tretman | `/?tretman={id}#upit` — forma unaprijed odabere taj tretman |
 | Nav „Kontakt” | `/#kontakt` |
 | Nav „Masaže” / „FOHOW BEM 3.0” | `/#tretmani` / `/#fohow` (s `/tretmani`: `/tretmani#masaze` / `/tretmani#fohow`) |
-| Podnožje — kategorije | `/tretmani#masaze`, `#antistres`, `#tijelo`, `#fohow` |
+| Podnožje — kategorije | `/tretmani#masaze`, `#antistres`, `#tijelo`; FOHOW → `/tretmani/fohow-bem-masaze` |
+| Naziv tretmana (kartice na početnoj, redovi cjenika) | stranica tretmana, ako postoji (vidi „Stranice tretmana”) |
 | Pravila privatnosti (forma i podnožje) | `/pravila-privatnosti` |
 | „Zoyya” u podnožju („Rezervacije omogućila Zoyya”) | link na Zoyya stranicu studija |
 | Upute do studija | https://maps.google.com/?q=Ilica+322,+Zagreb |
