@@ -15,7 +15,7 @@ function InfoStavka({ ikona, naslov, children }: { ikona: string; naslov: string
   );
 }
 
-/** Info traka: adresa, radno vrijeme i kontakt. `upute` dodaje poveznicu „Upute do studija”. */
+/** Info traka: adresa i radno vrijeme. `upute` dodaje poveznicu „Upute do studija”. */
 export function InfoTraka({ upute = false }: { upute?: boolean }) {
   return (
     <section className="border-y border-sand bg-cream">
@@ -37,14 +37,6 @@ export function InfoTraka({ upute = false }: { upute?: boolean }) {
         <InfoStavka ikona="sat" naslov="Radno vrijeme">
           <span className="text-[15px] font-medium md:text-[16px]">Pon – Pet: 10:00 – 21:00</span>
           <span className="text-[14px] text-cocoa">Subota: 13:00 – 19:00 · Nedjelja: zatvoreno</span>
-        </InfoStavka>
-        <InfoStavka ikona="telefon" naslov="Kontakt">
-          <a href={studio.telefonHref} className="inline-flex min-h-11 items-center self-start text-[15px] font-medium text-espresso no-underline md:text-[16px]">
-            {studio.telefon}
-          </a>
-          <a href={`mailto:${studio.email}`} className="-mt-1 inline-flex min-h-11 items-center self-start text-[14px] text-cocoa no-underline">
-            {studio.email}
-          </a>
         </InfoStavka>
       </div>
     </section>

@@ -56,13 +56,17 @@ Redoslijed sekcija:
    gumbom za rezervaciju i telefonom; gumb izbornika tada prikazuje ikonu `zatvori`, a `Esc` ga zatvara.
 2. **Hero** — eyebrow „Massage & Wellness Studio · Zagreb”, H1 „Prostor u kojem ćete se osjećati
    *i biti bolje*” (drugi dio u tamnom zlatu), kratki opis, gumbi **Rezerviraj termin** (Zoyya) i
-   **Pošalji upit** (skok na formu), telefon + Instagram. Desno: fotografija `studio-sanja.jpg` u
+   **Pošalji upit** (skok na formu). Desno: fotografija `studio-sanja.jpg` u
    obliku **luka** s tankim zlatnim obrubom pomaknutim iza slike i plutajućom „pilulom”
    s radnim vremenom. (Alternativa iz dizajna: kvadratna slika `tajlandska-istezanje-sjedeci.jpg`
    sa zaobljenim kutovima — zadana je varijanta s lukom.)
-3. **Info traka** (krem pozadina) — tri stupca: Adresa · Radno vrijeme · Kontakt, svaki s ikonom u krugu.
+3. **Info traka** (krem pozadina) — dva stupca: Adresa · Radno vrijeme, svaki s ikonom u krugu.
+   Telefon i e-mail namjerno nisu ovdje: na naslovnoj su u kartici „Posjetite studio”, u podnožju
+   i (na mobitelu) u donjoj traci, pa se ne ponavljaju u svakoj sekciji.
 4. **Najtraženiji tretmani** (`#tretmani`) — naslov „Masaže i tretmani”, gumb „Cijeli cjenik”,
-   mreža 3 × 2 kartica (slika 4:3, trajanje, cijena, naziv, kratki opis, link „Rezerviraj”).
+   mreža 3 × 2 kartica (linijski crtež 4:3, trajanje, cijena, naziv, kratki opis, link „Rezerviraj”).
+   Crteži su u `src/components/CrtezTretmana.tsx` (po `id` tretmana; zlatna linija na kremi s lukom);
+   tretman bez crteža prikazuje svoju fotografiju.
    Kartice = tretmani s `"istaknuto": true`, poredani po `istaknutoRedoslijed`, tekst iz `kratkiOpis`.
    Ispod rečenica „Također: …” — generira se od ne-istaknutih tretmana iz kategorija koje nisu FOHOW
    (uključuje i Abdominalnu masažu), s linkom „Pogledajte cijeli cjenik”.
@@ -105,7 +109,7 @@ tekstova sa Zoyye, bez tvrdnji iz §9) i prije objave ih odobrava Sanja. Isti vi
    **Rezerviraj termin** i **Pošalji upit** s unaprijed odabranim tretmanom).
 2. „Trajanje i cijena”: slika u luku lijevo, redovi cjenika desno (FOHOW na tamnoj pozadini).
 3. Opis u odlomcima (H2), uz galeriju fotografija u desnom stupcu gdje postoji.
-4. „Srodni tretmani” (pilule) i „Cijeli cjenik”, info traka (adresa, radno vrijeme, kontakt, upute), okvir „Niste sigurni…”.
+4. „Srodni tretmani” (pilule) i „Cijeli cjenik”, info traka (adresa, radno vrijeme, upute), okvir „Niste sigurni…” (telefon).
 SEO upute i ono što treba napraviti izvan koda: `docs/seo-upute.md`.
 
 ### `/pravila-privatnosti`
@@ -367,12 +371,12 @@ drugačije formulacije — vrijedi tablica).
 |---|---|---|
 | `logo-znak.png` | zaglavlje, podnožje, favicon (izvesti) | prazan (dekor uz tekstualni logotip) |
 | `studio-sanja.jpg` | hero, luk (`50% 72%`) | Sanja u studiju Divine Healing uz klijenticu na stolu za masažu |
-| `tajlandska-istezanje-sjedeci.jpg` | kartica tajlandske masaže (`50% 35%`); alternativni hero | Sanja izvodi tradicionalnu tajlandsku masažu — istezanje u sjedećem položaju |
-| `terapeutska-masaza-ledja.jpg` | kartica terapeutske (`50% 45%`); slika kategorije Masaže (`50% 40%`) | Sanja izvodi terapeutsku masažu leđa |
-| `relax-masaza.jpg` | kartica relax masaže | Relax masaža preko ručnika |
-| `antistres-lice-glava.jpg` | kartica antistres i slika kategorije Antistres (`50% 30%`) | Sanja izvodi antistres masažu lica i glave |
-| `sportska-masaza.jpg` | kartica sportske masaže (`50% 40%`) | Sportska masaža leđa |
-| `maderoterapija-valjci.jpg` | kartica anticelulitnog; slika kategorije Hidžama i tijelo | Drveni valjci i pomagala za maderoterapiju |
+| `tajlandska-istezanje-sjedeci.jpg` | alternativni hero; zamjenska slika kartice tajlandske (`50% 35%`) | Sanja izvodi tradicionalnu tajlandsku masažu — istezanje u sjedećem položaju |
+| `terapeutska-masaza-ledja.jpg` | slika kategorije Masaže (`50% 40%`); zamjenska slika kartice terapeutske (`50% 45%`) | Sanja izvodi terapeutsku masažu leđa |
+| `relax-masaza.jpg` | stranica relax i antistres masaže; zamjenska slika kartice | Relax masaža preko ručnika |
+| `antistres-lice-glava.jpg` | slika kategorije Antistres (`50% 30%`); zamjenska slika kartice | Sanja izvodi antistres masažu lica i glave |
+| `sportska-masaza.jpg` | stranica sportske masaže; zamjenska slika kartice (`50% 40%`) | Sportska masaža leđa |
+| `maderoterapija-valjci.jpg` | slika kategorije Hidžama i tijelo; zamjenska slika kartice anticelulitnog | Drveni valjci i pomagala za maderoterapiju |
 | `fohow-bem-uredaj.jpg` | FOHOW sekcija (`50% 50%`), slika FOHOW kategorije (`50% 60%`) | FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu |
 | `sanja-tajlandska-osmijeh.jpg` | O meni, luk (`50% 30%`) | Sanja Zrig tijekom tajlandske masaže, nasmijana |
 | `sanja-masaza-glave.jpg` | O meni, krug (`50% 18%`) | Sanja masira glavu i vrat klijentice |
