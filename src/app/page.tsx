@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Ikona } from "@/components/Ikona";
 import { InfoTraka } from "@/components/InfoTraka";
+import { CrtezTretmana, imaCrtez } from "@/components/CrtezTretmana";
 import { UpitForma } from "@/components/UpitForma";
 import { JsonLd } from "@/components/JsonLd";
 import { ogBase } from "@/content/seo";
@@ -86,20 +87,6 @@ function Hero() {
               Pošalji upit
             </Link>
           </div>
-          <div className="flex flex-wrap gap-x-8 gap-y-1 border-t border-sand pt-6 text-[15px]">
-            <a href={studio.telefonHref} className="inline-flex min-h-11 items-center gap-2.5 text-espresso no-underline">
-              <span className="text-gold-deep">
-                <Ikona ime="telefon" size={20} strokeWidth={1.4} />
-              </span>
-              {studio.telefon}
-            </a>
-            <a href={studio.instagram} className="inline-flex min-h-11 items-center gap-2.5 text-espresso no-underline">
-              <span className="text-gold-deep">
-                <Ikona ime="instagram" size={20} strokeWidth={1.4} />
-              </span>
-              {studio.instagramHandle}
-            </a>
-          </div>
         </div>
 
         <div className="flex min-w-0 flex-[1_1_400px] justify-center pt-3 md:pt-0">
@@ -137,7 +124,9 @@ function KarticaTretmana({ t }: { t: Tretman }) {
   const stranica = stranicaZaTretman(t.id);
   return (
     <article className="flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-3xl border border-sand bg-white-warm md:w-auto">
-      {t.slika && (
+      {imaCrtez(t.id) ? (
+        <CrtezTretmana id={t.id} />
+      ) : t.slika && (
         <div className="relative aspect-[4/3] w-full">
           <Image
             src={t.slika}
