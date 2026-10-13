@@ -7,21 +7,21 @@ import "./globals.css";
 
 const cinzel = Cinzel({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   variable: "--font-cinzel",
   display: "swap",
 });
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
   variable: "--font-montserrat",
   display: "swap",
 });
 
 const dancing = Dancing_Script({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
+  weight: ["500"],
   variable: "--font-dancing",
   display: "swap",
 });

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
+const poveznica = "underline decoration-gold-line decoration-1 underline-offset-4";
 const h2 = "m-0 mt-4 font-serif text-[22px] leading-[1.3] font-medium md:text-[26px]";
 
 export default function PravilaPrivatnosti() {
@@ -22,7 +23,7 @@ export default function PravilaPrivatnosti() {
       <main className="bg-ivory">
         <article className="mx-auto flex max-w-[780px] flex-col gap-5 px-6 py-14 text-[16px] leading-[1.75] text-cocoa md:px-10 md:py-[clamp(64px,7vw,104px)]">
           <nav aria-label="Putanja" className="text-[13px]">
-            <Link href="/" className="inline-flex min-h-11 items-center no-underline">
+            <Link href="/" className="inline-flex min-h-11 items-center underline decoration-gold-line decoration-1 underline-offset-4">
               Početna
             </Link>{" "}
             <span aria-hidden="true">/</span> <span aria-current="page">Pravila privatnosti</span>
@@ -47,7 +48,7 @@ export default function PravilaPrivatnosti() {
           <p className="m-0">
             {studio.naziv}, {studio.adresa}, {studio.postanskiBroj} {studio.grad} [puni naziv obrta/tvrtke i OIB —
             upisati]. Kontakt za pitanja o privatnosti:{" "}
-            <a href={`mailto:${studio.email}`}>{studio.email}</a>, {studio.telefon}.
+            <a href={`mailto:${studio.email}`} className={poveznica}>{studio.email}</a>, {studio.telefon}.
           </p>
 
           <h2 className={`${h2} text-espresso`}>2. Koje podatke prikupljamo</h2>
@@ -82,7 +83,7 @@ export default function PravilaPrivatnosti() {
           <p className="m-0">
             Imate pravo na pristup, ispravak i brisanje svojih podataka, ograničenje obrade, prigovor te povlačenje
             privole u bilo kojem trenutku, bez utjecaja na zakonitost obrade prije povlačenja. Zahtjev možete poslati na{" "}
-            <a href={`mailto:${studio.email}`}>{studio.email}</a>. Imate i pravo podnijeti prigovor Agenciji za zaštitu
+            <a href={`mailto:${studio.email}`} className={poveznica}>{studio.email}</a>. Imate i pravo podnijeti prigovor Agenciji za zaštitu
             osobnih podataka (AZOP, azop.hr).
           </p>
 
