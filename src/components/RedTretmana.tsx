@@ -24,7 +24,7 @@ export function RedTretmana({
   const gumb = "btn min-h-11 min-w-[128px] px-5 text-[11px]";
 
   return (
-    <div className={`flex flex-wrap items-center gap-x-4 gap-y-4 border-b py-6 md:gap-x-6 ${linija}`}>
+    <div className={`otkrij flex flex-wrap items-center gap-x-4 gap-y-4 border-b py-6 md:gap-x-6 ${linija}`}>
       <span className={`h-[52px] w-[52px] ${tamno ? "icon-ring-dark" : "icon-ring"}`}>
         <Ikona ime={t.ikona} vrsta="tretman" size={24} />
       </span>
