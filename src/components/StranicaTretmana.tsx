@@ -8,7 +8,7 @@ import { InfoTraka } from "./InfoTraka";
 import { JsonLd } from "./JsonLd";
 import { NaslovnaTraka } from "./NaslovnaTraka";
 import { PomocPriOdabiru } from "./PomocPriOdabiru";
-import { RedTretmana } from "./RedTretmana";
+import { Cjenik } from "./RedTretmana";
 import { SlikaULuku } from "./SlikaULuku";
 import { TekstSPoveznicama } from "./TekstSPoveznicama";
 import { breadcrumbLd, ogBase, type Mrvica } from "@/content/seo";
@@ -86,15 +86,16 @@ export function StranicaTretmana({ slug }: { slug: string }) {
               <div className={`eyebrow ${tamno ? "text-gold-light" : ""}`}>Cjenik</div>
               <h2 className={`h2-sm ${tamno ? "text-ivory" : ""}`}>Trajanje i cijena</h2>
               <p className={`m-0 text-[16px] leading-[1.75] ${tamno ? "text-on-dark" : "text-cocoa"}`}>
-                Cijene su u eurima. Termin rezervirajte online putem Zoyye ili pošaljite upit.
+                Cijene su u eurima i uključuju PDV. Termin rezervirajte online putem Zoyye ili pošaljite upit.
               </p>
               <SlikaULuku src={glavna.src} alt={glavna.alt} pozicija={glavna.pozicija} tamno={tamno} className="mt-6 md:mt-8" />
             </div>
-            <div className={`min-w-0 flex-[999_1_560px] border-t ${linija}`}>
-              {s.tretmanIds.map((id) => (
-                <RedTretmana key={id} t={tretman(id)} tamno={tamno} linija={linija} trenutnaStranica={putanjaStranice(slug)} />
-              ))}
-            </div>
+            <Cjenik
+              tretmani={s.tretmanIds.map((id) => tretman(id))}
+              tamno={tamno}
+              linija={linija}
+              trenutnaStranica={putanjaStranice(slug)}
+            />
           </div>
         </section>
 

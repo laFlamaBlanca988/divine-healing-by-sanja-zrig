@@ -40,7 +40,7 @@ Jezik stranice: **hrvatski** (`<html lang="hr">`).
 | Online rezervacija | https://zoyya.com/hr/divine-healing |
 | Google Maps | https://maps.google.com/?q=Ilica+322,+Zagreb |
 
-Radno vrijeme: **Pon – Pet 10:00 – 21:00 · Subota 13:00 – 19:00 · Nedjelja zatvoreno.**
+Radno vrijeme: **Pon – Pet 10:00 – 21:00 · Subota 09:00 – 14:00 · Nedjelja zatvoreno.**
 
 ---
 
@@ -299,8 +299,8 @@ espresso, tekst ivory; ostale: ivory pozadina, obrub `#D9C29C`.
 ### Pravila za datum i vrijeme (radno vrijeme)
 - **Nedjelja:** ako se odabere nedjelja, ispod polja poruka „Nedjeljom je studio zatvoren — odaberite
   drugi dan.” i slanje nije moguće dok se datum ne promijeni.
-- **Subota (13–19 h):** pilula „Jutro” je onemogućena (precrtana/prigušena, `disabled`), „Večer” se
-  prikazuje kao „Večer 17–19 h”. Ako je „Jutro” bilo odabrano, vrati na „Svejedno”.
+- **Subota (9–14 h):** pilula „Večer” je onemogućena (precrtana/prigušena, `disabled`), „Jutro” se
+  prikazuje kao „Jutro 9–13 h”, a „Popodne” kao „Popodne 13–14 h”. Ako je „Večer” bila odabrana, vrati na „Svejedno”.
 - „Danas” se računa u vremenskoj zoni Europe/Zagreb.
 
 ### Izbornik tretmana

@@ -35,7 +35,7 @@ export function Footer() {
             <span className={naslov}>Radno vrijeme</span>
             {/* Ista visina redaka kao linkovi u susjednim stupcima (44 px) */}
             <span className="flex min-h-11 items-center">Pon – Pet: 10:00 – 21:00</span>
-            <span className="flex min-h-11 items-center">Subota: 13:00 – 19:00</span>
+            <span className="flex min-h-11 items-center">Subota: 09:00 – 14:00</span>
             <span className="flex min-h-11 items-center">Nedjelja: zatvoreno</span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 {
-  "_napomena": "Cjenik za web stranicu — jedini izvor istine za tretmane i cijene. Cijene u eurima. Polja: id (slug, koristi se i kao vrijednost u formi i u ?tretman= parametru), naziv (prikazuje se), zoyyaNaziv (SAMO referenca na naziv na Zoyyi, s njihovim tipfelerima — nikad se ne prikazuje), opis (cjenik), kratkiOpis (kartice na početnoj), oznaka (mala pilula uz naziv), opcije (lista {trajanjeMin, cijenaEur}; više opcija = više stavki u formi), naUpit (prikaz 'Na upit' + gumb 'Pošalji upit'), izvor ('zoyya' ili 'plakat' = samo na plakatu za izlog, potvrđeno da ostaje), ikona (ključ u docs/ikone.json), istaknuto + istaknutoRedoslijed (kartice 'Najtraženiji tretmani' na početnoj, tim redom), slika (fotografija tretmana za karticu; alt i object-position u docs/dizajn.md §7). Kategorija: naziv, grupa (kategorija na Zoyyi), slogan (samo FOHOW, Cinzel citat), uvod, slika, tamnaSekcija. Izvorni Zoyya tekstovi: docs/zoyya-izvorni-tekstovi.md.",
+  "_napomena": "Cjenik za web stranicu — jedini izvor istine za tretmane i cijene. Cijene u eurima. Polja: id (slug, koristi se i kao vrijednost u formi i u ?tretman= parametru), naziv (prikazuje se), zoyyaNaziv (SAMO referenca na naziv na Zoyyi, s njihovim tipfelerima — nikad se ne prikazuje), opis (cjenik), kratkiOpis (kartice na početnoj), oznaka (mala pilula uz naziv), opcije (lista {trajanjeMin, cijenaEur, sidrenaCijenaEur}; više opcija = više stavki u formi; sidrenaCijenaEur = zakonska sidrena cijena, cijena koja je vrijedila 10. 9. 2026., prikazuje se uz svaku cijenu i NE mijenja se kad se promijeni cijenaEur), naUpit (prikaz 'Na upit' + gumb 'Pošalji upit'), izvor ('zoyya' ili 'plakat' = samo na plakatu za izlog, potvrđeno da ostaje), ikona (ključ u docs/ikone.json), istaknuto + istaknutoRedoslijed (kartice 'Najtraženiji tretmani' na početnoj, tim redom), slika (fotografija tretmana za karticu; alt i object-position u docs/dizajn.md §7). Kategorija: naziv, grupa (kategorija na Zoyyi), slogan (samo FOHOW, Cinzel citat), uvod, slika, tamnaSekcija. Izvorni Zoyya tekstovi: docs/zoyya-izvorni-tekstovi.md.",
   "kategorije": [
     {
       "id": "masaze",
@@ -17,7 +17,8 @@
           "opcije": [
             {
               "trajanjeMin": 90,
-              "cijenaEur": 60
+              "cijenaEur": 60,
+              "sidrenaCijenaEur": 60
             }
           ],
           "naUpit": false,
@@ -36,7 +37,8 @@
           "opcije": [
             {
               "trajanjeMin": 90,
-              "cijenaEur": 80
+              "cijenaEur": 80,
+              "sidrenaCijenaEur": 80
             }
           ],
           "naUpit": false,
@@ -54,7 +56,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 50
+              "cijenaEur": 50,
+              "sidrenaCijenaEur": 50
             }
           ],
           "naUpit": false,
@@ -71,7 +74,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 55
+              "cijenaEur": 55,
+              "sidrenaCijenaEur": 55
             }
           ],
           "naUpit": false,
@@ -90,7 +94,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 45
+              "cijenaEur": 45,
+              "sidrenaCijenaEur": 45
             }
           ],
           "naUpit": false,
@@ -108,11 +113,13 @@
           "opcije": [
             {
               "trajanjeMin": 30,
-              "cijenaEur": 25
+              "cijenaEur": 25,
+              "sidrenaCijenaEur": 25
             },
             {
               "trajanjeMin": 60,
-              "cijenaEur": 40
+              "cijenaEur": 40,
+              "sidrenaCijenaEur": 40
             }
           ],
           "naUpit": false,
@@ -147,7 +154,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 50
+              "cijenaEur": 50,
+              "sidrenaCijenaEur": 50
             }
           ],
           "naUpit": false,
@@ -164,7 +172,8 @@
           "opcije": [
             {
               "trajanjeMin": 30,
-              "cijenaEur": 25
+              "cijenaEur": 25,
+              "sidrenaCijenaEur": 25
             }
           ],
           "naUpit": false,
@@ -191,7 +200,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 50
+              "cijenaEur": 50,
+              "sidrenaCijenaEur": 50
             }
           ],
           "naUpit": false,
@@ -209,7 +219,8 @@
           "opcije": [
             {
               "trajanjeMin": 45,
-              "cijenaEur": 30
+              "cijenaEur": 30,
+              "sidrenaCijenaEur": 30
             }
           ],
           "naUpit": false,
@@ -257,7 +268,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 75
+              "cijenaEur": 75,
+              "sidrenaCijenaEur": 75
             }
           ],
           "naUpit": false,
@@ -273,7 +285,8 @@
           "opcije": [
             {
               "trajanjeMin": 30,
-              "cijenaEur": 40
+              "cijenaEur": 40,
+              "sidrenaCijenaEur": 40
             }
           ],
           "naUpit": false,
@@ -289,7 +302,8 @@
           "opcije": [
             {
               "trajanjeMin": 45,
-              "cijenaEur": 40
+              "cijenaEur": 40,
+              "sidrenaCijenaEur": 40
             }
           ],
           "naUpit": false,
@@ -305,7 +319,8 @@
           "opcije": [
             {
               "trajanjeMin": 30,
-              "cijenaEur": 40
+              "cijenaEur": 40,
+              "sidrenaCijenaEur": 40
             }
           ],
           "naUpit": false,
@@ -321,7 +336,8 @@
           "opcije": [
             {
               "trajanjeMin": 60,
-              "cijenaEur": 40
+              "cijenaEur": 40,
+              "sidrenaCijenaEur": 40
             }
           ],
           "naUpit": false,
