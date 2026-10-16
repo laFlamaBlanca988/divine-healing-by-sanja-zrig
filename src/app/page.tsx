@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Ikona } from "@/components/Ikona";
 import { InfoTraka } from "@/components/InfoTraka";
+import { NapomenaCjenika, SidrenaCijena } from "@/components/Cijena";
 import { CrtezTretmana, imaCrtez } from "@/components/CrtezTretmana";
 import { UpitForma } from "@/components/UpitForma";
 import { JsonLd } from "@/components/JsonLd";
@@ -108,7 +109,7 @@ function Hero() {
               </span>
               <span className="flex flex-col gap-0.5">
                 <span className="text-[14px] font-semibold">Pon – Pet 10 – 21 h</span>
-                <span className="text-[13px] text-cocoa">Subota 13 – 19 h</span>
+                <span className="text-[13px] text-cocoa">Subota 9 – 14 h</span>
               </span>
             </div>
           </div>
@@ -148,8 +149,11 @@ function KarticaTretmana({ t }: { t: Tretman }) {
               </>
             )}
           </span>
-          <span className="font-serif text-[22px] font-medium md:text-[26px]">
-            {opcija ? `${opcija.cijenaEur} €` : "Na upit"}
+          <span className="flex flex-col items-end">
+            <span className="font-serif text-[22px] font-medium md:text-[26px]">
+              {opcija ? `${opcija.cijenaEur} €` : "Na upit"}
+            </span>
+            {opcija && <SidrenaCijena eur={opcija.sidrenaCijenaEur} tamno={false} />}
           </span>
         </div>
         <h3 className="m-0 text-[14px] leading-[1.4] font-semibold tracking-[0.12em] uppercase md:text-[15px]">
@@ -208,7 +212,8 @@ function Najtrazeniji() {
       </div>
 
       <div className="wrap">
-        <p className="mt-6 mb-0 text-center text-[15px] leading-[1.7] text-cocoa md:mt-9">
+        <NapomenaCjenika tamno={false} className="mt-5 text-center md:mt-7" />
+        <p className="mt-4 mb-0 text-center text-[15px] leading-[1.7] text-cocoa md:mt-5">
           Također: {takoderRecenica()}.{" "}
           <Link href="/tretmani" className="font-semibold">
             Pogledajte cijeli cjenik
@@ -282,18 +287,22 @@ function Fohow() {
                     Na upit
                   </Link>
                 ) : (
-                  <span className="flex flex-none flex-col items-end md:flex-row md:items-baseline md:gap-3.5">
-                    <span className="order-2 text-[12px] text-on-dark md:order-1 md:text-[13px]">
-                      {t.opcije.map((o) => `${o.trajanjeMin} min`).join(" / ")}
+                  <span className="flex flex-none flex-col items-end">
+                    <span className="flex flex-col items-end md:flex-row md:items-baseline md:gap-3.5">
+                      <span className="order-2 text-[12px] text-on-dark md:order-1 md:text-[13px]">
+                        {t.opcije.map((o) => `${o.trajanjeMin} min`).join(" / ")}
+                      </span>
+                      <span className="order-1 font-serif text-[19px] text-gold-light md:order-2 md:min-w-12 md:text-right md:text-[22px]">
+                        {t.opcije.map((o) => `${o.cijenaEur} €`).join(" / ")}
+                      </span>
                     </span>
-                    <span className="order-1 font-serif text-[19px] text-gold-light md:order-2 md:min-w-12 md:text-right md:text-[22px]">
-                      {t.opcije.map((o) => `${o.cijenaEur} €`).join(" / ")}
-                    </span>
+                    <SidrenaCijena eur={t.opcije.map((o) => `${o.sidrenaCijenaEur} €`).join(" / ")} tamno />
                   </span>
                 )}
               </li>
             ))}
           </ul>
+          <NapomenaCjenika tamno className="-mt-1" />
           <div className="flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
             <a href={studio.zoyya} className="btn btn-dark min-h-[54px] px-[30px]">
               Rezerviraj BEM 3.0 masažu
@@ -472,7 +481,7 @@ function UpitIKontakt() {
             <span className="text-[12px] font-semibold tracking-[0.2em] text-gold-light uppercase">Radno vrijeme</span>
             {[
               ["Ponedjeljak – Petak", "10:00 – 21:00"],
-              ["Subota", "13:00 – 19:00"],
+              ["Subota", "09:00 – 14:00"],
               ["Nedjelja", "zatvoreno"],
             ].map(([d, v]) => (
               <div key={d} className="flex justify-between gap-4 text-[14px] md:text-[15px]">

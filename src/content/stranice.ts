@@ -185,7 +185,7 @@ export const stranice: StranicaTretmana[] = [
       {
         naslov: "Termin uz vaš raspored treninga",
         odlomci: [
-          "Studio radi od ponedjeljka do petka od 10 do 21 h i subotom od 13 do 19 h, pa termin možete uskladiti i s večernjim treninzima. Rezervirajte online putem Zoyye ili pošaljite upit.",
+          "Studio radi od ponedjeljka do petka od 10 do 21 h i subotom od 9 do 14 h, pa termin možete uskladiti i s večernjim treninzima. Rezervirajte online putem Zoyye ili pošaljite upit.",
         ],
       },
     ],

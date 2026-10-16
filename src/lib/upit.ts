@@ -4,9 +4,9 @@ import { SAVJET, stavkaZaVrijednost } from "@/content/tretmani";
 /** Pravila forme za upit (docs/dizajn.md §5) — dijele ih klijent i Server Action. */
 
 export const VREMENA = [
-  { id: "jutro", label: "Jutro", sub: "10 – 13 h" },
-  { id: "popodne", label: "Popodne", sub: "13 – 17 h" },
-  { id: "vecer", label: "Večer", sub: "17 – 21 h", subSubota: "17 – 19 h" },
+  { id: "jutro", label: "Jutro", sub: "10 – 13 h", subSubota: "9 – 13 h" },
+  { id: "popodne", label: "Popodne", sub: "13 – 17 h", subSubota: "13 – 14 h" },
+  { id: "vecer", label: "Večer", sub: "17 – 21 h" },
   { id: "svejedno", label: "Svejedno", sub: "bilo kada" },
 ] as const;
 
@@ -18,6 +18,9 @@ export const KONTAKTI = [
 
 export type VrijemeId = (typeof VREMENA)[number]["id"];
 export type KontaktId = (typeof KONTAKTI)[number]["id"];
+
+/** Subotom studio radi 9 – 14 h, pa večernji termin nije moguć. */
+export const SUBOTOM_ZATVORENO: VrijemeId = "vecer";
 
 export const PORUKA_MAX = 1000;
 export const MIN_VRIJEME_ISPUNE_MS = 3000;
@@ -100,7 +103,7 @@ export function upitSchema(danas: string) {
         if (dan === null) greska("datum", PORUKE.datumNeispravan);
         else if (v.datum < danas) greska("datum", PORUKE.datumProslost);
         else if (dan === 0) greska("datum", PORUKE.datumNedjelja);
-        else if (dan === 6 && v.vrijeme === "jutro") greska("vrijeme", PORUKE.vrijeme);
+        else if (dan === 6 && v.vrijeme === SUBOTOM_ZATVORENO) greska("vrijeme", PORUKE.vrijeme);
       }
 
       if (v.tretman && v.tretman !== SAVJET && !stavkaZaVrijednost(v.tretman)) greska("tretman", PORUKE.tretman);

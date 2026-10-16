@@ -22,6 +22,7 @@ import {
   MIN_VRIJEME_ISPUNE_MS,
   PORUKA_MAX,
   PORUKE,
+  SUBOTOM_ZATVORENO,
   VREMENA,
   danUTjednu,
   danasZagreb,
@@ -165,7 +166,7 @@ function Forma({ onPoslano, fokusiraj }: { onPoslano: () => void; fokusiraj: boo
 
   function promijeniDatum(novi: string, form: HTMLFormElement | null) {
     const noviDan = danUTjednu(novi);
-    const novoVrijeme = noviDan === 6 && vrijeme === "jutro" ? "svejedno" : vrijeme;
+    const novoVrijeme = noviDan === 6 && vrijeme === SUBOTOM_ZATVORENO ? "svejedno" : vrijeme;
     setDatum(novi);
     setVrijeme(novoVrijeme);
 
@@ -396,7 +397,7 @@ function Forma({ onPoslano, fokusiraj }: { onPoslano: () => void; fokusiraj: boo
         <legend className="field-label mb-2.5 p-0">Željeno vrijeme</legend>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,130px),1fr))] gap-2.5">
           {VREMENA.map((v) => {
-            const onemoguceno = subota && v.id === "jutro";
+            const onemoguceno = subota && v.id === SUBOTOM_ZATVORENO;
             const sub = subota && "subSubota" in v ? v.subSubota : v.sub;
             return (
               <label

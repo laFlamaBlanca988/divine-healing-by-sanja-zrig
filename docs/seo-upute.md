@@ -49,7 +49,7 @@ Cilj: da se Divine Healing pojavljuje kad netko u Zagrebu traži „masaža Zagr
 4. Glavna kategorija: ona za studio masaže (upišite „masaž” i odaberite najtočniju). Dodatne samo ako stvarno
    odgovaraju. Ne fizioterapeut, liječnik ni kozmetički salon.
 5. Telefon +385 98 165 4696, web stranica (nova domena), link za rezervaciju https://zoyya.com/hr/divine-healing.
-6. Radno vrijeme: pon–pet 10–21, sub 13–19, ned zatvoreno; posebno radno vrijeme za blagdane.
+6. Radno vrijeme: pon–pet 10–21, sub 9–14, ned zatvoreno; posebno radno vrijeme za blagdane.
 7. Usluge: svaki tretman s trajanjem i cijenom **točno kao na webu**; opisi s weba (bez detoksa, „nema
    nuspojava”, „10–15 masaža u jednom”, kolagena…).
 8. Opis (do 750 znakova, bez linkova i cijena), prijedlog:

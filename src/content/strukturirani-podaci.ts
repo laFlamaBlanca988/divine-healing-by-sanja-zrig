@@ -53,7 +53,7 @@ export function pocetnaLd() {
             opens: "10:00",
             closes: "21:00",
           },
-          { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "13:00", closes: "19:00" },
+          { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "14:00" },
         ],
         sameAs: [studio.instagram, studio.zoyya],
         hasOfferCatalog: {
