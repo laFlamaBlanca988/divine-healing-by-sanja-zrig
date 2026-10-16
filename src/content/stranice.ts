@@ -269,6 +269,18 @@ export const stranice: StranicaTretmana[] = [
         pozicija: "50% 60%",
       },
     ],
+    galerija: [
+      {
+        src: "/images/fohow-tretman-odozgo.jpg",
+        alt: "Sanja izvodi bio-meridijansku masažu leđa srebrnim rukavicama",
+        pozicija: "50% 40%",
+      },
+      {
+        src: "/images/fohow-rukavice-stol.jpg",
+        alt: "Stol za masažu sa srebrnim rukavicama i FOHOW BEM 3.0 uređajem",
+        pozicija: "50% 20%",
+      },
+    ],
     sekcije: [
       {
         naslov: "Što možete osjetiti",

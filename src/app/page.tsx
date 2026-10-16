@@ -36,10 +36,10 @@ const slikeTretmana: Record<string, { alt: string; pozicija: string }> = {
 };
 
 const galerija = [
+  { src: "/images/studio-prostor.jpg", alt: "Studio Divine Healing — stol za masažu u toplo osvijetljenoj sobi", pozicija: "62% 50%" },
   { src: "/images/tajlandska-istezanje-ramena.jpg", alt: "Tajlandska masaža — istezanje ramena" },
+  { src: "/images/studio-sanja.jpg", alt: "Sanja u studiju Divine Healing uz klijenticu na stolu za masažu", pozicija: "50% 60%" },
   { src: "/images/abdominalna-masaza.jpg", alt: "Abdominalna masaža" },
-  { src: "/images/tajlandska-istezanje-ruke.jpg", alt: "Tajlandska masaža — istezanje ruku i leđa" },
-  { src: "/images/masaza-vrata.jpg", alt: "Masaža vrata i ramena" },
 ];
 
 export default function Pocetna() {
@@ -93,14 +93,14 @@ function Hero() {
           <div className="relative aspect-[470/620] w-full max-w-[470px] max-md:aspect-auto max-md:h-[440px]">
             <div className="uvod-okvir arch absolute -top-3 -right-3 bottom-3 left-3 border border-gold-line md:-top-[18px] md:-right-[18px] md:bottom-[18px] md:left-[18px]" />
             <Image
-              src="/images/studio-sanja.jpg"
-              alt="Sanja u studiju Divine Healing uz klijenticu na stolu za masažu"
+              src="/images/sanja-studio-srce.jpg"
+              alt="Sanja Zrig u svom studiju Divine Healing, sjedi na stolu za masažu i rukama pokazuje srce"
               fill
               loading="eager"
               fetchPriority="high"
               sizes="(min-width: 1024px) 470px, 100vw"
               className="arch object-cover"
-              style={{ objectPosition: "50% 72%" }}
+              style={{ objectPosition: "50% 45%" }}
             />
             <div className="uvod [--i:5] absolute bottom-6 left-3 flex items-center gap-3.5 rounded-full border border-sand bg-white-warm py-3 pr-6 pl-3 shadow-[0_18px_40px_-18px_rgba(46,33,25,0.35)] md:bottom-11 md:-left-9">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream text-gold-deep">
@@ -235,12 +235,12 @@ function Fohow() {
           <div className="absolute top-[18px] right-[18px] -bottom-[18px] -left-[18px] hidden rounded-[28px] border border-bronze-line md:block" />
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] md:aspect-[4/5] md:rounded-[28px]">
             <Image
-              src="/images/fohow-bem-uredaj.jpg"
-              alt="FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu"
+              src="/images/fohow-rukavice-stol.jpg"
+              alt="Stol za masažu sa srebrnim rukavicama i FOHOW BEM 3.0 uređajem"
               fill
               sizes="(min-width: 1024px) 500px, 100vw"
               className="object-cover"
-              style={{ objectPosition: "50% 50%" }}
+              style={{ objectPosition: "50% 22%" }}
             />
           </div>
         </div>
@@ -388,7 +388,14 @@ function Galerija() {
         <div className="otkrij grid grid-cols-2 gap-2.5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] md:gap-4">
           {galerija.map((s) => (
             <div key={s.src} className="zum-slike relative aspect-[4/5] overflow-hidden rounded-[20px]">
-              <Image src={s.src} alt={s.alt} fill sizes="(min-width: 1024px) 240px, 50vw" className="object-cover" />
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                sizes="(min-width: 1024px) 240px, 50vw"
+                className="object-cover"
+                style={{ objectPosition: s.pozicija }}
+              />
             </div>
           ))}
           <a
