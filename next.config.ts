@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
+import { OPIS_POLJA, nedostajePrivatnost } from "./src/content/privatnost";
 
 /** Osnovna sigurnosna zaglavlja za sve stranice (bez CSP-a, koji bi tražio nonce za Nextove skripte). */
 const sigurnosnaZaglavlja = [
@@ -19,6 +20,13 @@ export default function config(phase: string): NextConfig {
     console.warn(
       "\n⚠ NEXT_PUBLIC_SITE_URL nije postavljen: canonical, sitemap i Open Graph koristit će http://localhost:3000.\n" +
         "  Za produkciju postavite NEXT_PUBLIC_SITE_URL (npr. https://www.vasa-domena.hr).\n",
+    );
+  }
+
+  if (phase === PHASE_PRODUCTION_BUILD && nedostajePrivatnost.length > 0) {
+    console.warn(
+      `\n⚠ Pravila privatnosti nisu dovršena (stranica je noindex). Upisati u src/content/privatnost.ts: ` +
+        `${nedostajePrivatnost.map((k) => OPIS_POLJA[k]).join(", ")}.\n`,
     );
   }
 
