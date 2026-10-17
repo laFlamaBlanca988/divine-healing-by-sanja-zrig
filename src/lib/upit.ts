@@ -1,4 +1,3 @@
-import { z } from "zod";
 import { SAVJET, stavkaZaVrijednost } from "@/content/tretmani";
 
 /** Pravila forme za upit (docs/dizajn.md §5) — dijele ih klijent i Server Action. */
@@ -37,6 +36,7 @@ export const PORUKE = {
   privola: "Za slanje upita potrebna je vaša privola.",
   tretman: "Odaberite tretman s popisa.",
   vrijeme: "Odaberite drugo vrijeme.",
+  kontakt: "Odaberite način kontakta.",
   poruka: `Poruka može imati najviše ${PORUKA_MAX} znakova.`,
 } as const;
 
@@ -72,53 +72,21 @@ export function formatirajDatum(datum: string): string {
 const TELEFON_ZNAKOVI = /^[+\d\s/-]+$/;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function upitSchema(danas: string) {
-  return z
-    .object({
-      ime: z.string().trim(),
-      telefon: z.string().trim(),
-      email: z.string().trim(),
-      datum: z.string().trim(),
-      tretman: z.string(),
-      vrijeme: z.enum(VREMENA.map((v) => v.id) as [VrijemeId, ...VrijemeId[]]),
-      kontakt: z.enum(KONTAKTI.map((k) => k.id) as [KontaktId, ...KontaktId[]]),
-      poruka: z.string().trim(),
-      privola: z.boolean(),
-    })
-    // Sva pravila u jednoj provjeri da se greške svih polja prikažu odjednom.
-    .superRefine((v, ctx) => {
-      const greska = (polje: string, message: string) => ctx.addIssue({ code: "custom", path: [polje], message });
-
-      if (!v.ime || v.ime.length > 120) greska("ime", PORUKE.ime);
-
-      if (!v.telefon) greska("telefon", PORUKE.telefonPrazan);
-      else if (v.telefon.length > 40 || !TELEFON_ZNAKOVI.test(v.telefon) || (v.telefon.match(/\d/g)?.length ?? 0) < 8)
-        greska("telefon", PORUKE.telefonNeispravan);
-
-      if (v.email && (v.email.length > 200 || !EMAIL.test(v.email))) greska("email", PORUKE.emailNeispravan);
-      else if (!v.email && v.kontakt === "email") greska("email", PORUKE.emailPrazan);
-
-      if (v.datum) {
-        const dan = danUTjednu(v.datum);
-        if (dan === null) greska("datum", PORUKE.datumNeispravan);
-        else if (v.datum < danas) greska("datum", PORUKE.datumProslost);
-        else if (dan === 0) greska("datum", PORUKE.datumNedjelja);
-        else if (dan === 6 && v.vrijeme === SUBOTOM_ZATVORENO) greska("vrijeme", PORUKE.vrijeme);
-      }
-
-      if (v.tretman && v.tretman !== SAVJET && !stavkaZaVrijednost(v.tretman)) greska("tretman", PORUKE.tretman);
-
-      if (v.poruka.length > PORUKA_MAX) greska("poruka", PORUKE.poruka);
-
-      if (!v.privola) greska("privola", PORUKE.privola);
-    });
-}
-
-export type UpitPodaci = z.infer<ReturnType<typeof upitSchema>>;
+export type UpitPodaci = {
+  ime: string;
+  telefon: string;
+  email: string;
+  datum: string;
+  tretman: string;
+  vrijeme: VrijemeId;
+  kontakt: KontaktId;
+  poruka: string;
+  privola: boolean;
+};
 export type PoljeUpita = keyof UpitPodaci;
 export type GreskeUpita = Partial<Record<PoljeUpita, string>>;
 
-/** Sirove vrijednosti iz FormData → objekt za shemu. */
+/** Sirove vrijednosti iz FormData → objekt za validaciju. */
 export function izFormData(fd: FormData) {
   const s = (k: string) => {
     const v = fd.get(k);
@@ -142,13 +110,58 @@ export type RezultatValidacije =
   | { ok: true; podaci: UpitPodaci }
   | { ok: false; greske: GreskeUpita };
 
-export function validirajUpit(sirovo: unknown, danas: string): RezultatValidacije {
-  const r = upitSchema(danas).safeParse(sirovo);
-  if (r.success) return { ok: true, podaci: r.data };
+type SiroviUpit = ReturnType<typeof izFormData>;
+
+const jeVrijeme = (v: string): v is VrijemeId => VREMENA.some((x) => x.id === v);
+const jeKontakt = (v: string): v is KontaktId => KONTAKTI.some((x) => x.id === v);
+
+/**
+ * Sva pravila u jednoj provjeri da se greške svih polja prikažu odjednom.
+ * Bez biblioteke za validaciju: ista funkcija radi i u pregledniku, pa ne povećava JavaScript stranice.
+ */
+export function validirajUpit(sirovo: SiroviUpit, danas: string): RezultatValidacije {
+  const v = {
+    ime: sirovo.ime.trim(),
+    telefon: sirovo.telefon.trim(),
+    email: sirovo.email.trim(),
+    datum: sirovo.datum.trim(),
+    tretman: sirovo.tretman,
+    vrijeme: sirovo.vrijeme,
+    kontakt: sirovo.kontakt,
+    poruka: sirovo.poruka.trim(),
+    privola: sirovo.privola,
+  };
   const greske: GreskeUpita = {};
-  for (const issue of r.error.issues) {
-    const polje = issue.path[0] as PoljeUpita | undefined;
-    if (polje && !greske[polje]) greske[polje] = issue.message;
+  const greska = (polje: PoljeUpita, poruka: string) => {
+    greske[polje] ??= poruka;
+  };
+
+  if (!v.ime || v.ime.length > 120) greska("ime", PORUKE.ime);
+
+  if (!v.telefon) greska("telefon", PORUKE.telefonPrazan);
+  else if (v.telefon.length > 40 || !TELEFON_ZNAKOVI.test(v.telefon) || (v.telefon.match(/\d/g)?.length ?? 0) < 8)
+    greska("telefon", PORUKE.telefonNeispravan);
+
+  if (v.email && (v.email.length > 200 || !EMAIL.test(v.email))) greska("email", PORUKE.emailNeispravan);
+  else if (!v.email && v.kontakt === "email") greska("email", PORUKE.emailPrazan);
+
+  if (!jeVrijeme(v.vrijeme)) greska("vrijeme", PORUKE.vrijeme);
+  if (!jeKontakt(v.kontakt)) greska("kontakt", PORUKE.kontakt);
+
+  if (v.datum) {
+    const dan = danUTjednu(v.datum);
+    if (dan === null) greska("datum", PORUKE.datumNeispravan);
+    else if (v.datum < danas) greska("datum", PORUKE.datumProslost);
+    else if (dan === 0) greska("datum", PORUKE.datumNedjelja);
+    else if (dan === 6 && v.vrijeme === SUBOTOM_ZATVORENO) greska("vrijeme", PORUKE.vrijeme);
   }
-  return { ok: false, greske };
+
+  if (v.tretman && v.tretman !== SAVJET && !stavkaZaVrijednost(v.tretman)) greska("tretman", PORUKE.tretman);
+
+  if (v.poruka.length > PORUKA_MAX) greska("poruka", PORUKE.poruka);
+
+  if (!v.privola) greska("privola", PORUKE.privola);
+
+  if (Object.keys(greske).length > 0 || !jeVrijeme(v.vrijeme) || !jeKontakt(v.kontakt)) return { ok: false, greske };
+  return { ok: true, podaci: { ...v, vrijeme: v.vrijeme, kontakt: v.kontakt } };
 }

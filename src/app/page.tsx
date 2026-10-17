@@ -367,7 +367,7 @@ function OMeni() {
             Ako osjetite želju za suradnjom sa mnom, rezervirajte svoj termin. Dobro mi došli!
           </p>
           <div className="mt-1 flex flex-wrap items-center gap-x-7 gap-y-4">
-            <span className="font-script text-[30px] text-gold-deep md:text-[34px]">Sanja Zrig</span>
+            <span className="font-script text-[30px] font-medium text-gold-deep md:text-[34px]">Sanja Zrig</span>
             <a href={studio.zoyya} className="btn btn-primary min-h-[52px] px-7">
               Rezerviraj termin
             </a>
@@ -436,7 +436,7 @@ function UpitIKontakt() {
           <UpitForma />
         </div>
 
-        <aside
+        <div
           id="kontakt"
           className="otkrij flex min-w-0 flex-[1_1_400px] scroll-mt-6 flex-col gap-[22px] rounded-[28px] bg-espresso px-[22px] py-7 text-on-dark md:gap-[26px] md:rounded-[32px] md:p-[clamp(28px,3.5vw,44px)]"
         >
@@ -494,7 +494,7 @@ function UpitIKontakt() {
             <Ikona ime="kalendar" size={18} />
             Online rezervacija — Zoyya
           </a>
-        </aside>
+        </div>
       </div>
     </section>
   );

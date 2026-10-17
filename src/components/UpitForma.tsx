@@ -479,7 +479,9 @@ function Forma({ onPoslano, fokusiraj }: { onPoslano: () => void; fokusiraj: boo
           />
           <span>
             Slažem se da se moji podaci koriste isključivo za odgovor na ovaj upit.{" "}
-            <Link href="/pravila-privatnosti">Pravila privatnosti</Link>
+            <Link href="/pravila-privatnosti" className="underline decoration-gold-line decoration-1 underline-offset-4">
+              Pravila privatnosti
+            </Link>
           </span>
         </label>
         {greska("privola")}
