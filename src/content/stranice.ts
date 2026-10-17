@@ -185,7 +185,7 @@ export const stranice: StranicaTretmana[] = [
       {
         naslov: "Termin uz vaš raspored treninga",
         odlomci: [
-          "Studio radi od ponedjeljka do petka od 10 do 21 h i subotom od 13 do 19 h, pa termin možete uskladiti i s večernjim treninzima. Rezervirajte online putem Zoyye ili pošaljite upit.",
+          "Studio radi od ponedjeljka do petka od 10 do 21 h i subotom od 9 do 14 h, pa termin možete uskladiti i s večernjim treninzima. Rezervirajte online putem Zoyye ili pošaljite upit.",
         ],
       },
     ],
@@ -267,6 +267,18 @@ export const stranice: StranicaTretmana[] = [
         src: "/images/fohow-bem-uredaj.jpg",
         alt: "FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu",
         pozicija: "50% 60%",
+      },
+    ],
+    galerija: [
+      {
+        src: "/images/fohow-tretman-odozgo.jpg",
+        alt: "Sanja izvodi bio-meridijansku masažu leđa srebrnim rukavicama",
+        pozicija: "50% 40%",
+      },
+      {
+        src: "/images/fohow-rukavice-stol.jpg",
+        alt: "Stol za masažu sa srebrnim rukavicama i FOHOW BEM 3.0 uređajem",
+        pozicija: "50% 20%",
       },
     ],
     sekcije: [

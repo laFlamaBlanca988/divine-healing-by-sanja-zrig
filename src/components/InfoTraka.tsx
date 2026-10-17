@@ -36,7 +36,7 @@ export function InfoTraka({ upute = false }: { upute?: boolean }) {
         </InfoStavka>
         <InfoStavka ikona="sat" naslov="Radno vrijeme">
           <span className="text-[15px] font-medium md:text-[16px]">Pon – Pet: 10:00 – 21:00</span>
-          <span className="text-[14px] text-cocoa">Subota: 13:00 – 19:00 · Nedjelja: zatvoreno</span>
+          <span className="text-[14px] text-cocoa">Subota: 09:00 – 14:00 · Nedjelja: zatvoreno</span>
         </InfoStavka>
       </div>
     </section>

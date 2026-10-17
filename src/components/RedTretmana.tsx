@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NapomenaCjenika, SidrenaCijena } from "./Cijena";
 import { Ikona } from "./Ikona";
 import { studio } from "@/content/studio";
 import { stranicaZaTretman } from "@/content/stranice";
@@ -24,7 +25,7 @@ export function RedTretmana({
   const gumb = "btn min-h-11 min-w-[128px] px-5 text-[11px]";
 
   return (
-    <div className={`flex flex-wrap items-center gap-x-4 gap-y-4 border-b py-6 md:gap-x-6 ${linija}`}>
+    <div className={`otkrij flex flex-wrap items-center gap-x-4 gap-y-4 border-b py-6 md:gap-x-6 ${linija}`}>
       <span className={`h-[52px] w-[52px] ${tamno ? "icon-ring-dark" : "icon-ring"}`}>
         <Ikona ime={t.ikona} vrsta="tretman" size={24} />
       </span>
@@ -78,13 +79,17 @@ export function RedTretmana({
               {t.opcije.length === 1 ? (
                 <>
                   <span className={`font-serif text-[24px] font-medium ${cijenaBoja}`}>{t.opcije[0].cijenaEur} €</span>
+                  <SidrenaCijena eur={t.opcije[0].sidrenaCijenaEur} tamno={tamno} />
                   <span className={`text-[13px] ${sporedni}`}>{t.opcije[0].trajanjeMin} min</span>
                 </>
               ) : (
                 t.opcije.map((o) => (
-                  <span key={o.trajanjeMin} className="flex items-baseline gap-2.5">
-                    <span className={`text-[13px] ${sporedni}`}>{o.trajanjeMin} min</span>
-                    <span className={`font-serif text-[20px] font-medium ${cijenaBoja}`}>{o.cijenaEur} €</span>
+                  <span key={o.trajanjeMin} className="flex flex-col items-end">
+                    <span className="flex items-baseline gap-2.5">
+                      <span className={`text-[13px] ${sporedni}`}>{o.trajanjeMin} min</span>
+                      <span className={`font-serif text-[20px] font-medium ${cijenaBoja}`}>{o.cijenaEur} €</span>
+                    </span>
+                    <SidrenaCijena eur={o.sidrenaCijenaEur} tamno={tamno} />
                   </span>
                 ))
               )}
@@ -103,6 +108,28 @@ export function RedTretmana({
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+/** Popis redova cjenika s napomenom o PDV-u i sidrenoj cijeni na kraju. */
+export function Cjenik({
+  tretmani,
+  tamno,
+  linija,
+  trenutnaStranica,
+}: {
+  tretmani: Tretman[];
+  tamno: boolean;
+  linija: string;
+  trenutnaStranica?: string;
+}) {
+  return (
+    <div className={`min-w-0 flex-[999_1_560px] border-t ${linija}`}>
+      {tretmani.map((t) => (
+        <RedTretmana key={t.id} t={t} tamno={tamno} linija={linija} trenutnaStranica={trenutnaStranica} />
+      ))}
+      <NapomenaCjenika tamno={tamno} className="pt-5" />
     </div>
   );
 }

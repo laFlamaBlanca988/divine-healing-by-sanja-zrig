@@ -30,7 +30,7 @@ export function pocetnaLd() {
         description:
           "Studio za masažu u Kustošiji, Zagreb: terapeutska, tradicionalna tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0 masaže.",
         url: `${SITE_URL}/`,
-        image: [`${SITE_URL}/opengraph-image.jpg`, `${SITE_URL}/images/studio-sanja.jpg`],
+        image: [`${SITE_URL}/opengraph-image.jpg`, `${SITE_URL}/images/studio-prostor.jpg`],
         logo: `${SITE_URL}/images/logo-znak.png`,
         telephone: "+385981654696",
         email: studio.email,
@@ -53,7 +53,7 @@ export function pocetnaLd() {
             opens: "10:00",
             closes: "21:00",
           },
-          { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "13:00", closes: "19:00" },
+          { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "14:00" },
         ],
         sameAs: [studio.instagram, studio.zoyya],
         hasOfferCatalog: {

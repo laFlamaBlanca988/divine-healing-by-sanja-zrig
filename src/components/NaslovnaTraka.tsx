@@ -44,13 +44,13 @@ export function NaslovnaTraka({ mrvice, naslov, uskiNaslov = false, children }: 
             </span>
           )}
         </nav>
-        <h1 className={`h1 text-espresso ${uskiNaslov ? "max-[380px]:text-[34px] max-[340px]:text-[30px]" : ""}`}>
+        <h1 className={`uvod h1 text-espresso ${uskiNaslov ? "max-[380px]:text-[34px] max-[340px]:text-[30px]" : ""}`}>
           {naslov}
         </h1>
         <div className="flex w-full max-w-[360px] items-center gap-3.5 text-gold">
-          <span className="h-px flex-1 bg-gold-line" />
+          <span className="uvod-linija uvod-linija-lijevo h-px flex-1 bg-gold-line" />
           <Ikona ime="lotos" vrsta="tretman" size={30} strokeWidth={1.2} />
-          <span className="h-px flex-1 bg-gold-line" />
+          <span className="uvod-linija uvod-linija-desno h-px flex-1 bg-gold-line" />
         </div>
         {children}
       </div>

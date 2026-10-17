@@ -8,7 +8,7 @@ import { InfoTraka } from "./InfoTraka";
 import { JsonLd } from "./JsonLd";
 import { NaslovnaTraka } from "./NaslovnaTraka";
 import { PomocPriOdabiru } from "./PomocPriOdabiru";
-import { RedTretmana } from "./RedTretmana";
+import { Cjenik } from "./RedTretmana";
 import { SlikaULuku } from "./SlikaULuku";
 import { TekstSPoveznicama } from "./TekstSPoveznicama";
 import { breadcrumbLd, ogBase, type Mrvica } from "@/content/seo";
@@ -69,7 +69,7 @@ export function StranicaTretmana({ slug }: { slug: string }) {
             </p>
           ))}
           <div className="mt-2 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3.5">
-            <a href={studio.zoyya} className="btn btn-primary btn-lg gap-3">
+            <a href={studio.zoyya} className="btn btn-primary btn-lg pomak-strelice gap-3">
               Rezerviraj termin
               <Ikona ime="strelica" size={18} />
             </a>
@@ -86,15 +86,16 @@ export function StranicaTretmana({ slug }: { slug: string }) {
               <div className={`eyebrow ${tamno ? "text-gold-light" : ""}`}>Cjenik</div>
               <h2 className={`h2-sm ${tamno ? "text-ivory" : ""}`}>Trajanje i cijena</h2>
               <p className={`m-0 text-[16px] leading-[1.75] ${tamno ? "text-on-dark" : "text-cocoa"}`}>
-                Cijene su u eurima. Termin rezervirajte online putem Zoyye ili pošaljite upit.
+                Cijene su u eurima i uključuju PDV. Termin rezervirajte online putem Zoyye ili pošaljite upit.
               </p>
               <SlikaULuku src={glavna.src} alt={glavna.alt} pozicija={glavna.pozicija} tamno={tamno} className="mt-6 md:mt-8" />
             </div>
-            <div className={`min-w-0 flex-[999_1_560px] border-t ${linija}`}>
-              {s.tretmanIds.map((id) => (
-                <RedTretmana key={id} t={tretman(id)} tamno={tamno} linija={linija} trenutnaStranica={putanjaStranice(slug)} />
-              ))}
-            </div>
+            <Cjenik
+              tretmani={s.tretmanIds.map((id) => tretman(id))}
+              tamno={tamno}
+              linija={linija}
+              trenutnaStranica={putanjaStranice(slug)}
+            />
           </div>
         </section>
 
@@ -108,7 +109,7 @@ export function StranicaTretmana({ slug }: { slug: string }) {
             >
               <div className="flex max-w-[760px] flex-col gap-12">
                 {s.sekcije.map((sek) => (
-                  <div key={sek.naslov} className="flex flex-col gap-4">
+                  <div key={sek.naslov} className="otkrij flex flex-col gap-4">
                     <h2 className="h2-sm">{sek.naslov}</h2>
                     {sek.citat && (
                       <blockquote className="m-0 font-serif text-[19px] leading-[1.45] text-espresso md:text-[22px]">
@@ -137,7 +138,7 @@ export function StranicaTretmana({ slug }: { slug: string }) {
               {s.galerija && (
                 <div className="grid max-w-[760px] grid-cols-2 content-start gap-2.5 md:gap-4 lg:grid-cols-1">
                   {s.galerija.map((g) => (
-                    <div key={g.src} className="relative aspect-[4/5] overflow-hidden rounded-[20px]">
+                    <div key={g.src} className="otkrij zum-slike relative aspect-[4/5] overflow-hidden rounded-[20px]">
                       <Image
                         src={g.src}
                         alt={g.alt}
@@ -164,7 +165,7 @@ export function StranicaTretmana({ slug }: { slug: string }) {
                     {x.naziv}
                   </Link>
                 ))}
-                <Link href="/tretmani" className="btn btn-secondary min-h-11 gap-2.5 px-5">
+                <Link href="/tretmani" className="btn btn-secondary pomak-strelice min-h-11 gap-2.5 px-5">
                   Cijeli cjenik
                   <span className="text-gold-deep">
                     <Ikona ime="strelica" size={16} strokeWidth={1.6} />

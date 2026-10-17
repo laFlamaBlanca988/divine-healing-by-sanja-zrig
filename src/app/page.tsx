@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Ikona } from "@/components/Ikona";
 import { InfoTraka } from "@/components/InfoTraka";
+import { NapomenaCjenika, SidrenaCijena } from "@/components/Cijena";
 import { CrtezTretmana, imaCrtez } from "@/components/CrtezTretmana";
 import { UpitForma } from "@/components/UpitForma";
 import { JsonLd } from "@/components/JsonLd";
@@ -36,10 +37,10 @@ const slikeTretmana: Record<string, { alt: string; pozicija: string }> = {
 };
 
 const galerija = [
+  { src: "/images/studio-prostor.jpg", alt: "Studio Divine Healing — stol za masažu u toplo osvijetljenoj sobi", pozicija: "62% 50%" },
   { src: "/images/tajlandska-istezanje-ramena.jpg", alt: "Tajlandska masaža — istezanje ramena" },
+  { src: "/images/studio-sanja.jpg", alt: "Sanja u studiju Divine Healing uz klijenticu na stolu za masažu", pozicija: "50% 60%" },
   { src: "/images/abdominalna-masaza.jpg", alt: "Abdominalna masaža" },
-  { src: "/images/tajlandska-istezanje-ruke.jpg", alt: "Tajlandska masaža — istezanje ruku i leđa" },
-  { src: "/images/masaza-vrata.jpg", alt: "Masaža vrata i ramena" },
 ];
 
 export default function Pocetna() {
@@ -66,20 +67,20 @@ function Hero() {
     <section className="bg-ivory">
       <div className="wrap flex flex-wrap items-center gap-x-20 gap-y-12 pt-8 pb-12 md:gap-y-16 md:pt-[clamp(48px,6vw,88px)] md:pb-[clamp(72px,8vw,112px)]">
         <div className="flex min-w-0 flex-[1_1_500px] flex-col gap-[22px] md:gap-7">
-          <div className="eyebrow flex items-center gap-3.5">
+          <div className="uvod eyebrow flex items-center gap-3.5">
             <span className="hidden h-px w-7 bg-gold-line sm:block md:w-10" />
             Massage &amp; Wellness Studio · Zagreb
           </div>
-          <h1 className="h1 text-espresso">
+          <h1 className="uvod [--i:1] h1 text-espresso">
             Prostor u kojem ćete se osjećati <span className="text-gold-deep">i biti bolje</span>
           </h1>
-          <p className="m-0 max-w-[540px] text-[16px] leading-[1.7] text-cocoa md:text-[17px] md:leading-[1.75]">
+          <p className="uvod [--i:2] m-0 max-w-[540px] text-[16px] leading-[1.7] text-cocoa md:text-[17px] md:leading-[1.75]">
             Terapeutska, tajlandska, sportska i relax masaža, antistres tretmani, hidžama i FOHOW BEM 3.0
             bio-meridijanske masaže u Ilici 322, u zagrebačkoj Kustošiji — s individualnim pristupom i
             punom posvećenošću svakom klijentu.
           </p>
-          <div className="mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
-            <a href={studio.zoyya} className="btn btn-primary btn-lg gap-3">
+          <div className="uvod [--i:3] mt-1 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
+            <a href={studio.zoyya} className="btn btn-primary btn-lg pomak-strelice gap-3">
               Rezerviraj termin
               <Ikona ime="strelica" size={18} />
             </a>
@@ -91,24 +92,24 @@ function Hero() {
 
         <div className="flex min-w-0 flex-[1_1_400px] justify-center pt-3 md:pt-0">
           <div className="relative aspect-[470/620] w-full max-w-[470px] max-md:aspect-auto max-md:h-[440px]">
-            <div className="arch absolute -top-3 -right-3 bottom-3 left-3 border border-gold-line md:-top-[18px] md:-right-[18px] md:bottom-[18px] md:left-[18px]" />
+            <div className="uvod-okvir arch absolute -top-3 -right-3 bottom-3 left-3 border border-gold-line md:-top-[18px] md:-right-[18px] md:bottom-[18px] md:left-[18px]" />
             <Image
-              src="/images/studio-sanja.jpg"
-              alt="Sanja u studiju Divine Healing uz klijenticu na stolu za masažu"
+              src="/images/sanja-studio-srce.jpg"
+              alt="Sanja Zrig u svom studiju Divine Healing, sjedi na stolu za masažu i rukama pokazuje srce"
               fill
               loading="eager"
               fetchPriority="high"
               sizes="(min-width: 1024px) 470px, 100vw"
               className="arch object-cover"
-              style={{ objectPosition: "50% 72%" }}
+              style={{ objectPosition: "50% 45%" }}
             />
-            <div className="absolute bottom-6 left-3 flex items-center gap-3.5 rounded-full border border-sand bg-white-warm py-3 pr-6 pl-3 shadow-[0_18px_40px_-18px_rgba(46,33,25,0.35)] md:bottom-11 md:-left-9">
+            <div className="uvod [--i:5] absolute bottom-6 left-3 flex items-center gap-3.5 rounded-full border border-sand bg-white-warm py-3 pr-6 pl-3 shadow-[0_18px_40px_-18px_rgba(46,33,25,0.35)] md:bottom-11 md:-left-9">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream text-gold-deep">
                 <Ikona ime="sat" size={20} strokeWidth={1.4} />
               </span>
               <span className="flex flex-col gap-0.5">
                 <span className="text-[14px] font-semibold">Pon – Pet 10 – 21 h</span>
-                <span className="text-[13px] text-cocoa">Subota 13 – 19 h</span>
+                <span className="text-[13px] text-cocoa">Subota 9 – 14 h</span>
               </span>
             </div>
           </div>
@@ -123,7 +124,7 @@ function KarticaTretmana({ t }: { t: Tretman }) {
   const opcija = t.opcije[0];
   const stranica = stranicaZaTretman(t.id);
   return (
-    <article className="flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-3xl border border-sand bg-white-warm md:w-auto">
+    <article className="kartica flex w-[272px] flex-none snap-start flex-col overflow-hidden rounded-3xl border border-sand bg-white-warm md:w-auto">
       {imaCrtez(t.id) ? (
         <CrtezTretmana id={t.id} />
       ) : t.slika && (
@@ -148,8 +149,11 @@ function KarticaTretmana({ t }: { t: Tretman }) {
               </>
             )}
           </span>
-          <span className="font-serif text-[22px] font-medium md:text-[26px]">
-            {opcija ? `${opcija.cijenaEur} €` : "Na upit"}
+          <span className="flex flex-col items-end">
+            <span className="font-serif text-[22px] font-medium md:text-[26px]">
+              {opcija ? `${opcija.cijenaEur} €` : "Na upit"}
+            </span>
+            {opcija && <SidrenaCijena eur={opcija.sidrenaCijenaEur} tamno={false} />}
           </span>
         </div>
         <h3 className="m-0 text-[14px] leading-[1.4] font-semibold tracking-[0.12em] uppercase md:text-[15px]">
@@ -168,7 +172,7 @@ function KarticaTretmana({ t }: { t: Tretman }) {
         <a
           href={studio.zoyya}
           aria-label={`Rezerviraj: ${t.naziv}`}
-          className="mt-auto inline-flex min-h-11 items-center gap-2.5 self-start text-[12px] font-semibold tracking-[0.16em] uppercase no-underline"
+          className="pomak-strelice mt-auto inline-flex min-h-11 items-center gap-2.5 self-start text-[12px] font-semibold tracking-[0.16em] uppercase no-underline"
         >
           Rezerviraj <Ikona ime="strelica" size={16} strokeWidth={1.6} />
         </a>
@@ -181,7 +185,7 @@ function Najtrazeniji() {
   return (
     <section id="tretmani" className="section-y bg-ivory">
       <div className="wrap">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-x-12 gap-y-6 md:mb-12">
+        <div className="otkrij mb-6 flex flex-wrap items-end justify-between gap-x-12 gap-y-6 md:mb-12">
           <div className="flex max-w-[640px] flex-col gap-3 md:gap-4">
             <div className="eyebrow">Najtraženiji tretmani</div>
             <h2 className="h2">Masaže i tretmani</h2>
@@ -190,7 +194,7 @@ function Najtrazeniji() {
               potpunog opuštanja.
             </p>
           </div>
-          <Link href="/tretmani" className="btn btn-secondary hidden min-h-[52px] gap-3 px-7 md:inline-flex">
+          <Link href="/tretmani" className="btn btn-secondary pomak-strelice hidden min-h-[52px] gap-3 px-7 md:inline-flex">
             Cijeli cjenik
             <span className="text-gold-deep">
               <Ikona ime="strelica" size={18} />
@@ -199,7 +203,7 @@ function Najtrazeniji() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1240px] md:px-10">
+      <div className="otkrij mx-auto max-w-[1240px] md:px-10">
         <div className="no-scrollbar flex snap-x snap-mandatory scroll-px-6 gap-3.5 overflow-x-auto px-6 pb-2 md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] md:gap-7 md:overflow-visible md:px-0 md:pb-0">
           {istaknutiTretmani.map((t) => (
             <KarticaTretmana key={t.id} t={t} />
@@ -208,13 +212,14 @@ function Najtrazeniji() {
       </div>
 
       <div className="wrap">
-        <p className="mt-6 mb-0 text-center text-[15px] leading-[1.7] text-cocoa md:mt-9">
+        <NapomenaCjenika tamno={false} className="mt-5 text-center md:mt-7" />
+        <p className="mt-4 mb-0 text-center text-[15px] leading-[1.7] text-cocoa md:mt-5">
           Također: {takoderRecenica()}.{" "}
           <Link href="/tretmani" className="font-semibold">
             Pogledajte cijeli cjenik
           </Link>
         </p>
-        <Link href="/tretmani" className="btn btn-secondary mt-6 flex min-h-[52px] gap-3 md:hidden">
+        <Link href="/tretmani" className="btn btn-secondary pomak-strelice mt-6 flex min-h-[52px] gap-3 md:hidden">
           Cijeli cjenik
           <span className="text-gold-deep">
             <Ikona ime="strelica" size={18} />
@@ -231,20 +236,20 @@ function Fohow() {
   return (
     <section id="fohow" className="bg-espresso text-cream">
       <div className="wrap section-y flex flex-wrap items-center gap-x-20 gap-y-8 md:gap-y-14">
-        <div className="relative w-full max-w-[500px] min-w-0 flex-[1_1_400px]">
+        <div className="otkrij relative w-full max-w-[500px] min-w-0 flex-[1_1_400px]">
           <div className="absolute top-[18px] right-[18px] -bottom-[18px] -left-[18px] hidden rounded-[28px] border border-bronze-line md:block" />
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] md:aspect-[4/5] md:rounded-[28px]">
             <Image
-              src="/images/fohow-bem-uredaj.jpg"
-              alt="FOHOW BEM 3.0 uređaj sa srebrnim rukavicama i gelovima za masažu"
+              src="/images/fohow-rukavice-stol.jpg"
+              alt="Stol za masažu sa srebrnim rukavicama i FOHOW BEM 3.0 uređajem"
               fill
               sizes="(min-width: 1024px) 500px, 100vw"
               className="object-cover"
-              style={{ objectPosition: "50% 50%" }}
+              style={{ objectPosition: "50% 22%" }}
             />
           </div>
         </div>
-        <div className="flex min-w-0 flex-[1_1_500px] flex-col gap-5 md:gap-6">
+        <div className="otkrij flex min-w-0 flex-[1_1_500px] flex-col gap-5 md:gap-6">
           <div className="eyebrow text-gold-light">{k.naziv}</div>
           <h2 className="h2 text-ivory">
             {naslov}
@@ -282,23 +287,27 @@ function Fohow() {
                     Na upit
                   </Link>
                 ) : (
-                  <span className="flex flex-none flex-col items-end md:flex-row md:items-baseline md:gap-3.5">
-                    <span className="order-2 text-[12px] text-on-dark md:order-1 md:text-[13px]">
-                      {t.opcije.map((o) => `${o.trajanjeMin} min`).join(" / ")}
+                  <span className="flex flex-none flex-col items-end">
+                    <span className="flex flex-col items-end md:flex-row md:items-baseline md:gap-3.5">
+                      <span className="order-2 text-[12px] text-on-dark md:order-1 md:text-[13px]">
+                        {t.opcije.map((o) => `${o.trajanjeMin} min`).join(" / ")}
+                      </span>
+                      <span className="order-1 font-serif text-[19px] text-gold-light md:order-2 md:min-w-12 md:text-right md:text-[22px]">
+                        {t.opcije.map((o) => `${o.cijenaEur} €`).join(" / ")}
+                      </span>
                     </span>
-                    <span className="order-1 font-serif text-[19px] text-gold-light md:order-2 md:min-w-12 md:text-right md:text-[22px]">
-                      {t.opcije.map((o) => `${o.cijenaEur} €`).join(" / ")}
-                    </span>
+                    <SidrenaCijena eur={t.opcije.map((o) => `${o.sidrenaCijenaEur} €`).join(" / ")} tamno />
                   </span>
                 )}
               </li>
             ))}
           </ul>
+          <NapomenaCjenika tamno className="-mt-1" />
           <div className="flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
             <a href={studio.zoyya} className="btn btn-dark min-h-[54px] px-[30px]">
               Rezerviraj BEM 3.0 masažu
             </a>
-            <Link href={putanjaStranice("fohow-bem-masaze")} className="btn btn-dark-outline min-h-[54px] px-7">
+            <Link href={putanjaStranice("fohow-bem-masaze")} className="btn btn-dark-outline pomak-strelice min-h-[54px] px-7">
               Opisi tretmana
               <span className="text-gold-light">
                 <Ikona ime="strelica" size={16} strokeWidth={1.6} />
@@ -315,7 +324,7 @@ function OMeni() {
   return (
     <section id="o-meni" className="bg-ivory">
       <div className="wrap section-y flex flex-wrap items-center gap-x-24 gap-y-14 md:gap-y-[72px]">
-        <div className="flex min-w-0 flex-[1_1_400px] justify-center">
+        <div className="otkrij flex min-w-0 flex-[1_1_400px] justify-center">
           <div className="relative aspect-[440/560] w-[min(100%,440px)] max-md:mr-2">
             <div className="arch absolute -top-3 right-3 bottom-3 -left-3 border border-gold-line md:-top-[18px] md:right-[18px] md:bottom-[18px] md:-left-[18px]" />
             <Image
@@ -338,7 +347,7 @@ function OMeni() {
             </div>
           </div>
         </div>
-        <div className="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] md:gap-[22px]">
+        <div className="otkrij flex min-w-0 flex-[1_1_480px] flex-col gap-[18px] md:gap-[22px]">
           <div className="eyebrow">O meni</div>
           <h2 className="m-0 font-script text-[40px] leading-[1.05] font-medium text-gold-deep md:text-[clamp(42px,4.2vw,58px)] md:leading-none">
             Pozdrav, ja sam Sanja
@@ -373,7 +382,7 @@ function Galerija() {
   return (
     <section className="border-t border-sand bg-cream">
       <div className="wrap section-y flex flex-col gap-5 md:gap-9">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+        <div className="otkrij flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <div className="flex flex-col gap-3">
             <div className="eyebrow">Iz studija</div>
             <h2 className="h2-sm">Trenuci opuštanja</h2>
@@ -385,10 +394,17 @@ function Galerija() {
             Pratite na Instagramu
           </a>
         </div>
-        <div className="grid grid-cols-2 gap-2.5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] md:gap-4">
+        <div className="otkrij grid grid-cols-2 gap-2.5 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] md:gap-4">
           {galerija.map((s) => (
-            <div key={s.src} className="relative aspect-[4/5] overflow-hidden rounded-[20px]">
-              <Image src={s.src} alt={s.alt} fill sizes="(min-width: 1024px) 240px, 50vw" className="object-cover" />
+            <div key={s.src} className="zum-slike relative aspect-[4/5] overflow-hidden rounded-[20px]">
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                sizes="(min-width: 1024px) 240px, 50vw"
+                className="object-cover"
+                style={{ objectPosition: s.pozicija }}
+              />
             </div>
           ))}
           <a
@@ -416,13 +432,13 @@ function UpitIKontakt() {
   return (
     <section id="upit" className="scroll-mt-2 bg-ivory">
       <div className="section-y mx-auto flex max-w-[1240px] flex-wrap items-start gap-6 px-6 md:gap-10 md:px-10">
-        <div className="min-w-0 flex-[999_1_560px] rounded-[28px] border border-sand bg-white-warm p-6 md:rounded-[32px] md:p-[clamp(28px,4vw,52px)]">
+        <div className="otkrij min-w-0 flex-[999_1_560px] rounded-[28px] border border-sand bg-white-warm p-6 md:rounded-[32px] md:p-[clamp(28px,4vw,52px)]">
           <UpitForma />
         </div>
 
         <div
           id="kontakt"
-          className="flex min-w-0 flex-[1_1_400px] scroll-mt-6 flex-col gap-[22px] rounded-[28px] bg-espresso px-[22px] py-7 text-on-dark md:gap-[26px] md:rounded-[32px] md:p-[clamp(28px,3.5vw,44px)]"
+          className="otkrij flex min-w-0 flex-[1_1_400px] scroll-mt-6 flex-col gap-[22px] rounded-[28px] bg-espresso px-[22px] py-7 text-on-dark md:gap-[26px] md:rounded-[32px] md:p-[clamp(28px,3.5vw,44px)]"
         >
           <div className="flex flex-col gap-2.5">
             <div className="eyebrow text-gold-light">Kontakt</div>
@@ -465,7 +481,7 @@ function UpitIKontakt() {
             <span className="text-[12px] font-semibold tracking-[0.2em] text-gold-light uppercase">Radno vrijeme</span>
             {[
               ["Ponedjeljak – Petak", "10:00 – 21:00"],
-              ["Subota", "13:00 – 19:00"],
+              ["Subota", "09:00 – 14:00"],
               ["Nedjelja", "zatvoreno"],
             ].map(([d, v]) => (
               <div key={d} className="flex justify-between gap-4 text-[14px] md:text-[15px]">

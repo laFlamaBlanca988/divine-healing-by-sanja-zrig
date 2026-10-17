@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { NaslovnaTraka } from "@/components/NaslovnaTraka";
 import { PomocPriOdabiru } from "@/components/PomocPriOdabiru";
-import { RedTretmana } from "@/components/RedTretmana";
+import { Cjenik } from "@/components/RedTretmana";
 import { SlikaULuku } from "@/components/SlikaULuku";
 import { breadcrumbLd, ogBase, type Mrvica } from "@/content/seo";
 import { putanjaStranice } from "@/content/stranice";
@@ -56,7 +56,7 @@ export default function Tretmani() {
           <p className="m-0 max-w-[620px] text-[16px] leading-[1.75] text-cocoa md:text-[17px]">
             Cjenik masaža i tretmana u studiju Divine Healing u Ilici 322 (Kustošija, Zagreb). Rezervirajte online
             putem Zoyye ili pošaljite upit — za tretmane s cijenom na upit javit ćemo vam se s detaljima. Cijene su u
-            eurima.
+            eurima i uključuju PDV.
           </p>
           <div className="mt-2 flex flex-wrap justify-center gap-2.5">
             {skokovi.map((s) => (
@@ -109,11 +109,7 @@ function SekcijaKategorije({ k, broj, krem }: { k: Kategorija; broj: number; kre
           )}
           <SlikaULuku src={k.slika} alt={slika?.alt ?? ""} pozicija={slika?.pozicija} tamno={tamno} className="mt-6 md:mt-8" />
         </div>
-        <div className={`min-w-0 flex-[999_1_560px] border-t ${linija}`}>
-          {k.tretmani.map((t) => (
-            <RedTretmana key={t.id} t={t} tamno={tamno} linija={linija} />
-          ))}
-        </div>
+        <Cjenik tretmani={k.tretmani} tamno={tamno} linija={linija} />
       </div>
     </section>
   );

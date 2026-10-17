@@ -1,6 +1,9 @@
 import podaci from "../../docs/tretmani.json";
 
-export type Opcija = { trajanjeMin: number; cijenaEur: number };
+export type Opcija = { trajanjeMin: number; cijenaEur: number; sidrenaCijenaEur: number };
+
+/** Dan čija cijena je sidrena cijena (prikazuje se u napomeni ispod svakog cjenika). */
+export const SIDRENA_DATUM = "10. 9. 2026.";
 
 export type Tretman = {
   id: string;
