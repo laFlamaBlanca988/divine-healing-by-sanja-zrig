@@ -15,11 +15,13 @@ export const privatnost: {
   /** Datum od kojeg pravila vrijede, YYYY-MM-DD. */
   datumIzmjene: string | null;
 } = {
-  voditelj: null,
-  oib: null,
-  sjediste: null,
-  rokCuvanja: null,
-  datumIzmjene: null,
+  voditelj: "Divine Healing By Sanja Zrig",
+  oib: "62315425057",
+  sjediste: "Ilica 322, 10000 Zagreb",
+  // Nijedan propis ne određuje rok za upite; GDPR traži da se ne čuvaju dulje nego što je potrebno.
+  // Godina pokriva povratne klijente i eventualne prigovore. Računi se čuvaju po propisima o računovodstvu.
+  rokCuvanja: "12 mjeseci od posljednjeg kontakta",
+  datumIzmjene: "2026-10-21",
 };
 
 /** Pružatelji usluga koji obrađuju podatke u ime studija (izvršitelji obrade). */

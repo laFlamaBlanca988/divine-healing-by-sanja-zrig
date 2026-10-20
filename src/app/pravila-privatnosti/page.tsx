@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   robots: pravilaSpremna ? undefined : { index: false },
 };
 
+const adresaStudija = `${studio.adresa}, ${studio.postanskiBroj} ${studio.grad}`;
 const poveznica = "underline decoration-gold-line decoration-1 underline-offset-4";
 const h2 = "m-0 mt-4 font-serif text-[22px] leading-[1.3] font-medium text-espresso md:text-[26px]";
 const lista = "m-0 flex list-disc flex-col gap-2 pl-5 marker:text-gold";
@@ -73,8 +74,8 @@ export default function PravilaPrivatnosti() {
           <h2 className={h2}>1. Tko obrađuje vaše podatke</h2>
           <p className="m-0">
             Voditelj obrade je <Podatak polje="voditelj" />, OIB <Podatak polje="oib" />, sa sjedištem na adresi{" "}
-            <Podatak polje="sjediste" />. Studio {studio.naziv} nalazi se na adresi {studio.adresa},{" "}
-            {studio.postanskiBroj} {studio.grad}.
+            <Podatak polje="sjediste" />.
+            {privatnost.sjediste !== adresaStudija && ` Studio ${studio.naziv} nalazi se na adresi ${adresaStudija}.`}
           </p>
           <p className="m-0">
             Za sva pitanja o osobnim podacima javite nam se na {email} ili na {studio.telefon}.
