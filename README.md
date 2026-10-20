@@ -46,7 +46,7 @@ Adresa stranice za canonical i sitemap: `NEXT_PUBLIC_SITE_URL`, a ako nije posta
 produkcijska adresa projekta. Kad se sadržaj promijeni, ažurirati `AZURIRANO` u `src/content/seo.ts` (datum u sitemapu).
 
 ### Otvoreno
-- **Pravila privatnosti** — na stranici je privremeni nacrt (jasno označen); konačni tekst treba od naručitelja.
+- **Pravila privatnosti** — podaci su upisani u `src/content/privatnost.ts`; tekst neka Sanja pročita (po mogućnosti uz pravni savjet).
 - **Domena** — postaviti `NEXT_PUBLIC_SITE_URL` (canonical, sitemap, Open Graph).
 - **Tekstovi stranica tretmana** — Sanja ih treba pročitati i odobriti prije objave (`src/content/stranice.ts`).
 - **Google profil tvrtke i recenzije** — vidi `docs/seo-upute.md`.
